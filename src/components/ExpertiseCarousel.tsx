@@ -13,16 +13,8 @@ const colorMap: { [key: string]: string } = {
   'text-teal-600': 'from-teal-500 via-teal-500/50 to-transparent',
 };
 
-// Define a more specific type for the icon props
-interface IconProps {
-  className: string;
-  size?: number;
-  [key: string]: any;
-}
-
-// Use the specific IconProps type for the icon in the Slide interface
 interface Slide {
-  icon: React.ReactElement<IconProps>;
+  icon: React.ReactElement<any>; // Using any to avoid deep prop typing issues for now
   titulo: string;
   descripcion: string;
 }
@@ -42,27 +34,18 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
   ]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
 
   const onSelect = useCallback(() => {
-    if (emblaApi) setSelectedIndex(emblaApi.selectedScrollSnap());
+    if (emblaApi) {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    }
   }, [emblaApi]);
-
-  const onScroll = useCallback(() => {
-    setIsScrolling(true);
-  }, []);
-
-  const onSettle = useCallback(() => {
-    setIsScrolling(false);
-  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
     emblaApi.on('select', onSelect);
-    emblaApi.on('scroll', onScroll);
-    emblaApi.on('settle', onSettle);
-  }, [emblaApi, onSelect, onScroll, onSettle]);
+    onSelect();
+  }, [emblaApi, onSelect]);
 
   return (
     <div className="embla">
@@ -70,15 +53,13 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
         <div className="embla__container">
           {slides.map((habilidad, index) => {
             const isSelected = selectedIndex === index;
-            // Now we can safely access className without a type guard
-            const iconColorClass = habilidad.icon.props.className.split(' ').find((c) => c.startsWith('text-')) || '';
+            const iconColorClass = habilidad.icon.props.className?.split(' ').find((c: string) => c.startsWith('text-')) || '';
             const gradientClass = colorMap[iconColorClass] || 'from-gray-500';
 
             return (
               <div 
                 className={`embla__slide ${isSelected ? 'is-selected' : ''}`}
                 key={index}
-                style={{ transition: isScrolling ? 'none' : 'transform 0.5s ease, opacity 0.5s ease' }}
               >
                 <div className="relative h-full">
                   <div

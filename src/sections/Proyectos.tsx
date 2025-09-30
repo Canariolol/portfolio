@@ -3,9 +3,12 @@
 import { useState } from 'react';
 import { ExternalLink, Github, Calendar, Users, Code, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ProjectImageModal from '@/components/ProjectImageModal';
 
 export default function Proyectos() {
   const [filtroActivo, setFiltroActivo] = useState('todos');
+  const [selectedProject, setSelectedProject] = useState<{ name: string; images: string[] } | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filtros = [
     { id: 'todos', nombre: 'Todos los Proyectos' },
@@ -20,7 +23,13 @@ export default function Proyectos() {
       id: 1,
       titulo: 'Asistente de Ventas con IA',
       descripcion: 'Sistema de chatbot inteligente con fine-tuning de GPT-4 para atención al cliente y ventas automatizadas. Incluye análisis de sentimiento, generación de respuestas personalizadas y aprendizaje continuo de interacciones.',
-      imagen: '/api/placeholder/600/400',
+      imagenPrincipal: '/api/placeholder/600/400',
+      imagenesGaleria: [
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600'
+      ],
       tecnologias: ['OpenAI API', 'LangChain', 'Python', 'FastAPI', 'PostgreSQL', 'Vector DB'],
       categoria: 'ia',
       estado: 'en-produccion',
@@ -45,7 +54,13 @@ export default function Proyectos() {
       id: 2,
       titulo: 'Plataforma de Automatización de Contenido',
       descripcion: 'Sistema que utiliza IA para generar, optimizar y distribuir contenido automáticamente en múltiples plataformas. Incluye procesamiento de lenguaje natural para análisis de tendencias y generación de texto optimizado para SEO.',
-      imagen: '/api/placeholder/600/400',
+      imagenPrincipal: '/api/placeholder/600/400',
+      imagenesGaleria: [
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600'
+      ],
       tecnologias: ['Anthropic Claude', 'Hugging Face', 'Transformers', 'Node.js', 'MongoDB', 'Airflow'],
       categoria: 'ia',
       estado: 'en-produccion',
@@ -70,7 +85,13 @@ export default function Proyectos() {
       id: 3,
       titulo: 'Sistema Predictivo de Mantenimiento',
       descripcion: 'Plataforma de machine learning para predecir fallas en equipos industriales utilizando datos de sensores IoT. Implementa modelos de series temporales y anomaly detection para mantenimiento predictivo.',
-      imagen: '/api/placeholder/600/400',
+      imagenPrincipal: '/api/placeholder/600/400',
+      imagenesGaleria: [
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600',
+        '/api/placeholder/800/600'
+      ],
       tecnologias: ['TensorFlow', 'PyTorch', 'scikit-learn', 'Python', 'InfluxDB', 'Grafana'],
       categoria: 'ia',
       estado: 'en-produccion',
@@ -96,6 +117,16 @@ export default function Proyectos() {
   const proyectosFiltrados = filtroActivo === 'todos' 
     ? proyectos 
     : proyectos.filter(proyecto => proyecto.categoria === filtroActivo);
+
+  const openImageModal = (projectName: string, images: string[]) => {
+    setSelectedProject({ name: projectName, images });
+    setIsModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   return (
     <section id="proyectos" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
@@ -136,14 +167,22 @@ export default function Proyectos() {
             {proyectosFiltrados.map((proyecto) => (
               <div
                 key={proyecto.id}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
               >
                 {/* Imagen del Proyecto */}
-                <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <Code className="w-16 h-16 mx-auto mb-2 opacity-80" />
-                      <p className="text-sm opacity-90">{proyecto.titulo}</p>
+                <div 
+                  className="relative h-48 cursor-pointer group"
+                  onClick={() => openImageModal(proyecto.titulo, proyecto.imagenesGaleria)}
+                >
+                  <img
+                    src={proyecto.imagenPrincipal}
+                    alt={proyecto.titulo}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-center">
+                      <Code className="w-16 h-16 mx-auto mb-2" />
+                      <p className="text-sm">Ver galería</p>
                     </div>
                   </div>
                   <div className="absolute top-4 right-4">
@@ -155,7 +194,7 @@ export default function Proyectos() {
                 </div>
 
                 {/* Contenido */}
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                       {proyecto.titulo}
@@ -165,7 +204,7 @@ export default function Proyectos() {
                     </span>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed flex-1">
                     {proyecto.descripcion}
                   </p>
 
@@ -205,7 +244,7 @@ export default function Proyectos() {
                   </div>
 
                   {/* Acciones */}
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     <Button className="flex-1" size="sm">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Ver Demo
@@ -280,6 +319,17 @@ export default function Proyectos() {
           </div>
         </div>
       </div>
+
+      {/* Modal de Galería */}
+      {selectedProject && (
+        <ProjectImageModal
+          isOpen={isModalOpen}
+          onClose={closeImageModal}
+          images={selectedProject.images}
+          currentImageIndex={0}
+          projectName={selectedProject.name}
+        />
+      )}
     </section>
   );
 }
