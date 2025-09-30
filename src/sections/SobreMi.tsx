@@ -1,27 +1,35 @@
-import { Code2, Server, Database, Zap, Users, Target } from "lucide-react";
+import { Code2, Server, Database, Zap, Users, Target, BrainCogIcon } from "lucide-react";
+import TechStack from "../components/TechStack";
+
+import ExpertiseCarousel from "../components/ExpertiseCarousel";
 
 export default function SobreMi() {
   const habilidadesPrincipales = [
     {
       icon: <Zap className="w-8 h-8 text-purple-600" />,
-      titulo: "IA & LLM Expertise",
-      descripcion: "OpenAI, Anthropic, Hugging Face, LangChain. Desarrollo de soluciones avanzadas con modelos de lenguaje y automación inteligente.",
-    },
-    {
-      icon: <Database className="w-8 h-8 text-blue-600" />,
-      titulo: "Machine Learning",
-      descripcion: "TensorFlow, PyTorch, scikit-learn. Entrenamiento y fine-tuning de modelos para tareas específicas de clasificación y predicción.",
+      titulo: "IA & Automatización",
+      descripcion: "Ingeniería de Contexto > Prompts. Integración de distintos LLM en entornos de trabajo, entrenamiento de modelos y fine-tuning en Vertex AI y Document AI de GCP. Workflows con n8n.",
     },
     {
       icon: <Code2 className="w-8 h-8 text-green-600" />,
-      titulo: "Automatización con IA",
-      descripcion: "RPA, flujos de trabajo automatizados, integración de APIs de IA en sistemas existentes. Optimización de procesos con inteligencia artificial.",
+      titulo: "Fullstack & DevOps",
+      descripcion: "Desarrollo de aplicaciones web con Next.js, React, FastAPI, Flask, APIs REST. Contenedores Docker, CI/CD con GitHub Actions. Autenticación, BBDD, Administración de secretos y Despliegue en GCP.",
     },
     {
       icon: <Server className="w-8 h-8 text-orange-600" />,
       titulo: "Arquitectura de Soluciones",
       descripcion: "Diseño de sistemas escalables que integran capacidades de IA, desde el frontend hasta el backend y despliegue en la nube.",
     },
+    {
+      icon: <BrainCogIcon className="w-8 h-8 text-blue-600" />,
+      titulo: "Skillset Adicional",
+      descripcion: "Español Nativo, Inglés C2. Uso avanzado de CRMs como Salesforce. Entendimiento de lógica de negocios y fundamentos de UX. Bases de QA y testing. Diseño y desarrollo de videojuegos (Unity/Unreal).",
+    },
+    {
+      icon: <Users className="w-8 h-8 text-teal-500" />,
+      titulo: "Habilidades Blandas",
+      descripcion: "Comunicación efectiva, resolución de problemas complejos, adaptabilidad, y un fuerte enfoque en la colaboración y el feedback para el crecimiento continuo.",
+    }
   ];
 
   const valores = [
@@ -57,34 +65,19 @@ export default function SobreMi() {
           </p>
         </div>
 
-        {/* Mi Expertise en IA */}
+        {/* Mi Expertise */}
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Mi Expertise en IA
+              Mi Expertise
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Especializado en aplicar inteligencia artificial y machine learning 
-              para resolver problemas complejos de manera innovadora.
+              Inteligencia Artificial | Bases sólidas en desarrollo web | Arquitectura de soluciones | Lógica de negocios
+                | APIs y microservicios | DevOps & CI/CD
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {habilidadesPrincipales.map((habilidad, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl hover:shadow-lg transition-shadow"
-              >
-                <div className="mb-4">{habilidad.icon}</div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {habilidad.titulo}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {habilidad.descripcion}
-                </p>
-              </div>
-            ))}
-          </div>
+          <ExpertiseCarousel slides={habilidadesPrincipales} />
         </div>
 
         {/* IA Expertise Section */}
@@ -92,11 +85,7 @@ export default function SobreMi() {
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               IA en Acción
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Mi expertise en inteligencia artificial me permite crear soluciones innovadoras 
-              que transforman la manera en que las empresas operan.
-            </p>
+              </h3>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -115,6 +104,17 @@ export default function SobreMi() {
                   <span className="text-green-500 mr-3 mt-1">✓</span>
                   <div>
                     <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                      Ingeniería de contexto en Fullstack/DevOps
+                    </h5>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Diseño y optimización del entorno de trabajo (prompts, pipelines, infraestructura y flujos de información) para que la IA y las herramientas automáticas operen con el máximo entendimiento, reduciendo fricción y mejorando la calidad del código y los despliegues.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-green-500 mr-3 mt-1">✓</span>
+                  <div>
+                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
                       Fine-tuning de Modelos
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -127,37 +127,25 @@ export default function SobreMi() {
                   <span className="text-green-500 mr-3 mt-1">✓</span>
                   <div>
                     <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Ingeniería de Prompts
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Diseño de prompts avanzados para maximizar la precisión y relevancia 
-                      de las respuestas de los modelos.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
                       RAG (Retrieval-Augmented Generation)
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
                       Implementación de sistemas que combinan búsqueda de información 
-                      con generación de texto para respuestas más precisas.
+                      con generación de texto para respuestas más precisas, asegurando un fallback viable.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Machine Learning & Automation */}
+            {/* Automatización Práctica*/}
             <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                  <Database className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                  <Zap className="w-6 h-6 text-green-600 dark:text-green-400" />
                 </div>
                 <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Machine Learning & Automation
+                  Automatización Práctica
                 </h4>
               </div>
               <div className="space-y-4">
@@ -165,11 +153,11 @@ export default function SobreMi() {
                   <span className="text-green-500 mr-3 mt-1">✓</span>
                   <div>
                     <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Modelos Predictivos
+                      Automatización de Reportes y Documentos
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Desarrollo de modelos de clasificación, regresión y clustering 
-                      para predecir tendencias y comportamientos.
+                      Implementación de sistemas que generan automáticamente reportes y procesan 
+                      documentos usando IA y APIs.
                     </p>
                   </div>
                 </div>
@@ -177,11 +165,11 @@ export default function SobreMi() {
                   <span className="text-green-500 mr-3 mt-1">✓</span>
                   <div>
                     <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Procesamiento de Lenguaje Natural
+                      Análisis Inteligente de Comunicaciones
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Análisis de sentimiento, extracción de entidades y clasificación 
-                      de texto para automatizar tareas de procesamiento.
+                      Desarrollo de soluciones que analizan automáticamente correos electrónicos 
+                      y bandejas de entrada para clasificar y priorizar.
                     </p>
                   </div>
                 </div>
@@ -189,42 +177,34 @@ export default function SobreMi() {
                   <span className="text-green-500 mr-3 mt-1">✓</span>
                   <div>
                     <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Automatización Inteligente
+                      Procesamiento de Datos con IA
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Integración de capacidades de IA en flujos de trabajo existentes 
-                      para optimizar procesos y tomar decisiones automáticas.
+                      Creación de flujos que transforman y analizan datos automáticamente 
+                      utilizando capacidades de IA para extraer insights.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-green-500 mr-3 mt-1">✓</span>
+                  <div>
+                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                      Optimización de Flujos de Trabajo
+                    </h5>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Rediseño e implementación de procesos empresariales automatizados 
+                      que generan eficiencia y valor tangible.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Tecnologías */}
-          <div className="mt-16">
-            <h4 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
-              Stack de IA que Domino
-            </h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {[
-                'OpenAI API', 'Anthropic Claude', 'LangChain', 'Hugging Face',
-                'TensorFlow', 'PyTorch', 'scikit-learn', 'Pandas',
-                'Transformers', 'FastAPI', 'Docker', 'AWS SageMaker'
-              ].map((tech, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center hover:shadow-md transition-shadow"
-                >
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {tech}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
-
+          {/* Tecnologías */}
+          <TechStack />
+          <br /><br />
+          <br /><br />
         {/* Valores */}
         <div>
           <div className="text-center mb-12">

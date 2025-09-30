@@ -10,9 +10,7 @@ export default function Header() {
   const navigation = [
     { name: 'Inicio', href: '/', type: 'link' },
     { name: 'Sobre Mí', href: '#sobre-mi', type: 'scroll' },
-    { name: 'Habilidades', href: '/habilidades', type: 'link' },
     { name: 'Proyectos', href: '/proyectos', type: 'link' },
-    { name: 'Servicios', href: '/servicios', type: 'link' },
     { name: 'Contacto', href: '/contacto', type: 'link' },
   ];
 

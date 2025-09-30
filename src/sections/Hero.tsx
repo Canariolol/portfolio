@@ -75,10 +75,10 @@ export default function Hero() {
             <p className="text-xl text-gray-700 dark:text-gray-300 bold leading-relaxed">
               Especialista en implementar soluciones que resuelven problemas reales y que 
               optimizan procesos de forma innovadora. Aprovechando al máximo las últimas tecnologías de vanguardia.<br />
-              <blockquote className="italic mt-10 mb-10 px-6 py-6 bg-white/70 dark:bg-gray-900/70 border-l-4 border-blue-500 dark:border-blue-400 rounded-xl shadow-lg max-w-3xl mx-auto">
+            </p>
+            <blockquote className="italic mt-10 mb-10 px-6 py-6 bg-white/70 dark:bg-gray-900/70 border-l-4 border-blue-500 dark:border-blue-400 rounded-xl shadow-lg max-w-3xl mx-auto">
               "Te ayudaré con tus proyectos, ideas y desafíos, desde la planificación hasta el despliegue y CI/CD.”
               </blockquote><br />
-            </p>
             
 
           {/* CTA Buttons */}
