@@ -24,12 +24,12 @@ export default function Proyectos() {
       id: 1,
       titulo: 'Eva 3 - Calidad, Evaluaciones y Monitoreo',
       descripcion: 'Sistema de monitoreo de equipos de trabajo. Modular, para ser adaptable a cualquier área, de empresas de cualquier rubro, que requieran evaluar a su personal y monitorear su desempeño. Capaz de generar reportes en tiempo real y mantener datos organizados para análisis posteriores.',
-      imagenPrincipal: '/api/placeholder/600/400',
+      imagenPrincipal: 'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/1.png',
       imagenesGaleria: [
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600'
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/1.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/2.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/3.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/4.png'
       ],
       tecnologias: ['SaaS', 'Gemini API', 'Gmail API', 'Python', 'Flask', 'React', 'Firestore', 'Google Cloud Functions / Auth / Storage'],
       categoria: 'ia',
