@@ -55,12 +55,12 @@ export default function Proyectos() {
       id: 2,
       titulo: 'Docalysis',
       descripcion: 'Sistema de automatización de analisis de documentos y extracción de datos. Utiliza modelo pre entrenado y fine tunned, para extraer datos clave de contratos, formularios de venta y otros documentos legales.',
-      imagenPrincipal: 'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/3.png',
+      imagenPrincipal: 'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/c.png',
       imagenesGaleria: [
-        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/2.png',
-        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/3.png',
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600'
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/b.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/c.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/a.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/d.png'
       ],
       tecnologias: ['Gemini 2.5 Pro', 'Vertex AI', 'Document AI', 'Node.js', 'MongoDB', 'React', 'Prompt Engineering', 'Python'],
       categoria: 'ia',
@@ -254,11 +254,7 @@ export default function Proyectos() {
                   </div>
 
                   {/* Acciones */}
-                  <div className="flex gap-3 mt-auto">
-                    <Button className="flex-1" size="sm">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Ver Demo
-                    </Button>
+                  <div className="flex justify-end mt-auto">
                     <Button variant="outline" size="sm">
                       <Github className="w-4 h-4" />
                     </Button>
@@ -458,11 +454,7 @@ export default function Proyectos() {
                     </div>
 
                     {/* Acciones */}
-                    <div className="flex gap-3 mt-auto">
-                      <Button className="flex-1" size="sm">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Ver Demo
-                      </Button>
+                    <div className="flex justify-end mt-auto">
                       <Button variant="outline" size="sm">
                         <Github className="w-4 h-4" />
                       </Button>
@@ -546,11 +538,7 @@ export default function Proyectos() {
                     </div>
 
                     {/* Acciones */}
-                    <div className="flex gap-3 mt-auto">
-                      <Button className="flex-1" size="sm">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Ver Demo
-                      </Button>
+                    <div className="flex justify-end mt-auto">
                       <Button variant="outline" size="sm">
                         <Github className="w-4 h-4" />
                       </Button>
@@ -634,11 +622,7 @@ export default function Proyectos() {
                     </div>
 
                     {/* Acciones */}
-                    <div className="flex gap-3 mt-auto">
-                      <Button className="flex-1" size="sm">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Ver Demo
-                      </Button>
+                    <div className="flex justify-end mt-auto">
                       <Button variant="outline" size="sm">
                         <Github className="w-4 h-4" />
                       </Button>
