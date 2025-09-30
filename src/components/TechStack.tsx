@@ -20,19 +20,19 @@ const icons = [
   { name: "Vite", icon: <SiVite size={128} className="text-purple-500" /> },
   { name: "TailwindCSS", icon: <SiTailwindcss size={128} className="text-teal-400" /> },
   { name: "MUI", icon: <SiMui size={128} className="text-blue-600" /> },
-  { name: "Python", icon: <SiPython size={128} className="text-blue-800" /> },
+  { name: "Python", icon: <SiPython size={128} className="text-blue-500" /> },
   { name: "FastAPI", icon: <SiFastapi size={128} className="text-green-500" /> },
   { name: "Flask", icon: <SiFlask size={128} /> },
   { name: "Node.js", icon: <SiNodedotjs size={128} className="text-green-600" /> },
   { name: "Google Cloud", icon: <SiGooglecloud size={128} className="text-red-500" /> },
-  { name: "Firebase", icon: <SiFirebase size={128} className="text-yellow-500" /> },
+  { name: "Firebase", icon: <SiFirebase size={128} className="text-yellow-600" /> },
   { name: "PostgreSQL", icon: <SiPostgresql size={128} className="text-blue-700" /> },
   { name: "Docker", icon: <SiDocker size={128} className="text-blue-500" /> },
   { name: "GitHub", icon: <SiGithub size={128} /> },
   { name: "GitHub Actions", icon: <SiGithubactions size={128} className="text-blue-400" /> },
   { name: "Gemini", icon: <SiGooglegemini size={128} className="text-blue-500" /> },
   { name: "ChatGPT", icon: <SiOpenai size={128} className="text-green-500" /> },
-  { name: "Claude", icon: <SiClaude size={128} /> },
+  { name: "Claude", icon: <SiClaude size={128} className="text-orange-400"/> },
   { name: "GCP Vertex AI", icon: <SiGooglecloud size={128} className="text-red-500" /> },
   { name: "n8n", icon: <SiN8N size={128} className="text-purple-600" /> },
   { name: "Z.ai (GLM)", icon: <VscCode size={128} /> },
@@ -112,7 +112,7 @@ export default function TechStack() {
   return (
     <div className="w-full h-[600px] relative">
       <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
-        Stack que domino
+        Mi Stack
       </h3>
       <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
         Arrastra y clickea ;)

@@ -6,23 +6,24 @@ import { Button } from '@/components/ui/button';
 import ProjectImageModal from '@/components/ProjectImageModal';
 
 export default function Proyectos() {
-  const [filtroActivo, setFiltroActivo] = useState('todos');
+  // const [filtroActivo, setFiltroActivo] = useState('todos');
   const [selectedProject, setSelectedProject] = useState<{ name: string; images: string[] } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOtherProjectsModalOpen, setIsOtherProjectsModalOpen] = useState(false);
 
-  const filtros = [
-    { id: 'todos', nombre: 'Todos los Proyectos' },
-    { id: 'ia', nombre: 'Inteligencia Artificial' },
-    { id: 'web', nombre: 'Aplicaciones Web' },
-    { id: 'automatizacion', nombre: 'Automatización' },
-    { id: 'backend', nombre: 'Backend' },
-  ];
+  // const filtros = [
+  //   { id: 'todos', nombre: 'Todos los Proyectos' },
+  //   { id: 'ia', nombre: 'Inteligencia Artificial' },
+  //   { id: 'web', nombre: 'Aplicaciones Web' },
+  //   { id: 'automatizacion', nombre: 'Automatización' },
+  //   { id: 'backend', nombre: 'Backend' },
+  // ];
 
   const proyectos = [
     {
       id: 1,
-      titulo: 'Asistente de Ventas con IA',
-      descripcion: 'Sistema de chatbot inteligente con fine-tuning de GPT-4 para atención al cliente y ventas automatizadas. Incluye análisis de sentimiento, generación de respuestas personalizadas y aprendizaje continuo de interacciones.',
+      titulo: 'Eva 3 - Calidad, Evaluaciones y Monitoreo',
+      descripcion: 'Sistema de monitoreo de equipos de trabajo. Modular, para ser adaptable a cualquier área, de empresas de cualquier rubro, que requieran evaluar a su personal y monitorear su desempeño. Capaz de generar reportes en tiempo real y mantener datos organizados para análisis posteriores.',
       imagenPrincipal: '/api/placeholder/600/400',
       imagenesGaleria: [
         '/api/placeholder/800/600',
@@ -30,93 +31,91 @@ export default function Proyectos() {
         '/api/placeholder/800/600',
         '/api/placeholder/800/600'
       ],
-      tecnologias: ['OpenAI API', 'LangChain', 'Python', 'FastAPI', 'PostgreSQL', 'Vector DB'],
+      tecnologias: ['SaaS', 'Gemini API', 'Gmail API', 'Python', 'Flask', 'React', 'Firestore', 'Google Cloud Functions / Auth / Storage'],
       categoria: 'ia',
       estado: 'en-produccion',
       fecha: '2024',
-      cliente: 'E-commerce de Moda',
+      cliente: 'Cliente Privado - Gestión de Equipos de Trabajo',
       urlDemo: '#',
       urlGithub: '#',
       iaFeatures: [
-        'Fine-tuning de modelo GPT-4 con datos del cliente',
+        'Integración de Gmail Api y Gemini Api para analisis de correos inteligente',
         'Sistema RAG para acceso a base de conocimientos',
         'Análisis de sentimiento en tiempo real',
         'Generación de respuestas contextualizadas'
       ],
       logros: [
-        'Reducción del 65% en tiempo de respuesta al cliente',
-        'Aumento del 30% en conversiones de ventas',
-        'Manejo de 1000+ conversaciones simultáneas',
+        'Reducción de más del 70% en tiempo de evaluación',
+        'Reducción de sobre un 80% del tiempo gastado en analisis de correos',
+        'Facilitación de la toma de decisiones con datos en tiempo real',
         'Satisfacción del cliente del 95%'
       ]
     },
     {
       id: 2,
-      titulo: 'Plataforma de Automatización de Contenido',
-      descripcion: 'Sistema que utiliza IA para generar, optimizar y distribuir contenido automáticamente en múltiples plataformas. Incluye procesamiento de lenguaje natural para análisis de tendencias y generación de texto optimizado para SEO.',
-      imagenPrincipal: '/api/placeholder/600/400',
+      titulo: 'Docalysis',
+      descripcion: 'Sistema de automatización de analisis de documentos y extracción de datos. Utiliza modelo pre entrenado y fine tunned, para extraer datos clave de contratos, formularios de venta y otros documentos legales.',
+      imagenPrincipal: 'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/3.png',
       imagenesGaleria: [
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/2.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Docalysis/3.png',
         '/api/placeholder/800/600',
         '/api/placeholder/800/600'
       ],
-      tecnologias: ['Anthropic Claude', 'Hugging Face', 'Transformers', 'Node.js', 'MongoDB', 'Airflow'],
+      tecnologias: ['Gemini 2.5 Pro', 'Vertex AI', 'Document AI', 'Node.js', 'MongoDB', 'React', 'Prompt Engineering', 'Python'],
       categoria: 'ia',
       estado: 'en-produccion',
-      fecha: '2024',
-      cliente: 'Agencia de Marketing Digital',
+      fecha: '2025',
+      cliente: 'Compañía de Telecomunicaciones - Ventas',
       urlDemo: '#',
       urlGithub: '#',
       iaFeatures: [
-        'Generación de contenido con múltiples LLMs',
-        'Análisis de tendencias con NLP',
-        'Optimización SEO automática',
-        'Programación de publicación inteligente'
+        'Generación de resumenes especificos para áreas de soporte a la venta',
+        'Sistema RAG para acceso a base de conocimientos y Fallback',
+        'Potencial/Eventual integración con Salesforce y Sii.cl, para automatizar y optimizar más los procesos',
+        'Actualmente se encuentra en migración a plataforma nueva para diversificar la herramienta y abarcar nuevos nichos: legal, salud, educación, etc.'
       ],
       logros: [
-        'Generación de 200+ artículos mensuales automatizados',
-        'Aumento del 150% en tráfico orgánico',
-        'Reducción del 90% en tiempo de creación de contenido',
-        'Integración con 5 plataformas sociales'
+        'Consolidación de información (promedio 10 documentos por revisión) en tiempos al rededor de 1 minuto',
+        'Reducción de más de un 80% del tiempo gastado en tareas repetitivas',
+        'Precisión de sobre el 90% en la consolidación de datos entregada',
+        'Se encuentra en proceso de expansión a nuevos nichos y mercados'
       ]
     },
     {
       id: 3,
-      titulo: 'Sistema Predictivo de Mantenimiento',
-      descripcion: 'Plataforma de machine learning para predecir fallas en equipos industriales utilizando datos de sensores IoT. Implementa modelos de series temporales y anomaly detection para mantenimiento predictivo.',
-      imagenPrincipal: '/api/placeholder/600/400',
+      titulo: 'Sistema de analisis de alarmas',
+      descripcion: 'Plataforma de generación de reportes web, excel y pdf, a partir de archivos excel con datos en bruto de alarmas de conducción para camiones de carga en carretera.',
+      imagenPrincipal: 'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/3.png',
       imagenesGaleria: [
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600',
-        '/api/placeholder/800/600'
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/1.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/3.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/4.png',
+        'https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/2.png'
       ],
-      tecnologias: ['TensorFlow', 'PyTorch', 'scikit-learn', 'Python', 'InfluxDB', 'Grafana'],
+      tecnologias: ['React', 'Typescript', 'Python', 'FastAPI', 'Google Cloud Run', 'PostgreSQL', 'Docker'],
       categoria: 'ia',
       estado: 'en-produccion',
-      fecha: '2023',
-      cliente: 'Empresa Manufacturera',
-      urlDemo: '#',
-      urlGithub: '#',
+      fecha: '2025',
+      cliente: 'West Ingeniería',
+      urlDemo: 'https://reportes-west.ninfasolutions.com',
+      urlGithub: 'https://github.com/Canariolol/ReportesConduccion/tree/RefactorizadoDashboard.tsx---Ok',
       iaFeatures: [
-        'Modelos predictivos con LSTM y Prophet',
-        'Detección de anomalías en tiempo real',
-        'Dashboard de monitoreo con alertas automáticas',
-        'Retraining automático de modelos'
+        ''
       ],
       logros: [
-        'Predicción de fallas con 24h de anticipación',
-        'Reducción del 40% en costos de mantenimiento',
-        'Aumento del 25% en eficiencia operativa',
-        'Monitoreo de 500+ sensores en tiempo real'
+        'Entrega del proyecto en tiempo record: 1 semana desde planificación a producción',
+        'Generación de PDF y Excel automáticos con un solo click. Estilos atractivos y profesionales',
+        'Fácil uso para usuarios no técnicos',
+        'API RESTful con múltiples endpoints para futuras integraciones y expansiones'
       ]
     }
   ];
 
-  const proyectosFiltrados = filtroActivo === 'todos' 
-    ? proyectos 
-    : proyectos.filter(proyecto => proyecto.categoria === filtroActivo);
+  // const proyectosFiltrados = filtroActivo === 'todos' 
+  //   ? proyectos 
+  //   : proyectos.filter(proyecto => proyecto.categoria === filtroActivo);
+  const proyectosFiltrados = proyectos;
 
   const openImageModal = (projectName: string, images: string[]) => {
     setSelectedProject({ name: projectName, images });
@@ -128,22 +127,29 @@ export default function Proyectos() {
     setSelectedProject(null);
   };
 
+  const openOtherProjectsModal = () => {
+    setIsOtherProjectsModalOpen(true);
+  };
+
+  const closeOtherProjectsModal = () => {
+    setIsOtherProjectsModalOpen(false);
+  };
+
   return (
     <section id="proyectos" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Proyectos de <span className="text-purple-600 dark:text-purple-400">IA</span> en Producción
+            Proyectos <span className="text-purple-600 dark:text-purple-400">Destacados</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Aquí presento mis 3 proyectos especializados en inteligencia artificial que están 
-            funcionando actualmente para clientes reales. Cada uno demuestra mi capacidad para 
-            aplicar IA, machine learning y automatización en resolver problemas complejos.
+            Estos son algunos de los proyectos que he creado de forma independiente y que se encuentran en producción real. <br />
+            Cada uno demuestra mi capacidad para resolver problemas y optimizar procesos, utilizando inteligencia artificial y tecnologías avanzadas.
           </p>
         </div>
 
-        {/* Filtros */}
-        <div className="max-w-4xl mx-auto mb-12">
+        {/* Filtros - Comentados temporalmente */}
+        {/* <div className="max-w-4xl mx-auto mb-12">
           <div className="flex flex-wrap justify-center gap-4">
             {filtros.map((filtro) => (
               <button
@@ -159,7 +165,7 @@ export default function Proyectos() {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Proyectos */}
         <div className="mb-16">
@@ -169,6 +175,13 @@ export default function Proyectos() {
                 key={proyecto.id}
                 className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
               >
+                {/* Franja con nombre del proyecto */}
+                <div className="bg-gradient-to-r from-purple-700 via-cyan-600 to-blue-400 text-white py-1 px-2 text-center">
+                  <h3 className="text-lg font-semibold text-center truncate">
+                    {proyecto.titulo}
+                  </h3>
+                </div>
+                
                 {/* Imagen del Proyecto */}
                 <div 
                   className="relative h-48 cursor-pointer group"
@@ -196,9 +209,6 @@ export default function Proyectos() {
                 {/* Contenido */}
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {proyecto.titulo}
-                    </h3>
                     <span className="text-sm text-gray-500 dark:text-gray-400">
                       {proyecto.fecha}
                     </span>
@@ -266,6 +276,16 @@ export default function Proyectos() {
               </p>
             </div>
           )}
+
+          {/* Botón para ver otros proyectos */}
+          <div className="text-center mt-12">
+            <Button 
+              onClick={openOtherProjectsModal}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+            >
+              {'Otros Proyectos -->'}
+            </Button>
+          </div>
         </div>
 
         {/* Sección de Proceso de Trabajo */}
@@ -329,6 +349,306 @@ export default function Proyectos() {
           currentImageIndex={0}
           projectName={selectedProject.name}
         />
+      )}
+
+      {/* Modal de Otros Proyectos */}
+      {isOtherProjectsModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-0 flex items-center justify-center z-50 p-4 transition-all duration-300"
+          style={{ backgroundColor: isOtherProjectsModalOpen ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0)' }}
+          onClick={closeOtherProjectsModal}
+        >
+          <div 
+            className="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0"
+            style={{ 
+              transform: isOtherProjectsModalOpen ? 'scale(1)' : 'scale(0.95)',
+              opacity: isOtherProjectsModalOpen ? 1 : 0
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Otros Proyectos
+                </h3>
+                <button
+                  onClick={closeOtherProjectsModal}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Tarjeta de proyecto 4 - Placeholder */}
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
+                  {/* Franja con nombre del proyecto */}
+                  <div className="bg-gradient-to-r from-purple-700 via-cyan-600 to-blue-400 text-white py-1 px-2 text-center">
+                    <h3 className="text-lg font-semibold text-center truncate">
+                      Proyecto 4
+                    </h3>
+                  </div>
+                  
+                  {/* Imagen del Proyecto */}
+                  <div className="relative h-48 cursor-pointer group">
+                    <div className="w-full h-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                      <Code className="w-16 h-16 text-gray-400" />
+                    </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-center">
+                        <Code className="w-16 h-16 mx-auto mb-2" />
+                        <p className="text-sm">Ver galería</p>
+                      </div>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
+                        <CheckCircle className="w-3 h-3 inline mr-1" />
+                        En Producción
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Contenido */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        2025
+                      </span>
+                    </div>
+
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed flex-1">
+                      Espacio reservado para otro proyecto. Aquí irá la descripción detallada del proyecto cuando se complete.
+                    </p>
+
+                    {/* Cliente */}
+                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                      <Users className="w-4 h-4 mr-2" />
+                      Cliente por definir
+                    </div>
+
+                    {/* Tecnologías */}
+                    <div className="mb-6">
+                      <div className="flex flex-wrap gap-2">
+                        {['Tecnología 1', 'Tecnología 2', 'Tecnología 3'].map((tech, index) => (
+                          <span
+                            key={index}
+                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Logros */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                        Resultados Alcanzados:
+                      </h4>
+                      <ul className="space-y-1">
+                        {['Logro 1 del proyecto', 'Logro 2 del proyecto', 'Logro 3 del proyecto'].map((logro, index) => (
+                          <li key={index} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                            <span className="text-green-500 mr-2 mt-0.5">•</span>
+                            {logro}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Acciones */}
+                    <div className="flex gap-3 mt-auto">
+                      <Button className="flex-1" size="sm">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Ver Demo
+                      </Button>
+                      <Button variant="outline" size="sm">
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tarjeta de proyecto 5 - Placeholder */}
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
+                  {/* Franja con nombre del proyecto */}
+                  <div className="bg-gradient-to-r from-purple-700 via-cyan-600 to-blue-400 text-white py-1 px-2 text-center">
+                    <h3 className="text-lg font-semibold text-center truncate">
+                      Proyecto 5
+                    </h3>
+                  </div>
+                  
+                  {/* Imagen del Proyecto */}
+                  <div className="relative h-48 cursor-pointer group">
+                    <div className="w-full h-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                      <Code className="w-16 h-16 text-gray-400" />
+                    </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-center">
+                        <Code className="w-16 h-16 mx-auto mb-2" />
+                        <p className="text-sm">Ver galería</p>
+                      </div>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
+                        <CheckCircle className="w-3 h-3 inline mr-1" />
+                        En Producción
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Contenido */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        2025
+                      </span>
+                    </div>
+
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed flex-1">
+                      Espacio reservado para otro proyecto. Aquí irá la descripción detallada del proyecto cuando se complete.
+                    </p>
+
+                    {/* Cliente */}
+                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                      <Users className="w-4 h-4 mr-2" />
+                      Cliente por definir
+                    </div>
+
+                    {/* Tecnologías */}
+                    <div className="mb-6">
+                      <div className="flex flex-wrap gap-2">
+                        {['Tecnología 1', 'Tecnología 2', 'Tecnología 3'].map((tech, index) => (
+                          <span
+                            key={index}
+                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Logros */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                        Resultados Alcanzados:
+                      </h4>
+                      <ul className="space-y-1">
+                        {['Logro 1 del proyecto', 'Logro 2 del proyecto', 'Logro 3 del proyecto'].map((logro, index) => (
+                          <li key={index} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                            <span className="text-green-500 mr-2 mt-0.5">•</span>
+                            {logro}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Acciones */}
+                    <div className="flex gap-3 mt-auto">
+                      <Button className="flex-1" size="sm">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Ver Demo
+                      </Button>
+                      <Button variant="outline" size="sm">
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tarjeta de proyecto 6 - Placeholder */}
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
+                  {/* Franja con nombre del proyecto */}
+                  <div className="bg-gradient-to-r from-purple-700 via-cyan-600 to-blue-400 text-white py-1 px-2 text-center">
+                    <h3 className="text-lg font-semibold text-center truncate">
+                      Proyecto 6
+                    </h3>
+                  </div>
+                  
+                  {/* Imagen del Proyecto */}
+                  <div className="relative h-48 cursor-pointer group">
+                    <div className="w-full h-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                      <Code className="w-16 h-16 text-gray-400" />
+                    </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-center">
+                        <Code className="w-16 h-16 mx-auto mb-2" />
+                        <p className="text-sm">Ver galería</p>
+                      </div>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
+                        <CheckCircle className="w-3 h-3 inline mr-1" />
+                        En Producción
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Contenido */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        2025
+                      </span>
+                    </div>
+
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed flex-1">
+                      Espacio reservado para otro proyecto. Aquí irá la descripción detallada del proyecto cuando se complete.
+                    </p>
+
+                    {/* Cliente */}
+                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                      <Users className="w-4 h-4 mr-2" />
+                      Cliente por definir
+                    </div>
+
+                    {/* Tecnologías */}
+                    <div className="mb-6">
+                      <div className="flex flex-wrap gap-2">
+                        {['Tecnología 1', 'Tecnología 2', 'Tecnología 3'].map((tech, index) => (
+                          <span
+                            key={index}
+                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Logros */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                        Resultados Alcanzados:
+                      </h4>
+                      <ul className="space-y-1">
+                        {['Logro 1 del proyecto', 'Logro 2 del proyecto', 'Logro 3 del proyecto'].map((logro, index) => (
+                          <li key={index} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                            <span className="text-green-500 mr-2 mt-0.5">•</span>
+                            {logro}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Acciones */}
+                    <div className="flex gap-3 mt-auto">
+                      <Button className="flex-1" size="sm">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Ver Demo
+                      </Button>
+                      <Button variant="outline" size="sm">
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </section>
   );

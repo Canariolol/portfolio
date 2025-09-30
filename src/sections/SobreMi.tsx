@@ -1,4 +1,4 @@
-import { Code2, Server, Database, Zap, Users, Target, BrainCogIcon } from "lucide-react";
+import { Code2, Server, Database, Zap, Users, Target, BrainCogIcon, Brain } from "lucide-react";
 import TechStack from "../components/TechStack";
 
 import ExpertiseCarousel from "../components/ExpertiseCarousel";
@@ -36,17 +36,17 @@ export default function SobreMi() {
     {
       icon: <Users className="w-6 h-6 text-blue-500" />,
       titulo: "Colaboración",
-      descripcion: "Trabajo en equipo cercano con clientes y stakeholders para entender necesidades reales.",
+      descripcion: "Trabajo cercano y en conjunto con clientes para entender sus necesidades.",
     },
     {
       icon: <Target className="w-6 h-6 text-green-500" />,
       titulo: "Resultados",
-      descripcion: "Enfoque en delivering valor tangible y medible en cada proyecto.",
+      descripcion: "Enfoque en entregar valor tangible y medible en cada proyecto.",
     },
     {
-      icon: <Zap className="w-6 h-6 text-purple-500" />,
-      titulo: "Innovación",
-      descripcion: "Siempre buscando nuevas tecnologías y métodos para mejorar procesos.",
+      icon: <Brain className="w-6 h-6 text-purple-500" />,
+      titulo: "Perfeccionamiento Continuo",
+      descripcion: "Si lo sé, lo aplico. Si no estoy seguro, lo confirmo. Si no lo sé, lo investigo, lo aprendo y ahora lo sé.",
     },
   ];
 
@@ -242,7 +242,7 @@ export default function SobreMi() {
                 shadowClass = 'hover:shadow-blue-500/25';
               } else if (valor.titulo === 'Resultados') {
                 shadowClass = 'hover:shadow-green-500/25';
-              } else if (valor.titulo === 'Innovación') {
+              } else if (valor.titulo === 'Perfeccionamiento Continuo') {
                 shadowClass = 'hover:shadow-purple-500/25';
               }
               
