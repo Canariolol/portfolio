@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Download, ExternalLink } from 'lucide-react';
+import { ArrowDown, Download, ExternalLink, ChevronDown, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
+  const [isCvDropdownOpen, setIsCvDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
   const roles = [
     "Experto en IA & LLM",
@@ -20,6 +22,18 @@ export default function Hero() {
       setCurrentRole((prev) => (prev + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsCvDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const scrollToContent = () => {
@@ -74,11 +88,11 @@ export default function Hero() {
           {/* Description */}
             <p className="text-xl text-gray-700 dark:text-gray-300 bold leading-relaxed">
               Especialista en implementar soluciones que resuelven problemas reales y que 
-              optimizan procesos de forma innovadora. Aprovechando al máximo las últimas tecnologías de vanguardia.<br />
+              optimizan procesos de forma innovadora. <br ></br>Aprovechando al máximo las últimas tecnologías de vanguardia.
             </p>
             <blockquote className="italic mt-10 mb-10 px-6 py-6 bg-white/70 dark:bg-gray-900/70 border-l-4 border-blue-500 dark:border-blue-400 rounded-xl shadow-lg max-w-3xl mx-auto">
               "Te ayudaré con tus proyectos, ideas y desafíos, desde la planificación hasta el despliegue y CI/CD.”
-              </blockquote><br />
+              </blockquote>
             
 
           {/* CTA Buttons */}
@@ -91,6 +105,48 @@ export default function Hero() {
               Ver mi trabajo
               <ArrowDown className="ml-2 h-5 w-5" />
             </Button>
+            
+            {/* CV Download Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => setIsCvDropdownOpen(!isCvDropdownOpen)}
+                className="border-2 border-gray-300 dark:border-gray-600 px-8 py-3 text-lg hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-2"
+              >
+                <Download className="h-5 w-5" />
+                Descarga mi CV
+                <ChevronDown className={`h-4 w-4 transition-transform ${isCvDropdownOpen ? 'rotate-180' : ''}`} />
+              </Button>
+              
+              {/* Dropdown Menu */}
+              {isCvDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 overflow-hidden">
+                  <div className="flex">
+                    <a
+                      href="https://storage.googleapis.com/tu-bucket/cv-english.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-r border-gray-200 dark:border-gray-700"
+                      onClick={() => setIsCvDropdownOpen(false)}
+                    >
+                      <Globe className="h-4 w-4 mr-2 text-blue-600" />
+                      <span>English</span>
+                    </a>
+                    <a
+                      href="https://storage.googleapis.com/tu-bucket/cv-espanol.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      onClick={() => setIsCvDropdownOpen(false)}
+                    >
+                      <Globe className="h-4 w-4 mr-2 text-green-600" />
+                      <span>Español</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
             
             <Link href="/contacto">
               <Button 

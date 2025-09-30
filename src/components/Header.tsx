@@ -10,8 +10,8 @@ export default function Header() {
   const navigation = [
     { name: 'Inicio', href: '/', type: 'link' },
     { name: 'Sobre Mí', href: '#sobre-mi', type: 'scroll' },
-    { name: 'Proyectos', href: '/proyectos', type: 'link' },
-    { name: 'Contacto', href: '/contacto', type: 'link' },
+    { name: 'Proyectos', href: '#proyectos', type: 'scroll' },
+    { name: 'Contacto', href: '#contacto', type: 'scroll' },
   ];
 
   const scrollToSection = (sectionId: string) => {

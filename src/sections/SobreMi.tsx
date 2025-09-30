@@ -18,7 +18,7 @@ export default function SobreMi() {
     {
       icon: <Server className="w-8 h-8 text-orange-600" />,
       titulo: "Arquitectura de Soluciones",
-      descripcion: "Diseño de sistemas escalables que integran capacidades de IA, desde el frontend hasta el backend y despliegue en la nube.",
+      descripcion: "Diseño de sistemas escalables que integran capacidades de IA, desde el frontend hasta el backend y despliegue en la nube. Optimización de costos y rendimiento. ",
     },
     {
       icon: <BrainCogIcon className="w-8 h-8 text-blue-600" />,
@@ -26,7 +26,7 @@ export default function SobreMi() {
       descripcion: "Español Nativo, Inglés C2. Uso avanzado de CRMs como Salesforce. Entendimiento de lógica de negocios y fundamentos de UX. Bases de QA y testing. Diseño y desarrollo de videojuegos (Unity/Unreal).",
     },
     {
-      icon: <Users className="w-8 h-8 text-teal-500" />,
+      icon: <Users className="w-8 h-8 text-teal-600" />,
       titulo: "Habilidades Blandas",
       descripcion: "Comunicación efectiva, resolución de problemas complejos, adaptabilidad, y un fuerte enfoque en la colaboración y el feedback para el crecimiento continuo.",
     }
@@ -80,7 +80,7 @@ export default function SobreMi() {
           <ExpertiseCarousel slides={habilidadesPrincipales} />
         </div>
 
-        {/* IA Expertise Section */}
+        {/* AI Expertise Section */}
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">

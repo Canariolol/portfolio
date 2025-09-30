@@ -115,12 +115,12 @@ export default function TechStack() {
         Stack que domino
       </h3>
       <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
-        Haz click y arrastra para explorar. Pulsa un ícono para ver su nombre.
+        Arrastra y clickea ;)
       </p>
-      <Canvas camera={{ position: [0, 0, 35], fov: 90 }}>
+      <Canvas camera={{ position: [0, 0, 40], fov: 90 }}>
         <ambientLight intensity={0.8} />
         <pointLight intensity={1} position={[0, 0, 0]} />
-        <Cloud count={icons.length} radius={25} />
+        <Cloud count={icons.length} radius={20} />
         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.6} />
       </Canvas>
     </div>

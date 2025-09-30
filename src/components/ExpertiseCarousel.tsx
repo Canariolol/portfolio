@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
-import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
+import useEmblaCarousel, { type EmblaOptionsType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import '../app/embla.css';
 
@@ -10,11 +10,19 @@ const colorMap: { [key: string]: string } = {
   'text-green-600': 'from-green-500 via-green-500/50 to-transparent',
   'text-orange-600': 'from-orange-500 via-orange-500/50 to-transparent',
   'text-blue-600': 'from-blue-500 via-blue-500/50 to-transparent',
-  'text-teal-500': 'from-teal-500 via-teal-500/50 to-transparent',
+  'text-teal-600': 'from-teal-500 via-teal-500/50 to-transparent',
 };
 
+// Define a more specific type for the icon props
+interface IconProps {
+  className: string;
+  size?: number;
+  [key: string]: any;
+}
+
+// Use the specific IconProps type for the icon in the Slide interface
 interface Slide {
-  icon: React.ReactElement;
+  icon: React.ReactElement<IconProps>;
   titulo: string;
   descripcion: string;
 }
@@ -27,10 +35,10 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
   const options: EmblaOptionsType = { 
     loop: true, 
     align: 'center',
-    duration: 40,
+    duration: 55,
   };
-  const [emblaRef, emblaApi] = useEmblaCarousel<HTMLDivElement>(options, [
-    Autoplay({ delay: 5000, stopOnInteraction: true }),
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
   ]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -62,17 +70,15 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
         <div className="embla__container">
           {slides.map((habilidad, index) => {
             const isSelected = selectedIndex === index;
-            let iconColorClass = '';
-            if (React.isValidElement(habilidad.icon) && typeof habilidad.icon.props.className === 'string') {
-              iconColorClass = habilidad.icon.props.className.split(' ').find((c: string) => c.startsWith('text-')) || '';
-            }
+            // Now we can safely access className without a type guard
+            const iconColorClass = habilidad.icon.props.className.split(' ').find((c) => c.startsWith('text-')) || '';
             const gradientClass = colorMap[iconColorClass] || 'from-gray-500';
 
             return (
               <div 
                 className={`embla__slide ${isSelected ? 'is-selected' : ''}`}
                 key={index}
-                style={{ transition: isScrolling ? 'none' : '' }}
+                style={{ transition: isScrolling ? 'none' : 'transform 0.5s ease, opacity 0.5s ease' }}
               >
                 <div className="relative h-full">
                   <div

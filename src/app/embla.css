@@ -1,10 +1,10 @@
 .embla {
   position: relative;
   padding: 2rem 0;
+  overflow: hidden;
 }
 
 .embla__viewport {
-  overflow: hidden;
   perspective: 1000px;
   perspective-origin: center;
 }
@@ -22,10 +22,6 @@
   padding: 1rem;
   opacity: 0.4;
   transform: scale(0.8) translateX(0);
-}
-
-.transition-transform-opacity {
-  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .embla__slide.is-selected {
