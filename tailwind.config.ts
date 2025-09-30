@@ -8,7 +8,23 @@ const config: Config = {
     './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        'border-rise': {
+          '0%': { backgroundPosition: '0% 100%' },
+          '50%': { backgroundPosition: '0% 0%' },
+          '100%': { backgroundPosition: '0% 100%' },
+        },
+        'gradient-travel': {
+          '0%': { backgroundPosition: '0% 0%' },
+          '100%': { backgroundPosition: '0% 100%' },
+        },
+      },
+      animation: {
+        'border-rise': 'border-rise 2s ease-in-out infinite',
+        'gradient-travel': 'gradient-travel 2s ease infinite',
+      },
+    },
   },
   plugins: [],
 }

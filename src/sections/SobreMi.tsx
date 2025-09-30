@@ -77,7 +77,11 @@ export default function SobreMi() {
             </p>
           </div>
 
-          <ExpertiseCarousel slides={habilidadesPrincipales} />
+          <div className="relative">
+            <ExpertiseCarousel slides={habilidadesPrincipales} />
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent dark:from-gray-800 pointer-events-none z-10" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent dark:from-gray-800 pointer-events-none z-10" />
+          </div>
         </div>
 
         {/* AI Expertise Section */}
@@ -90,111 +94,127 @@ export default function SobreMi() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* LLM & Generative AI */}
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-4">
-                  <Zap className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                </div>
-                <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  LLM & Generative AI
-                </h4>
+            <div className="group relative bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
+              {/* Animated gradient border that rises from bottom */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 animate-border-rise bg-[length:100%_200%] opacity-80"></div>
+                <div className="absolute inset-1 bg-gray-50 dark:bg-gray-900 rounded-xl"></div>
               </div>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Ingeniería de contexto en Fullstack/DevOps
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Diseño y optimización del entorno de trabajo (prompts, pipelines, infraestructura y flujos de información) para que la IA y las herramientas automáticas operen con el máximo entendimiento, reduciendo fricción y mejorando la calidad del código y los despliegues.
-                    </p>
+              
+              <div className="relative z-10">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <Zap className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   </div>
+                  <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    LLM & Generative AI
+                  </h4>
                 </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Fine-tuning de Modelos
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Especializado en adaptar modelos pre-entrenados para tareas específicas 
-                      con datasets personalizados.
-                    </p>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <span className="text-green-500 mr-3 mt-1">✓</span>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        Ingeniería de contexto en Fullstack/DevOps
+                      </h5>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Diseño y optimización del entorno de trabajo (prompts, pipelines, infraestructura y flujos de información) para que la IA y las herramientas automáticas operen con el máximo entendimiento, reduciendo fricción y mejorando la calidad del código y los despliegues.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      RAG (Retrieval-Augmented Generation)
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Implementación de sistemas que combinan búsqueda de información 
-                      con generación de texto para respuestas más precisas, asegurando un fallback viable.
-                    </p>
+                  <div className="flex items-start">
+                    <span className="text-green-500 mr-3 mt-1">✓</span>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        Fine-tuning de Modelos
+                      </h5>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Especializado en adaptar modelos pre-entrenados para tareas específicas 
+                        con datasets personalizados.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-green-500 mr-3 mt-1">✓</span>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        RAG (Retrieval-Augmented Generation)
+                      </h5>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Implementación de sistemas que combinan búsqueda de información 
+                        con generación de texto para respuestas más precisas, asegurando un fallback viable.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Automatización Práctica*/}
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
-                  <Zap className="w-6 h-6 text-green-600 dark:text-green-400" />
-                </div>
-                <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Automatización Práctica
-                </h4>
+            <div className="group relative bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
+              {/* Animated gradient border that rises from bottom */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 via-green-600 to-green-800 animate-border-rise bg-[length:100%_200%] opacity-80"></div>
+                <div className="absolute inset-1 bg-gray-50 dark:bg-gray-900 rounded-xl"></div>
               </div>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Automatización de Reportes y Documentos
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Implementación de sistemas que generan automáticamente reportes y procesan 
-                      documentos usando IA y APIs.
-                    </p>
+              
+              <div className="relative z-10">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <Zap className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
+                  <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    Automatización Práctica
+                  </h4>
                 </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Análisis Inteligente de Comunicaciones
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Desarrollo de soluciones que analizan automáticamente correos electrónicos 
-                      y bandejas de entrada para clasificar y priorizar.
-                    </p>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <span className="text-green-500 mr-3 mt-1">✓</span>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        Automatización de Reportes y Documentos
+                      </h5>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Implementación de sistemas que generan automáticamente reportes y procesan 
+                        documentos usando IA y APIs.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Procesamiento de Datos con IA
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Creación de flujos que transforman y analizan datos automáticamente 
-                      utilizando capacidades de IA para extraer insights.
-                    </p>
+                  <div className="flex items-start">
+                    <span className="text-green-500 mr-3 mt-1">✓</span>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        Análisis Inteligente de Comunicaciones
+                      </h5>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Desarrollo de soluciones que analizan automáticamente correos electrónicos 
+                        y bandejas de entrada para clasificar y priorizar.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-3 mt-1">✓</span>
-                  <div>
-                    <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      Optimización de Flujos de Trabajo
-                    </h5>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Rediseño e implementación de procesos empresariales automatizados 
-                      que generan eficiencia y valor tangible.
-                    </p>
+                  <div className="flex items-start">
+                    <span className="text-green-500 mr-3 mt-1">✓</span>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        Procesamiento de Datos con IA
+                      </h5>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Creación de flujos que transforman y analizan datos automáticamente 
+                        utilizando capacidades de IA para extraer insights.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-green-500 mr-3 mt-1">✓</span>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        Optimización de Flujos de Trabajo
+                      </h5>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Rediseño e implementación de procesos empresariales automatizados 
+                        que generan eficiencia y valor tangible.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -203,6 +223,7 @@ export default function SobreMi() {
         </div>
           {/* Tecnologías */}
           <TechStack />
+          <br /><br />
           <br /><br />
           <br /><br />
         {/* Valores */}
@@ -214,20 +235,32 @@ export default function SobreMi() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {valores.map((valor, index) => (
-              <div
-                key={index}
-                className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-xl"
-              >
-                <div className="flex justify-center mb-4">{valor.icon}</div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {valor.titulo}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {valor.descripcion}
-                </p>
-              </div>
-            ))}
+            {valores.map((valor, index) => {
+              // Determinar el color del gradiente basado en el icono
+              let shadowClass = '';
+              if (valor.titulo === 'Colaboración') {
+                shadowClass = 'hover:shadow-blue-500/25';
+              } else if (valor.titulo === 'Resultados') {
+                shadowClass = 'hover:shadow-green-500/25';
+              } else if (valor.titulo === 'Innovación') {
+                shadowClass = 'hover:shadow-purple-500/25';
+              }
+              
+              return (
+                <div
+                  key={index}
+                  className={`group relative text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-lg ${shadowClass}`}
+                >
+                  <div className="flex justify-center mb-4">{valor.icon}</div>
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    {valor.titulo}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {valor.descripcion}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
