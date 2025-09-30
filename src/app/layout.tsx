@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -25,8 +25,12 @@ export const metadata: Metadata = {
     title: "Tu Nombre - Desarrollador Fullstack & DevOps",
     description: "Portafolio profesional de desarrollador fullstack especializado en crear aplicaciones web modernas y optimizar procesos con DevOps.",
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

@@ -61,19 +61,21 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
                 className={`embla__slide ${isSelected ? 'is-selected' : ''}`}
                 key={index}
               >
-                <div className="relative h-full">
-                  <div
-                    className={`absolute -inset-2.5 rounded-3xl bg-gradient-to-b ${gradientClass} opacity-0 blur-xl transition-opacity duration-500`}
-                    style={{ opacity: isSelected ? 0.4 : 0 }}
-                  />
-                  <div className="relative bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl h-full overflow-hidden">
-                    <div className="mb-4">{habilidad.icon}</div>
-                    <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                      {habilidad.titulo}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {habilidad.descripcion}
-                    </p>
+                <div className="embla__slide__transformer">
+                  <div className="relative h-full">
+                    <div
+                      className={`absolute -inset-2.5 rounded-3xl bg-gradient-to-b ${gradientClass} opacity-0 blur-xl transition-opacity duration-500`}
+                      style={{ opacity: isSelected ? 0.4 : 0 }}
+                    />
+                    <div className="relative bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl h-full overflow-hidden">
+                      <div className="mb-4">{habilidad.icon}</div>
+                      <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                        {habilidad.titulo}
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {habilidad.descripcion}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
