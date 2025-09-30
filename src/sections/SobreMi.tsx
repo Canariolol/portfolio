@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { Code2, Server, Database, Zap, Users, Target, BrainCogIcon, Brain } from "lucide-react";
 import TechStack from "@/components/TechStack";
@@ -285,8 +285,8 @@ export default function SobreMi() {
           </div>
           <div className="relative">
             <ExpertiseCarousel slides={slides} />
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent dark:from-gray-900" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent dark:from-gray-900" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--background)] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--background)] to-transparent" />
           </div>
         </div>
 
@@ -336,6 +336,7 @@ export default function SobreMi() {
         <div className="mb-24">
           <TechStack />
         </div>
+        <br /><br /><br />
 
         <div>
           <div className="text-center mb-12">
