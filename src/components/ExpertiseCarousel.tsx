@@ -14,7 +14,7 @@ const colorMap: { [key: string]: string } = {
 };
 
 interface Slide {
-  icon: React.ReactElement<any>; // Using any to avoid deep prop typing issues for now
+  icon: React.ReactElement; // Using any to avoid deep prop typing issues for now
   titulo: string;
   descripcion: string;
 }

@@ -1,16 +1,17 @@
-"use client";
-import { useState, useMemo } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Html, Billboard } from '@react-three/drei';
-import * as THREE from 'three';
+﻿"use client";
+import { useState, useMemo } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Html, Billboard } from "@react-three/drei";
+import * as THREE from "three";
 import {
   SiTypescript, SiJavascript, SiReact, SiVite, SiNextdotjs, SiTailwindcss, SiMui,
   SiPython, SiFastapi, SiFlask, SiNodedotjs,
   SiFirebase, SiGooglecloud, SiPostgresql,
   SiGithub, SiGithubactions, SiDocker,
-  SiN8N, SiGooglegemini, SiOpenai, SiClaude
+  SiN8N, SiGooglegemini, SiOpenai, SiClaude,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
+import { useLanguage } from "@/context/LanguageContext";
 
 const icons = [
   { name: "TypeScript", icon: <SiTypescript size={128} className="text-blue-500" /> },
@@ -32,7 +33,7 @@ const icons = [
   { name: "GitHub Actions", icon: <SiGithubactions size={128} className="text-blue-400" /> },
   { name: "Gemini", icon: <SiGooglegemini size={128} className="text-blue-500" /> },
   { name: "ChatGPT", icon: <SiOpenai size={128} className="text-green-500" /> },
-  { name: "Claude", icon: <SiClaude size={128} className="text-orange-400"/> },
+  { name: "Claude", icon: <SiClaude size={128} className="text-orange-400" /> },
   { name: "GCP Vertex AI", icon: <SiGooglecloud size={128} className="text-red-500" /> },
   { name: "n8n", icon: <SiN8N size={128} className="text-purple-600" /> },
   { name: "Z.ai (GLM)", icon: <VscCode size={128} /> },
@@ -54,7 +55,7 @@ function Icon({ id, name, position, icon, selected, setSelected }: IconProps) {
     <Billboard position={position}>
       <Html center distanceFactor={10} transform>
         <div
-          className={`p-3 cursor-pointer bg-white/10 backdrop-blur-md rounded-lg transition-all duration-300 ease-in-out ${isSelected ? 'scale-125 bg-white/20' : 'hover:scale-110'}`}
+          className={`p-3 cursor-pointer bg-white/10 backdrop-blur-md rounded-lg transition-all duration-300 ease-in-out ${isSelected ? "scale-125 bg-white/20" : "hover:scale-110"}`}
           onClick={() => setSelected(isSelected ? null : id)}
         >
           <div className="w-32 h-32 flex items-center justify-center text-white">
@@ -108,14 +109,38 @@ function Cloud({ count = 4, radius = 20 }) {
   );
 }
 
+const copy = {
+  es: {
+    tag: "Tecnología",
+    title: "Mi Stack",
+    subtitle: "Explora las herramientas que uso a diario (arrástralas y pruébalas).",
+  },
+  en: {
+    tag: "Technology",
+    title: "My Stack",
+    subtitle: "Explore the tools I rely on every day (drag and play).",
+  },
+};
+
 export default function TechStack() {
+  const { language } = useLanguage();
+  const text = copy[language];
+
   return (
     <div className="w-full h-[600px] relative">
-      <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
-        Mi Stack
-      </h3>
+      <div className="text-center mb-6">
+        <p className="text-xs uppercase tracking-[0.3em] text-sky-500 mb-3">
+          {text.tag}
+        </p>
+        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+          <span className="relative inline-block">
+            <span className="absolute inset-x-0 -bottom-2 h-3 bg-gradient-to-r from-sky-200 to-transparent dark:from-sky-500/20 dark:to-transparent rounded-full" />
+            <span className="relative text-sky-600 dark:text-sky-400">{text.title}</span>
+          </span>
+        </h3>
+      </div>
       <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
-        Arrastra y clickea ;)
+        {text.subtitle}
       </p>
       <Canvas camera={{ position: [0, 0, 40], fov: 90 }}>
         <ambientLight intensity={0.8} />
