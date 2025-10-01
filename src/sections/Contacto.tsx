@@ -130,6 +130,7 @@ export default function Contacto() {
     asunto: "",
     mensaje: "",
   });
+  const [status, setStatus] = useState('');
   const { language } = useLanguage();
   const text = copy[language];
   const info = contactInfo[language];
@@ -141,11 +142,34 @@ export default function Contacto() {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Formulario enviado:", formData);
-    alert(text.successMessage);
-    setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.nombre,
+          email: formData.email,
+          message: formData.mensaje,
+          subject: formData.asunto
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending form:', error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -236,11 +260,13 @@ export default function Contacto() {
                 />
               </div>
 
-              <Button type="submit" className="w-full" size="lg">
+              <Button type="submit" className="w-full" size="lg" disabled={status === 'loading'}>
                 <Send className="w-5 h-5 mr-2" />
-                {text.submitLabel}
+                {status === 'loading' ? (language === 'es' ? 'Enviando...' : 'Sending...') : text.submitLabel}
               </Button>
             </form>
+            {status === 'success' && <p className="text-green-500 mt-4">{text.successMessage}</p>}
+            {status === 'error' && <p className="text-red-500 mt-4">{language === 'es' ? 'Hubo un error al enviar el mensaje.' : 'There was an error sending the message.'}</p>}
           </div>
 
           <div className="space-y-8">
