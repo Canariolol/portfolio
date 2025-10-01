@@ -41,8 +41,8 @@ const projects: Project[] = [
   {
     id: 1,
     title: {
-      es: "Eva3 - Evaluaciones, Calidad y Monitoreo",
-      en: "Eva3 - Evaluations, Quiality & Monitoring",
+      es: "Eva3",
+      en: "Eva3",
     },
     description: {
       es: "Sistema de monitoreo de equipos de trabajo. Modular, para ser adaptable a cualquier área, de empresas de cualquier rubro, que requieran evaluar a su personal y monitorear su desempeño. Capaz de generar reportes en tiempo real y mantener datos organizados para análisis posteriores.",
@@ -456,9 +456,9 @@ export default function Proyectos() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {projects.map((project, index) => (
-            <div key={project.id} className="relative">
+            <div key={project.id} className="relative flex flex-col h-full">
               {index > 0 && (
                 <div className="absolute -left-4 top-0 bottom-0 w-px hidden lg:block">
                   <div className="h-full w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent" 
@@ -469,7 +469,7 @@ export default function Proyectos() {
                 </div>
               )}
               <article
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/60 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 shadow-xl shadow-blue-500/5 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="group relative flex flex-col h-full overflow-hidden rounded-3xl border border-white/60 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 shadow-xl shadow-blue-500/5 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               >
               <div
                 className="relative h-56 overflow-hidden"
@@ -513,75 +513,78 @@ export default function Proyectos() {
                     </span>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed min-h-[100px]">
-                    {project.description[language]}
-                  </p>
-
-                  {/* Línea divisoria para Eva3 */}
-                  {project.id === 1 && (
-                    <div className="relative py-2">
-                      <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t-2 border-dashed border-purple-400/50 dark:border-purple-500/40"></div>
-                      </div>
-                      <div className="relative flex justify-center">
-                        <span className="bg-white dark:bg-slate-900 px-3 text-xs text-purple-500 dark:text-purple-400 font-medium">✨ Proyecto Principal</span>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                    <Users className="h-4 w-4" />
-                    <span className="font-medium text-slate-700 dark:text-slate-200">
-                      {text.clientLabel}:
-                    </span>
-                    <span>{project.client[language]}</span>
+                  {/* Mini contenedor 1: Descripción - altura ajustada por proyecto */}
+                  <div className={`${project.id === 3 ? 'h-21' : 'h-36'} flex flex-col justify-start`}>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm overflow-hidden">
+                      {project.description[language]}
+                    </p>
                   </div>
 
-                  {/* Línea divisoria entre cliente y logros - solo para Eva3 */}
-                  {project.id === 1 && (
-                    <div className="relative py-2">
-                      <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
-                      </div>
+                  {/* Línea divisoria entre descripción y cliente */}
+                  <div className="relative py-2">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
                     </div>
-                  )}
-
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                      {text.achievementsTitle}:
-                    </h4>
-                    <ul className="space-y-1">
-                      {project.achievements[language].map((achievement) => (
-                        <li key={achievement} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
-                          <span className="text-green-500 mr-2 mt-0.5">•</span>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
 
-                  {/* Línea divisoria entre logros y tecnologías - solo para Eva3 */}
-                  {project.id === 1 && (
-                    <div className="relative py-2">
-                      <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
-                      </div>
+                  {/* Mini contenedor 2: Cliente - altura fija */}
+                  <div className="h-12 flex flex-col justify-start">
+                    <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                      <Users className="h-4 w-4" />
+                      <span className="font-medium text-slate-700 dark:text-slate-200">
+                        {text.clientLabel}:
+                      </span>
+                      <span>{project.client[language]}</span>
                     </div>
-                  )}
+                  </div>
 
-                  <div className="space-y-3">
-                    <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                      {text.technologiesTitle}
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/70 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  {/* Línea divisoria entre cliente y logros */}
+                  <div className="relative py-2">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
+                    </div>
+                  </div>
+
+                  {/* Mini contenedor 3: Logros - altura fija */}
+                  <div className="h-40 flex flex-col justify-start">
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                        {text.achievementsTitle}:
+                      </h4>
+                      <ul className="space-y-1 overflow-hidden">
+                        {project.achievements[language].map((achievement) => (
+                          <li key={achievement} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                            <span className="text-green-500 mr-2 mt-0.5">•</span>
+                            <span className="line-clamp-2">{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Línea divisoria entre logros y tecnologías */}
+                  <div className="relative py-2">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
+                    </div>
+                  </div>
+
+                  {/* Mini contenedor 4: Tecnologías - altura fija */}
+                  <div className="h-24 flex flex-col justify-start">
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                        {text.technologiesTitle}
+                      </h4>
+                      <div className="flex flex-wrap gap-1 overflow-hidden">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded-full border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/70 px-2 py-1 text-xs font-medium text-slate-600 dark:text-slate-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
