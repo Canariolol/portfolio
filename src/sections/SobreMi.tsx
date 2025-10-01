@@ -274,11 +274,11 @@ export default function SobreMi() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.08),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.08),transparent_55%)]" />
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img
-          src="/PortafolioDir.png"
+          src="/ReportesDir%20Backend.png"
           alt=""
           aria-hidden="true"
-          className="absolute -left-72 top-32 hidden lg:block w-[480px] rotate-[-2deg] skew-y-[-3deg] opacity-80 shadow-[0_40px_90px_-60px_rgba(59,130,246,0.65)]"
-          style={{ maskImage: "radial-gradient(circle at center, rgba(0, 0, 0, 0.85) 40%, transparent 85%)", WebkitMaskImage: "radial-gradient(circle at center, rgba(0, 0, 0, 0.85) 40%, transparent 85%)", transformOrigin: "center right" }}
+          className="absolute right-[-5rem] bottom-[-6rem] hidden lg:block w-[460px] rotate-[3deg] skew-y-[2deg] opacity-70 shadow-[0_45px_120px_-70px_rgba(59,130,246,0.45)] transition-all duration-700 ease-out"
+          style={{ maskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 60%, transparent 93%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 60%, transparent 93%)", transformOrigin: "center left" }}
         />
       </div>
       <div className="relative max-w-7xl mx-auto">
@@ -312,8 +312,6 @@ export default function SobreMi() {
           </div>
           <div className="relative">
             <ExpertiseCarousel slides={slides} />
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--background)] to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--background)] to-transparent" />
           </div>
         </div>
 

@@ -457,11 +457,20 @@ export default function Proyectos() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <article
-              key={project.id}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/60 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 shadow-xl shadow-blue-500/5 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-            >
+          {projects.map((project, index) => (
+            <div key={project.id} className="relative">
+              {index > 0 && (
+                <div className="absolute -left-4 top-0 bottom-0 w-px hidden lg:block">
+                  <div className="h-full w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent" 
+                       style={{ 
+                         backgroundImage: 'repeating-linear-gradient(to bottom, transparent, transparent 4px, rgba(147, 51, 234, 0.3) 4px, rgba(147, 51, 234, 0.3) 8px)',
+                         width: '1px'
+                       }} />
+                </div>
+              )}
+              <article
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/60 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 shadow-xl shadow-blue-500/5 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              >
               <div
                 className="relative h-56 overflow-hidden"
                 onClick={() => openGalleryModal(project.id)}
@@ -508,6 +517,18 @@ export default function Proyectos() {
                     {project.description[language]}
                   </p>
 
+                  {/* Línea divisoria para Eva3 */}
+                  {project.id === 1 && (
+                    <div className="relative py-2">
+                      <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t-2 border-dashed border-purple-400/50 dark:border-purple-500/40"></div>
+                      </div>
+                      <div className="relative flex justify-center">
+                        <span className="bg-white dark:bg-slate-900 px-3 text-xs text-purple-500 dark:text-purple-400 font-medium">✨ Proyecto Principal</span>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                     <Users className="h-4 w-4" />
                     <span className="font-medium text-slate-700 dark:text-slate-200">
@@ -515,6 +536,15 @@ export default function Proyectos() {
                     </span>
                     <span>{project.client[language]}</span>
                   </div>
+
+                  {/* Línea divisoria entre cliente y logros - solo para Eva3 */}
+                  {project.id === 1 && (
+                    <div className="relative py-2">
+                      <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
+                      </div>
+                    </div>
+                  )}
 
                   <div>
                     <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
@@ -529,6 +559,15 @@ export default function Proyectos() {
                       ))}
                     </ul>
                   </div>
+
+                  {/* Línea divisoria entre logros y tecnologías - solo para Eva3 */}
+                  {project.id === 1 && (
+                    <div className="relative py-2">
+                      <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="space-y-3">
                     <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
@@ -566,7 +605,8 @@ export default function Proyectos() {
                   )}
                 </div>
               </div>
-            </article>
+              </article>
+            </div>
           ))}
         </div>
 
@@ -581,6 +621,15 @@ export default function Proyectos() {
         </div>
 
         <div className="relative overflow-hidden rounded-3xl border border-white/60 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 px-6 py-16 shadow-lg shadow-blue-500/5 backdrop-blur">
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <img
+              src="/PortafolioDir.png"
+              alt=""
+              aria-hidden="true"
+              className="absolute -left-20 top-1/2 hidden lg:block w-[440px] -translate-y-1/2 rotate-[-2deg] skew-y-[-3deg] opacity-80 shadow-[0_45px_120px_-60px_rgba(59,130,246,0.45)] transition-all duration-700 ease-out transform"
+              style={{ maskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, transparent 85%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 58%, transparent 94%)", transformOrigin: "center right" }}
+            />
+          </div>
           <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl" />
           <div className="relative max-w-5xl mx-auto space-y-12">

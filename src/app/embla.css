@@ -6,10 +6,10 @@
 
 .embla__viewport {
   overflow: hidden;
+  padding: 2rem;
   mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.98) 15%, rgba(0, 0, 0, 0.98) 85%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.98) 15%, rgba(0, 0, 0, 0.98) 85%, transparent 100%);
 }
-`n
 
 .embla__container {
   display: flex;
