@@ -41,8 +41,8 @@ const projects: Project[] = [
   {
     id: 1,
     title: {
-      es: "Eva 3 - Calidad, Evaluaciones y Monitoreo",
-      en: "Eva 3 - Quality, Evaluations & Monitoring",
+      es: "Eva3 - Evaluaciones, Calidad y Monitoreo",
+      en: "Eva3 - Evaluations, Quiality & Monitoring",
     },
     description: {
       es: "Sistema de monitoreo de equipos de trabajo. Modular, para ser adaptable a cualquier área, de empresas de cualquier rubro, que requieran evaluar a su personal y monitorear su desempeño. Capaz de generar reportes en tiempo real y mantener datos organizados para análisis posteriores.",
@@ -150,13 +150,13 @@ const projects: Project[] = [
     },
     achievements: {
       es: [
-        "Consolidación promedio de 10 documentos en cerca de 1 minuto",
+        "Consolidación promedio de 10 documentos en menos de 1 minuto",
         "Reducción de más del 80% del tiempo dedicado a tareas repetitivas",
         "Más del 90% de precisión en los datos extraídos",
         "Proceso activo de expansión a nuevos nichos",
       ],
       en: [
-        "Consolidates 10 documents on average in about a minute",
+        "Consolidates 10 documents on average, in less than a minute",
         "Cuts repetitive back-office work by over 80%",
         "Delivers above 90% accuracy on extracted data",
         "Expanding into additional verticals",
@@ -225,8 +225,8 @@ const projects: Project[] = [
       "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/4.png",
       "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/2.png",
     ],
-    demo: "https://reportes-west.ninfasolutions.com",
-    repo: "https://github.com/Canariolol/ReportesConduccion/tree/RefactorizadoDashboard.tsx---Ok",
+    /*demo: "https://reportes-west.ninfasolutions.com",
+    repo: "https://github.com/Canariolol/ReportesConduccion/tree/RefactorizadoDashboard.tsx---Ok",*/
   },
 ];
 

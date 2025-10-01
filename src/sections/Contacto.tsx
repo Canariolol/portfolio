@@ -16,7 +16,7 @@ const copy = {
   es: {
     title: "Contacto",
     intro:
-      "¿Tienes un proyecto en mente? ¿Buscas colaboración? Escríbeme y conversemos. Me entusiasma construir soluciones que realmente impacten.",
+      "¿Tienes un proyecto en mente? ¿Buscas colaboración? Escríbeme y conversemos. Tu éxito es mi éxito.",
     formTitle: "Envíame un mensaje",
     nameLabel: "Nombre *",
     namePlaceholder: "Tu nombre",
@@ -32,13 +32,13 @@ const copy = {
     followTitle: "Sígueme en",
     availabilityHeading: "¿Listo para comenzar?",
     availabilityBody:
-      "Estoy disponible para proyectos freelance y colaboraciones. Si tienes una idea que quieres llevar a producción, hablemos.",
-    availabilityStatus: "Disponible para nuevos proyectos",
+      "Estoy disponible para trabajar en empresas y para proyectos freelance. Si tienes una idea que quieres llevar a producción, hablemos.",
+    availabilityStatus: "Disponible al 100%",
   },
   en: {
     title: "Contact",
     intro:
-      "Have a project in mind or a challenge you want to tackle together? Drop me a line. I’m excited to build solutions that make a difference.",
+      "Have a project in mind or a challenge you want to tackle together? Drop me a line, let's talk. Your success is my success.",
     formTitle: "Send me a message",
     nameLabel: "Name *",
     namePlaceholder: "Your name",
@@ -54,8 +54,8 @@ const copy = {
     followTitle: "Follow me",
     availabilityHeading: "Ready to get started?",
     availabilityBody:
-      "I’m currently available for freelance work and collaborations. If you have an idea you want to launch, let’s talk.",
-    availabilityStatus: "Open for new projects",
+      "I’m currently available for corporate work or freelance proyects. If you have an idea you want to launch, let’s talk.",
+    availabilityStatus: "Available 100%",
   },
 };
 
@@ -76,7 +76,7 @@ const contactInfo = {
     {
       icon: <MapPin className="w-6 h-6 text-red-600" />,
       title: "Ubicación",
-      value: "Santiago, Chile",
+      value: "Valdivia, Chile",
       link: "https://maps.google.com",
     },
   ],
@@ -96,7 +96,7 @@ const contactInfo = {
     {
       icon: <MapPin className="w-6 h-6 text-red-600" />,
       title: "Location",
-      value: "Santiago, Chile",
+      value: "Valdivia, Chile",
       link: "https://maps.google.com",
     },
   ],
@@ -294,7 +294,7 @@ export default function Contacto() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white shadow-xl shadow-blue-500/30">
+            <div className="bg-gradient-to-r from-blue-600 via-blue-800 to-purple-900 rounded-3xl p-8 text-white shadow-xl shadow-blue-500/30">
               <h3 className="text-2xl font-bold mb-4">
                 {text.availabilityHeading}
               </h3>

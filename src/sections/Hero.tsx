@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, ExternalLink, ChevronDown, Globe } from "lucide-react";
 import Link from "next/link";
@@ -17,7 +17,7 @@ type HeroContent = {
   contactCta: string;
   cvButton: string;
   cvOptions: { label: string; lang: "es" | "en"; url: string }[];
-  stats: { value: string; label: string }[];
+  stats: { value: string; label: string | string[] }[];
   mobileLanguageLabel: string;
   quoteAttribution?: string;
 };
@@ -41,14 +41,14 @@ const content: Record<"es" | "en", HeroContent> = {
     contactCta: "Contactarme",
     cvButton: "Descarga mi CV",
     cvOptions: [
-      { label: "Inglés", lang: "en", url: "https://storage.googleapis.com/tu-bucket/cv-english.pdf" },
-      { label: "Español", lang: "es", url: "https://storage.googleapis.com/tu-bucket/cv-espanol.pdf" },
+      { label: "Inglés", lang: "en", url: "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/CVs/CV%20-%20Rodrigo%20Yanez%2010-2025%20Eng.pdf" },
+      { label: "Español", lang: "es", url: "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/CVs/CV%20-%20Rodrigo%20Yanez%2010-2025%20Esp.pdf" },
     ],
     stats: [
-      { value: "2+", label: "Años de experiencia" },
+      { value: "2+", label: "Años de experiencia (Dev)" },
       { value: "4", label: "Proyectos en producción (creados desde cero)" },
       { value: "10+", label: "Trabajos freelance completados" },
-      { value: "Sí", label: "Horas de sueño pendientes (café... por favor)" },
+      { value: "Sí", label: ["Déficit de horas de sueño", "(café... por favor)"] },
     ],
     mobileLanguageLabel: "Idioma",
   },
@@ -77,7 +77,7 @@ const content: Record<"es" | "en", HeroContent> = {
       { value: "2+", label: "Years of experience" },
       { value: "4", label: "Production projects (built from scratch)" },
       { value: "10+", label: "Freelance engagements delivered" },
-      { value: "Yes", label: "Sleep hours deficit (coffee... please)" },
+      { value: "Yes", label: ["Sleep hours deficit", "(coffee... please)"] },
     ],
     mobileLanguageLabel: "Language",
   },
@@ -227,11 +227,22 @@ export default function Hero() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
             {heroContent.stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stat.value}</div>
-                <div className="text-slate-600 dark:text-slate-400 text-sm md:text-base">{stat.label}</div>
-              </div>
-            ))}
+  <div key={stat.value} className="text-center">
+    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stat.value}</div>
+    <div className="text-slate-600 dark:text-slate-400 text-sm md:text-base">
+      {Array.isArray(stat.label) 
+        ? stat.label.map((line, lineIndex) => (
+            <React.Fragment key={lineIndex}>
+              {line}
+              {lineIndex < stat.label.length - 1 && <br />}
+            </React.Fragment>
+          ))
+        : stat.label
+      }
+    </div>
+  </div>
+))}
+
           </div>
         </div>
 

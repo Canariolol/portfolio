@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
-import useEmblaCarousel, { type EmblaOptionsType } from 'embla-carousel-react';
+import useEmblaCarousel from 'embla-carousel-react';
+
+type EmblaOptionsType = {
+  loop?: boolean;
+  align?: 'start' | 'center' | 'end';
+  duration?: number;
+  [key: string]: unknown;
+};
 import Autoplay from 'embla-carousel-autoplay';
 import '../app/embla.css';
 
@@ -53,7 +60,7 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
         <div className="embla__container">
           {slides.map((habilidad, index) => {
             const isSelected = selectedIndex === index;
-            const iconColorClass = habilidad.icon.props.className?.split(' ').find((c: string) => c.startsWith('text-')) || '';
+            const iconColorClass = (habilidad.icon.props as { className?: string })?.className?.split(' ').find((c: string) => c.startsWith('text-')) || '';
             const gradientClass = colorMap[iconColorClass] || 'from-gray-500';
 
             return (

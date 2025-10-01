@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { ArrowLeft, Home } from "lucide-react";
+import BackButton from "./components/BackButton";
 
 export const metadata: Metadata = {
   title: "Página no encontrada - Tu Nombre",
@@ -35,13 +36,7 @@ export default function NotFound() {
             Volver al inicio
           </Link>
           
-          <button
-            onClick={() => window.history.back()}
-            className="inline-flex items-center px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Volver atrás
-          </button>
+          <BackButton />
         </div>
       </div>
     </div>
