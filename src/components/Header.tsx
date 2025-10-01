@@ -69,7 +69,7 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              Portfolio
+              Rodrigo Yanez G.
             </Link>
           </div>
 

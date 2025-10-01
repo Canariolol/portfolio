@@ -32,7 +32,7 @@ const icons = [
   { name: "GitHub", icon: <SiGithub size={128} /> },
   { name: "GitHub Actions", icon: <SiGithubactions size={128} className="text-blue-400" /> },
   { name: "Gemini", icon: <SiGooglegemini size={128} className="text-blue-500" /> },
-  { name: "ChatGPT", icon: <SiOpenai size={128} className="text-green-500" /> },
+  { name: "OpenAI", icon: <SiOpenai size={128} className="text-green-500" /> },
   { name: "Claude", icon: <SiClaude size={128} className="text-orange-400" /> },
   { name: "GCP Vertex AI", icon: <SiGooglecloud size={128} className="text-red-500" /> },
   { name: "n8n", icon: <SiN8N size={128} className="text-purple-600" /> },
@@ -113,12 +113,12 @@ const copy = {
   es: {
     tag: "Tecnología",
     title: "Mi Stack",
-    subtitle: "Explora las herramientas que uso a diario (arrástralas y pruébalas).",
+    subtitle: "Herramientas que uso a diario | Arrastra y clickea ;).",
   },
   en: {
     tag: "Technology",
     title: "My Stack",
-    subtitle: "Explore the tools I rely on every day (drag and play).",
+    subtitle: "Tools I use daily (drag and click).",
   },
 };
 
@@ -130,6 +130,7 @@ export default function TechStack() {
     <div className="w-full h-[600px] relative">
       <div className="text-center mb-6">
         <p className="text-xs uppercase tracking-[0.3em] text-sky-500 mb-3">
+          <br /><br />
           {text.tag}
         </p>
         <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">

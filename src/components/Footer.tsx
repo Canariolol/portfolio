@@ -33,12 +33,12 @@ const content: Record<"es" | "en", FooterContent> = {
       { name: "Contacto", href: "#contacto" },
     ],
     contactTitle: "Contacto",
-    contactAvailability: "Disponible para proyectos freelance",
+    contactAvailability: "Disponible para trabajo y proyectos freelance.",
     contactResponse: "Respuesta r\u00e1pida garantizada",
     sendMessage: "Enviar mensaje",
     privacy: "Pol\u00edtica de Privacidad",
     terms: "T\u00e9rminos de Servicio",
-    copyright: (year: number) => `\u00a9 ${year} Portfolio. Todos los derechos reservados.`,
+    copyright: (year: number) => `\u00a9 ${year} Rodrigo Yáñez G. Todos los derechos reservados.`,
   },
   en: {
     description:
@@ -50,19 +50,19 @@ const content: Record<"es" | "en", FooterContent> = {
       { name: "Contact", href: "#contacto" },
     ],
     contactTitle: "Contact",
-    contactAvailability: "Available for freelance projects",
+    contactAvailability: "Available for work and freelance projects.",
     contactResponse: "Fast response guaranteed",
     sendMessage: "Send message",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
-    copyright: (year: number) => `\u00a9 ${year} Portfolio. All rights reserved.`,
+    copyright: (year: number) => `\u00a9 ${year} Rodrigo Yanez G. All rights reserved.`,
   },
 };
 
 const socialLinks = [
-  { name: "GitHub", href: "https://github.com/tu-usuario", icon: Github },
-  { name: "LinkedIn", href: "https://linkedin.com/in/tu-perfil", icon: Linkedin },
-  { name: "Email", href: "mailto:tu-email@ejemplo.com", icon: Mail },
+  { name: "GitHub", href: "https://github.com/Canariolol", icon: Github },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/rodrigo-yanez-garcia-025614141", icon: Linkedin },
+  { name: "Email", href: "mailto:rodrigo.iyagar@gmail.com", icon: Mail },
 ];
 
 export default function Footer() {
@@ -76,7 +76,7 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <h2 className="text-2xl font-bold mb-4">Portfolio</h2>
+            <h2 className="text-2xl text-cyan-700 font-bold mb-4">Rodrigo Yanez G.</h2>
             <p className="text-gray-300 mb-6 max-w-md">
               {footerContent.description}
             </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Code2, Server, Database, Zap, Users, Target, BrainCogIcon, Brain } from "lucide-react";
+import { Code2, Server, Zap, Users, Target, BrainCogIcon, Brain } from "lucide-react";
 import TechStack from "@/components/TechStack";
 import ExpertiseCarousel from "@/components/ExpertiseCarousel";
 import { useLanguage } from "@/context/LanguageContext";
@@ -17,12 +17,6 @@ const valueIconMap = {
   collaboration: <Users className="w-6 h-6 text-blue-500" />,
   results: <Target className="w-6 h-6 text-green-500" />,
   improvement: <Brain className="w-6 h-6 text-purple-500" />,
-};
-
-const aiIconMap = {
-  llm: <Brain className="w-6 h-6 text-blue-500" />,
-  architecture: <Database className="w-6 h-6 text-purple-500" />,
-  automation: <Zap className="w-6 h-6 text-green-500" />,
 };
 
 const sectionContent = {
@@ -121,78 +115,105 @@ const expertiseContent = {
   ],
 };
 
-const aiContent = {
+const aiCards = {
   es: [
     {
-      key: "llm" as const,
-      heading: "LLM & Generative AI",
-      intro:
-        "Experimentos rápidos que se convierten en productos estables, con estrategias RAG, evaluación continua y monitoreo de calidad.",
+      key: "llm",
+      title: "LLM & Generative AI",
+      overlayClass: "absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 animate-border-rise bg-[length:100%_200%] opacity-80",
+      iconWrapperClass: "w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-4",
+      iconClass: "w-6 h-6 text-purple-600 dark:text-purple-400",
       bullets: [
-        "Diseño de contextos híbridos (RAG + herramientas especiales) con fallback inteligente",
-        "Evaluación automática de prompts y respuestas para mantener precisión",
-        "Experimentos controlados para iterar modelos, embeddings y pipelines",
+        {
+          heading: "Ingeniería de contexto en Fullstack/DevOps",
+          description: "Diseño y optimización del entorno de trabajo (prompts, pipelines, infraestructura y flujos de información) para que la IA y la automatización operen con máximo entendimiento, reduciendo fricción y mejorando la calidad del código y los despliegues.",
+        },
+        {
+          heading: "Fine-tuning de modelos",
+          description: "Adaptación de modelos preentrenados a tareas específicas usando conjuntos de datos personalizados y métricas de referencia.",
+        },
+        {
+          heading: "RAG (Retrieval-Augmented Generation)",
+          description: "Implementación de sistemas que combinan búsqueda de información con generación de texto para entregar respuestas precisas y con fallback controlado.",
+        },
       ],
     },
     {
-      key: "architecture" as const,
-      heading: "Arquitectura y Datos",
-      intro:
-        "Bases sólidas para soportar la automatización: APIs, permisos, pipelines de datos y observabilidad end-to-end.",
+      key: "automation",
+      title: "Automatización práctica",
+      overlayClass: "absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 via-green-600 to-green-800 animate-border-rise bg-[length:100%_200%] opacity-80",
+      iconWrapperClass: "w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4",
+      iconClass: "w-6 h-6 text-green-600 dark:text-green-400",
       bullets: [
-        "Diseño de APIs y microservicios listos para escalar",
-        "Modelado y orquestación de datos para reportes en tiempo real",
-        "Monitoreo y alertas que mantienen la operación saludable",
-      ],
-    },
-    {
-      key: "automation" as const,
-      heading: "Automatización Práctica",
-      intro:
-        "Flujos que impactan: reportes automáticos, clasificación inteligente y generación de entregables listos para negocio.",
-      bullets: [
-        "Procesos que reducen horas manuales en análisis de información",
-        "Sistemas que entienden correos y bandejas de entrada para priorizar",
-        "Documentos, reportes y dashboards generados de forma automática",
+        {
+          heading: "Automatización de reportes y documentos",
+          description: "Sistemas que generan reportes y procesan documentos de forma automática usando IA y APIs de terceros.",
+        },
+        {
+          heading: "Análisis inteligente de comunicaciones",
+          description: "Soluciones que analizan correos y bandejas de entrada para clasificar, priorizar y responder con rapidez.",
+        },
+        {
+          heading: "Procesamiento de datos con IA",
+          description: "Flujos que transforman y analizan datos automáticamente para extraer insights accionables.",
+        },
+        {
+          heading: "Optimización de flujos de trabajo",
+          description: "Rediseño e implementación de procesos automatizados que generan eficiencia y valor tangible.",
+        },
       ],
     },
   ],
   en: [
     {
-      key: "llm" as const,
-      heading: "LLMs & Generative AI",
-      intro:
-        "Fast experiments that turn into reliable products with RAG strategies, continuous evaluation, and quality monitoring.",
+      key: "llm",
+      title: "LLM & Generative AI",
+      overlayClass: "absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 animate-border-rise bg-[length:100%_200%] opacity-80",
+      iconWrapperClass: "w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-4",
+      iconClass: "w-6 h-6 text-purple-600 dark:text-purple-400",
       bullets: [
-        "Hybrid context design (RAG + specialized tools) with graceful fallbacks",
-        "Automated prompt and response evaluation to sustain accuracy",
-        "Controlled experiments to iterate models, embeddings, and pipelines",
+        {
+          heading: "Fullstack/DevOps context engineering",
+          description: "Design and fine-tune prompts, pipelines, infrastructure, and information flows so AI and automation operate with maximum understanding, reducing friction and improving delivery.",
+        },
+        {
+          heading: "Model fine-tuning",
+          description: "Specialise in adapting pre-trained models to specific tasks using custom datasets and evaluation metrics.",
+        },
+        {
+          heading: "RAG (Retrieval-Augmented Generation)",
+          description: "Build systems that combine retrieval and generation for precise answers with reliable fallbacks.",
+        },
       ],
     },
     {
-      key: "architecture" as const,
-      heading: "Architecture & Data",
-      intro:
-        "Solid foundations for automation: APIs, permissions, data pipelines, and end-to-end observability.",
+      key: "automation",
+      title: "Practical automation",
+      overlayClass: "absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 via-green-600 to-green-800 animate-border-rise bg-[length:100%_200%] opacity-80",
+      iconWrapperClass: "w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4",
+      iconClass: "w-6 h-6 text-green-600 dark:text-green-400",
       bullets: [
-        "API and microservice design built for scale",
-        "Data modeling and orchestration for real-time reporting",
-        "Monitoring and alerting that keeps operations healthy",
-      ],
-    },
-    {
-      key: "automation" as const,
-      heading: "Practical Automation",
-      intro:
-        "Workflows that matter: automated reports, intelligent classification, and business-ready deliverables.",
-      bullets: [
-        "Processes that cut manual hours in information analysis",
-        "Systems that read inboxes to categorize and prioritize",
-        "Documents, reports, and dashboards generated on demand",
+        {
+          heading: "Automated reports and documents",
+          description: "Implement systems that automatically produce reports and process documents using AI and third-party APIs.",
+        },
+        {
+          heading: "Intelligent communications analysis",
+          description: "Develop solutions that analyse inboxes to classify, prioritise, and respond faster.",
+        },
+        {
+          heading: "Data processing with AI",
+          description: "Create pipelines that transform and analyse data automatically to surface insights.",
+        },
+        {
+          heading: "Workflow optimisation",
+          description: "Redesign and implement automated business processes that drive efficiency and measurable value.",
+        },
       ],
     },
   ],
 };
+
 
 const valuesContent = {
   es: [
@@ -231,6 +252,12 @@ const valuesContent = {
   ],
 };
 
+const valueCardClassMap = {
+  collaboration: "hover:shadow-xl hover:shadow-blue-500/20",
+  results: "hover:shadow-xl hover:shadow-green-500/20",
+  improvement: "hover:shadow-xl hover:shadow-purple-500/20",
+};
+
 export default function SobreMi() {
   const { language } = useLanguage();
   const section = sectionContent[language];
@@ -239,7 +266,7 @@ export default function SobreMi() {
     titulo: item.title,
     descripcion: item.description,
   }));
-  const aiSections = aiContent[language];
+  const cards = aiCards[language];
   const values = valuesContent[language];
 
   return (
@@ -303,40 +330,49 @@ export default function SobreMi() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {aiSections.map((item) => (
-              <div key={item.heading} className="group relative bg-white/80 dark:bg-gray-900/80 rounded-2xl p-8 shadow-lg shadow-blue-500/5 dark:shadow-none border border-slate-100 dark:border-slate-800 backdrop-blur">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/0 via-blue-400/0 to-purple-500/0 transition-opacity duration-500 group-hover:opacity-10" />
-                <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {cards.map((card) => (
+              <div
+                key={card.key}
+                className="group relative bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg"
+              >
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className={card.overlayClass} />
+                  <div className="absolute inset-1 bg-gray-50 dark:bg-gray-900 rounded-xl" />
+                </div>
+
+                <div className="relative z-10">
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mr-4">
-                      {aiIconMap[item.key]}
+                    <div className={card.iconWrapperClass}>
+                      <Zap className={card.iconClass} />
                     </div>
-                    <h4 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                      {item.heading}
+                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {card.title}
                     </h4>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {item.intro}
-                  </p>
-                  <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
-                    {item.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-3">
-                        <span className="mt-0.5 inline-flex h-2 w-2 rounded-full bg-gradient-to-br from-blue-500 to-purple-500" />
-                        <span>{bullet}</span>
-                      </li>
+                  <div className="space-y-4">
+                    {card.bullets.map((bullet) => (
+                      <div key={bullet.heading} className="flex items-start">
+                        <span className="text-green-500 mr-3 mt-1">&#10003;</span>
+                        <div>
+                          <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                            {bullet.heading}
+                          </h5>
+                          <p className="text-gray-600 dark:text-gray-300 text-sm">
+                            {bullet.description}
+                          </p>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
-        <div className="mb-24">
           <TechStack />
         </div>
-        <br /><br /><br />
+        <br /><br /><br /><br />
 
         <div>
           <div className="text-center mb-12">
@@ -355,7 +391,7 @@ export default function SobreMi() {
             {values.map((valor) => (
               <div
                 key={valor.title}
-                className="group relative text-center p-8 bg-white/80 dark:bg-gray-900/80 rounded-2xl border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-blue-500/5 backdrop-blur"
+                className={`group relative text-center p-8 bg-white/80 dark:bg-gray-900/80 rounded-2xl border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 backdrop-blur ${valueCardClassMap[valor.key]}`}
               >
                 <div className="flex justify-center mb-4">{valueIconMap[valor.key]}</div>
                 <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">

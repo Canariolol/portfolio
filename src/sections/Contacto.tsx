@@ -64,14 +64,14 @@ const contactInfo = {
     {
       icon: <Mail className="w-6 h-6 text-blue-600" />,
       title: "Email",
-      value: "tu.email@ejemplo.com",
-      link: "mailto:tu.email@ejemplo.com",
+      value: "rodrigo.iyagar@gmail.com",
+      link: "mailto:rodrigo.iyagar@gmail.com",
     },
     {
       icon: <Phone className="w-6 h-6 text-green-600" />,
       title: "Teléfono",
-      value: "+56 9 1234 5678",
-      link: "tel:+56912345678",
+      value: "+56 9 5660 3856",
+      link: "tel:+56956603856",
     },
     {
       icon: <MapPin className="w-6 h-6 text-red-600" />,
@@ -84,14 +84,14 @@ const contactInfo = {
     {
       icon: <Mail className="w-6 h-6 text-blue-600" />,
       title: "Email",
-      value: "tu.email@ejemplo.com",
-      link: "mailto:tu.email@ejemplo.com",
+      value: "rodrigo.iyagar@gmail.com",
+      link: "mailto:rodrigo.iyagar@gmail.com",
     },
     {
       icon: <Phone className="w-6 h-6 text-green-600" />,
       title: "Phone",
-      value: "+56 9 1234 5678",
-      link: "tel:+56912345678",
+      value: "+56 9 5660 3856",
+      link: "tel:+56956603856",
     },
     {
       icon: <MapPin className="w-6 h-6 text-red-600" />,
@@ -106,13 +106,13 @@ const socialLinks = [
   {
     icon: <Github className="w-6 h-6" />,
     name: "GitHub",
-    url: "#",
+    url: "https://github.com/Canariolol/",
     color: "hover:text-gray-900 dark:hover:text-white",
   },
   {
     icon: <Linkedin className="w-6 h-6" />,
     name: "LinkedIn",
-    url: "#",
+    url: "www.linkedin.com/in/rodrigo-yanez-garcia-025614141",
     color: "hover:text-blue-600",
   },
   {
@@ -313,4 +313,5 @@ export default function Contacto() {
       </div>
     </section>
   );
-}
+}
+
