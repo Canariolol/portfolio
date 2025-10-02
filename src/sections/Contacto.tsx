@@ -344,7 +344,7 @@ export default function Contacto() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-700 via-blue-850 to-purple-900 rounded-3xl p-8 text-white shadow-xl shadow-blue-600/20">
+            <div className="bg-gradient-to-r from-blue-600 via-blue-900 to-purple-blue-200 rounded-3xl p-8 text-white shadow-xl shadow-blue-600/20">
               <h3 className="text-2xl font-bold mb-4">
                 {text.availabilityHeading}
               </h3>

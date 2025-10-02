@@ -25,20 +25,20 @@ const sectionContent = {
     title: "Sobre mí",
     highlight: "mí",
     description:
-      "Con más de 5 años analizando problemas y los últimos 2 impulsando soluciones tecnológicas, he consolidado mi experiencia trabajando codo a codo con empresas que necesitaban resultados concretos. Hoy cubro todo el ciclo: desde la idea hasta el despliegue y la iteración continua.",
+      "Con más de 5 años analizando problemas y los últimos 2 impulsando soluciones tecnológicas, he consolidado mi experiencia en base a la práctica y los desafíos del mundo empresarial real. Hoy cubro todo el ciclo: desde la idea hasta el despliegue y la iteración continua.",
     expertiseTitle: "Mi Expertise",
     expertiseSubtitle:
       "Inteligencia Artificial · Desarrollo web sólido · Arquitectura de soluciones · Lógica de negocios · APIs y microservicios · DevOps & CI/CD",
     aiTitle: "IA en Acción",
     aiSubtitle: "Cómo transformo los procesos en resultados reales",
     valuesTitle: "Mis Valores",
-    valuesSubtitle: "Principios que guían cada proyecto que lidero",
+    valuesSubtitle: "Principios que guían mis decisiones",
   },
   en: {
     title: "About me",
     highlight: "me",
     description:
-      "With 5+ years dissecting business problems and the last 2 driving tech solutions, I build end-to-end products that deliver measurable impact. I partner with teams from the initial idea through deployment and continuous improvement.",
+      "With 5+ years dissecting business problems and the last 2 driving tech solutions, I've honed my expertise through hands-on practice and real-world challenges. Today, I cover the full cycle: from ideation to deployment and continuous iteration.",
     expertiseTitle: "My Expertise",
     expertiseSubtitle:
       "Artificial Intelligence · Solid web foundations · Solution architecture · Business logic · APIs & microservices · DevOps & CI/CD",
@@ -220,13 +220,13 @@ const valuesContent = {
   es: [
     {
       key: "collaboration" as const,
-      title: "Colaboración",
-      description: "Trabajo cercano con equipos y stakeholders para entender lo esencial y construir sin sorpresas.",
+      title: "Inmersión colaborativa",
+      description: "Detras de cada desafío hay una necesidad y tras cada necesidad hay un motivo. Mi misión es sumergirme, entender y resolver.",
     },
     {
       key: "results" as const,
       title: "Resultados",
-      description: "Foco en métricas y entregables claros que demuestren impacto real desde el primer sprint.",
+      description: "Foco en métricas y entregables claros que demuestren un avance real desde el primer sprint.",
     },
     {
       key: "improvement" as const,
@@ -237,8 +237,8 @@ const valuesContent = {
   en: [
     {
       key: "collaboration" as const,
-      title: "Collaboration",
-      description: "Close partnership with teams and stakeholders to pinpoint what matters and deliver without surprises.",
+      title: "Collaborative immersion",
+      description: "Behind every challenge lies a need, and behind every need lies a why. My mission is to immerse, understand, and solve.",
     },
     {
       key: "results" as const,

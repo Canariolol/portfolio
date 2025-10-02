@@ -96,12 +96,12 @@ const projects: Project[] = [
         "95% customer satisfaction",
       ],
     },
-    image: "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/1.png",
+    image: "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/1a.png",
     gallery: [
-      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/1.png",
+      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/1a.png",
       "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/2.png",
-      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/3.png",
-      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/4.png",
+      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/3a.png",
+      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/Eva3/4a.png",
     ],
     demo: "#",
     repo: "#",
@@ -223,8 +223,8 @@ const projects: Project[] = [
     gallery: [
       "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/1.png",
       "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/3.png",
-      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/4.png",
-      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/2.png",
+      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/4a.png",
+      "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/ReportesConduccion/2a.png",
     ],
     /*demo: "https://reportes-west.ninfasolutions.com",
     repo: "https://github.com/Canariolol/ReportesConduccion/tree/RefactorizadoDashboard.tsx---Ok",*/
@@ -342,7 +342,7 @@ const copy = {
     heading: "Proyectos destacados",
     highlight: "destacados",
     intro:
-      "Seleccioné algunos proyectos end-to-end que muestran cómo mezclo IA, desarrollo fullstack y automatización aplicada.",
+      "Estos son algunos proyectos end-to-end que muestran cómo mezclo IA, desarrollo fullstack y automatización aplicada.",
     viewGallery: "Ver galería",
     clientLabel: "Cliente",
     statusLabel: "Estado",
@@ -632,7 +632,7 @@ export default function Proyectos() {
               alt=""
               aria-hidden="true"
               className="absolute -left-20 top-1/2 hidden lg:block w-[440px] -translate-y-1/2 rotate-[-2deg] skew-y-[-3deg] opacity-80 shadow-[0_45px_120px_-60px_rgba(59,130,246,0.45)] transition-all duration-700 ease-out transform"
-              style={{ maskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 75%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 58%, transparent 94%)", transformOrigin: "center right" }}
+              style={{ maskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, transparent 75%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 58%, transparent 94%)", transformOrigin: "center right" }}
             />
           </div>
           <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
