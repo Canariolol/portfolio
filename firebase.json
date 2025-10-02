@@ -1,4 +1,8 @@
 {
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs18"
+  },
   "hosting": {
     "public": "out",
     "ignore": [
@@ -7,6 +11,10 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/api/send",
+        "function": "sendEmail"
+      },
       {
         "source": "**",
         "destination": "/index.html"

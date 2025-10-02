@@ -439,7 +439,7 @@ export default function Proyectos() {
   const closeLabel = language === "es" ? "Cerrar" : "Close";
 
   return (
-    <section id="proyectos" className="relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
+    <section id="proyectos" className="section-transition section-transition-emerald relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(147,197,253,0.12),transparent_55%),radial-gradient(circle_at_bottom_left,rgba(167,139,250,0.12),transparent_55%)]" />
       <div className="relative max-w-7xl mx-auto space-y-20">
         <div className="text-center max-w-3xl mx-auto">

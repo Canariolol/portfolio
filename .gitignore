@@ -46,3 +46,6 @@ next-env.d.ts
 # github actions
 /.github\workflows
 PLAN_FORMULARIO_CONTACTO.md
+SOLUTION_SUMMARY.md
+DEPLOYMENT_INSTRUCTIONS.md
+TODO

@@ -122,7 +122,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.12),transparent_55%),linear-gradient(135deg,rgba(15,23,42,0.05),rgba(2,132,199,0.08))] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(96,165,250,0.12),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.14),transparent_55%),linear-gradient(135deg,rgba(15,23,42,0.55),rgba(30,64,175,0.35))] relative overflow-hidden">
+    <section className="section-transition section-transition-blue min-h-screen flex items-center justify-center bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.12),transparent_55%),linear-gradient(135deg,rgba(15,23,42,0.05),rgba(2,132,199,0.08))] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(96,165,250,0.12),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.14),transparent_55%),linear-gradient(135deg,rgba(15,23,42,0.55),rgba(30,64,175,0.35))] relative overflow-hidden">
       <div className="absolute inset-0 opacity-40">
         <div
           className="absolute inset-0"

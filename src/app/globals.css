@@ -55,3 +55,82 @@ body::after {
   opacity: 0.25;
   z-index: -2;
 }
+
+/* Transiciones suaves entre secciones */
+.section-transition {
+  position: relative;
+}
+
+.section-transition::before {
+  content: "";
+  position: absolute;
+  inset-x: 0;
+  top: -4rem;
+  height: 4rem;
+  background: linear-gradient(to bottom, var(--background), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.section-transition::after {
+  content: "";
+  position: absolute;
+  inset-x: 0;
+  bottom: -4rem;
+  height: 4rem;
+  background: linear-gradient(to top, var(--background), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Variaciones de color para diferentes secciones */
+.section-transition-blue::before {
+  background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.section-transition-blue::after {
+  background: linear-gradient(to top, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.section-transition-purple::before {
+  background: linear-gradient(to bottom, rgba(168, 85, 247, 0.1), transparent);
+}
+
+.section-transition-purple::after {
+  background: linear-gradient(to top, rgba(168, 85, 247, 0.1), transparent);
+}
+
+.section-transition-emerald::before {
+  background: linear-gradient(to bottom, rgba(16, 185, 129, 0.1), transparent);
+}
+
+.section-transition-emerald::after {
+  background: linear-gradient(to top, rgba(16, 185, 129, 0.1), transparent);
+}
+
+/* Dark mode variations */
+@media (prefers-color-scheme: dark) {
+  .section-transition-blue::before {
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.05), transparent);
+  }
+
+  .section-transition-blue::after {
+    background: linear-gradient(to top, rgba(59, 130, 246, 0.05), transparent);
+  }
+
+  .section-transition-purple::before {
+    background: linear-gradient(to bottom, rgba(168, 85, 247, 0.05), transparent);
+  }
+
+  .section-transition-purple::after {
+    background: linear-gradient(to top, rgba(168, 85, 247, 0.05), transparent);
+  }
+
+  .section-transition-emerald::before {
+    background: linear-gradient(to bottom, rgba(16, 185, 129, 0.05), transparent);
+  }
+
+  .section-transition-emerald::after {
+    background: linear-gradient(to top, rgba(16, 185, 129, 0.05), transparent);
+  }
+}

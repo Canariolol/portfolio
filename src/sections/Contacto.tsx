@@ -174,7 +174,7 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contacto" className="relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
+    <section id="contacto" className="section-transition section-transition-emerald relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
       {/* Fondo mejorado con efectos visuales */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20" />

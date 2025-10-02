@@ -272,7 +272,7 @@ export default function SobreMi() {
   const values = valuesContent[language];
 
   return (
-    <section id="sobre-mi" className="relative py-24 px-4 sm:px-6 lg:px-8">
+    <section id="sobre-mi" className="section-transition section-transition-purple relative py-24 px-4 sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.08),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.08),transparent_55%)]" />
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img
