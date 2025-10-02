@@ -1,8 +1,9 @@
 ﻿"use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Star } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useEffect, useState } from "react";
 
 type FooterLink = {
   name: string;
@@ -69,6 +70,24 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const footerContent = content[language];
+  const [starCount, setStarCount] = useState(0);
+
+  useEffect(() => {
+    // Obtener contador inicial del localStorage
+    const initialCount = parseInt(localStorage.getItem('starClickCount') || '0');
+    setStarCount(initialCount);
+
+    // Escuchar eventos de clic en estrellas
+    const handleStarClick = (event: CustomEvent) => {
+      setStarCount(event.detail.count);
+    };
+
+    window.addEventListener('starClicked', handleStarClick as EventListener);
+
+    return () => {
+      window.removeEventListener('starClicked', handleStarClick as EventListener);
+    };
+  }, []);
 
   return (
     <footer className="relative bg-gray-950 text-white overflow-hidden">
@@ -118,7 +137,7 @@ export default function Footer() {
               <p>{footerContent.contactAvailability}</p>
               <p>{footerContent.contactResponse}</p>
               <a
-                href="mailto:tu-email@ejemplo.com"
+                href="mailto:rodrigo.iyagar@gmail.com"
                 className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center gap-1"
               >
                 <Mail size={16} />
@@ -129,10 +148,20 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
-            {footerContent.copyright(currentYear)}
-          </p>
-          <div className="flex space-x-6">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <p className="text-gray-400 text-sm">
+              {footerContent.copyright(currentYear)}
+            </p>
+            {/*starCount > 0 && (
+              <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full border border-purple-400/30 animate-pulse">
+                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                <span className="text-sm text-purple-300 font-medium">
+                  {language === "es" ? `Clickeaste ${starCount} estrellita${starCount !== 1 ? 's' : ''}` : `You clicked ${starCount} star${starCount !== 1 ? 's' : ''}`}
+                </span>
+              </div>
+            )*/}
+          </div>
+          {/*<div className="flex space-x-6">
             <a
               href="#"
               className="flex items-center gap-1 text-gray-400 hover:text-white text-sm transition-colors"
@@ -147,7 +176,7 @@ export default function Footer() {
               {footerContent.terms}
               <ExternalLink size={14} />
             </a>
-          </div>
+          </div>*/}
         </div>
       </div>
     </footer>

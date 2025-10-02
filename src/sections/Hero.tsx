@@ -214,16 +214,20 @@ export default function Hero() {
               )}
             </div>
 
-            <Link href="/contacto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-slate-200 dark:border-slate-600 px-8 py-3 text-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                {heroContent.contactCta}
-                <ExternalLink className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => {
+                const contactSection = document.getElementById('contacto');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="border-2 border-slate-200 dark:border-slate-600 px-8 py-3 text-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              {heroContent.contactCta}
+              <ExternalLink className="ml-2 h-5 w-5" />
+            </Button>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">

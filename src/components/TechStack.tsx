@@ -147,7 +147,7 @@ export default function TechStack() {
         <ambientLight intensity={0.8} />
         <pointLight intensity={1} position={[0, 0, 0]} />
         <Cloud count={icons.length} radius={20} />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.6} />
+        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.3} />
       </Canvas>
     </div>
   );

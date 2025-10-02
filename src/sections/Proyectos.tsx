@@ -5,6 +5,7 @@ import { ExternalLink, Github, Calendar, Users, Code, CheckCircle, ArrowRight, A
 import { Button } from "@/components/ui/button";
 import ProjectImageModal from "@/components/ProjectImageModal";
 import { useLanguage } from "@/context/LanguageContext";
+import { useEffect, useRef } from "react";
 
 type Language = "es" | "en";
 
@@ -334,6 +335,7 @@ const processSteps: Record<Language, { step: string; title: string; description:
   ],
 };
 
+
 const copy = {
   es: {
     sectionTag: "Proyectos",
@@ -437,7 +439,7 @@ export default function Proyectos() {
   const closeLabel = language === "es" ? "Cerrar" : "Close";
 
   return (
-    <section id="proyectos" className="relative py-24 px-4 sm:px-6 lg:px-8">
+    <section id="proyectos" className="relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(147,197,253,0.12),transparent_55%),radial-gradient(circle_at_bottom_left,rgba(167,139,250,0.12),transparent_55%)]" />
       <div className="relative max-w-7xl mx-auto space-y-20">
         <div className="text-center max-w-3xl mx-auto">
@@ -630,7 +632,7 @@ export default function Proyectos() {
               alt=""
               aria-hidden="true"
               className="absolute -left-20 top-1/2 hidden lg:block w-[440px] -translate-y-1/2 rotate-[-2deg] skew-y-[-3deg] opacity-80 shadow-[0_45px_120px_-60px_rgba(59,130,246,0.45)] transition-all duration-700 ease-out transform"
-              style={{ maskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, transparent 85%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 58%, transparent 94%)", transformOrigin: "center right" }}
+              style={{ maskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 75%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 58%, transparent 94%)", transformOrigin: "center right" }}
             />
           </div>
           <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />

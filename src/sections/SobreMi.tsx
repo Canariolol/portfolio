@@ -4,6 +4,7 @@ import { Code2, Server, Zap, Users, Target, BrainCogIcon, Brain } from "lucide-r
 import TechStack from "@/components/TechStack";
 import ExpertiseCarousel from "@/components/ExpertiseCarousel";
 import { useLanguage } from "@/context/LanguageContext";
+import { useEffect, useState } from "react";
 
 const skillIconMap = {
   ai: <Zap className="w-8 h-8 text-purple-600" />,
@@ -258,6 +259,7 @@ const valueCardClassMap = {
   improvement: "hover:shadow-xl hover:shadow-purple-500/20",
 };
 
+
 export default function SobreMi() {
   const { language } = useLanguage();
   const section = sectionContent[language];
@@ -278,7 +280,7 @@ export default function SobreMi() {
           alt=""
           aria-hidden="true"
           className="absolute right-[-5rem] bottom-[-6rem] hidden lg:block w-[460px] rotate-[3deg] skew-y-[2deg] opacity-70 shadow-[0_45px_120px_-70px_rgba(59,130,246,0.45)] transition-all duration-700 ease-out"
-          style={{ maskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 60%, transparent 93%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 60%, transparent 93%)", transformOrigin: "center left" }}
+          style={{ maskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 40%, transparent 83%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 60%, transparent 93%)", transformOrigin: "center left" }}
         />
       </div>
       <div className="relative max-w-7xl mx-auto">

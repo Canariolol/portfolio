@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle, Sparkles, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -102,6 +102,7 @@ const contactInfo = {
   ],
 };
 
+
 const socialLinks = [
   {
     icon: <Github className="w-6 h-6" />,
@@ -173,15 +174,35 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contacto" className="relative py-24 px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.1),transparent_60%)]" />
+    <section id="contacto" className="relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
+      {/* Fondo mejorado con efectos visuales */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.15),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.15),transparent_50%)]" />
+        {/* Elementos decorativos */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
+
       <div className="relative max-w-7xl mx-auto">
+        {/* Header consistente con otras secciones */}
         <div className="text-center mb-16">
           <p className="text-sm uppercase tracking-[0.35em] text-emerald-500 mb-4">
-            {language === "es" ? "Conversemos" : "Let’s talk"}
+            {language === "es" ? "Conversemos" : "Let's talk"}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            {text.title}
+            {text.title.split(' ').map((word, index) => (
+              <span key={index} className="inline-block mr-2">
+                {word === 'Contacto' || word === 'Contact' ? (
+                  <span className="relative inline-block">
+                    <span className="absolute inset-x-0 -bottom-2 h-3 bg-gradient-to-r from-emerald-200 via-green-200 to-transparent dark:from-emerald-500/20 dark:via-green-400/30 dark:to-transparent rounded-full" />
+                    <span className="relative text-emerald-600 dark:text-emerald-400">{word}</span>
+                  </span>
+                ) : (
+                  word
+                )}
+              </span>
+            ))}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
             {text.intro}
@@ -189,6 +210,7 @@ export default function Contacto() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Formulario simplificado */}
           <div className="bg-white/85 dark:bg-gray-900/85 rounded-3xl p-8 shadow-xl shadow-blue-500/5 border border-white/60 dark:border-gray-700/60 backdrop-blur">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               {text.formTitle}
@@ -265,10 +287,12 @@ export default function Contacto() {
                 {status === 'loading' ? (language === 'es' ? 'Enviando...' : 'Sending...') : text.submitLabel}
               </Button>
             </form>
+            
             {status === 'success' && <p className="text-green-500 mt-4">{text.successMessage}</p>}
             {status === 'error' && <p className="text-red-500 mt-4">{language === 'es' ? 'Hubo un error al enviar el mensaje.' : 'There was an error sending the message.'}</p>}
           </div>
 
+          {/* Información de contacto simplificada */}
           <div className="space-y-8">
             <div className="bg-white/85 dark:bg-gray-900/85 rounded-3xl p-8 shadow-xl shadow-blue-500/5 border border-white/60 dark:border-gray-700/60 backdrop-blur">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -320,7 +344,7 @@ export default function Contacto() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-600 via-blue-800 to-purple-900 rounded-3xl p-8 text-white shadow-xl shadow-blue-500/30">
+            <div className="bg-gradient-to-r from-blue-700 via-blue-850 to-purple-900 rounded-3xl p-8 text-white shadow-xl shadow-blue-600/20">
               <h3 className="text-2xl font-bold mb-4">
                 {text.availabilityHeading}
               </h3>
@@ -340,4 +364,3 @@ export default function Contacto() {
     </section>
   );
 }
-
