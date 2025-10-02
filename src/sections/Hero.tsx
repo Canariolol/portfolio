@@ -114,11 +114,11 @@ export default function Hero() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const scrollToContent = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('proyectos');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -172,12 +172,13 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
             <Button
-              size="lg"
-              onClick={scrollToContent}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg shadow-lg shadow-blue-500/20"
-            >
+                variant="outline"
+                size="lg"
+                onClick={scrollToProjects}
+                className="border-2 border-slate-200 dark:border-slate-600 px-8 py-3 text-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
               {heroContent.primaryCta}
-              <ArrowDown className="ml-2 h-5 w-5" />
+              <ArrowDown className="ml-3 h-5 w-5" />
             </Button>
 
             <div className="relative" ref={dropdownRef}>
@@ -185,7 +186,7 @@ export default function Hero() {
                 variant="outline"
                 size="lg"
                 onClick={() => setIsCvDropdownOpen(!isCvDropdownOpen)}
-                className="border-2 border-slate-200 dark:border-slate-600 px-8 py-3 text-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-2"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg shadow-lg shadow-blue-500/20"
               >
                 <Download className="h-5 w-5" />
                 {heroContent.cvButton}

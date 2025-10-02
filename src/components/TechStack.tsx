@@ -127,7 +127,7 @@ export default function TechStack() {
   const text = copy[language];
 
   return (
-    <div className="w-full h-[600px] relative">
+    <div className="w-full h-[600px] relative z-10">
       <div className="text-center mb-6">
         <p className="text-xs uppercase tracking-[0.3em] text-sky-500 mb-3">
           <br /><br />
