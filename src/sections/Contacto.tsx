@@ -109,7 +109,7 @@ const socialLinks = [
     icon: <Github className="w-6 h-6" />,
     name: "GitHub",
     url: "https://github.com/Canariolol/",
-    color: "hover:text-gray-900 dark:hover:text-white",
+    color: "hover:text-white",
   },
   {
     icon: <Linkedin className="w-6 h-6" />,

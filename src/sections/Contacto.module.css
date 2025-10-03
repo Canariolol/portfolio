@@ -12,7 +12,7 @@
 .sectionBackground {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom right, var(--color-blue-50), var(--color-indigo-50), var(--color-purple-50));
+  background: linear-gradient(to bottom right, var(--bg-gray-900), rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
 }
 
 @media (prefers-color-scheme: dark) {
