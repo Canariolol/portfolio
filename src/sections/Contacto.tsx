@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle, Sparkles, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext";
+import styles from "./Contacto.module.css";
 
 type FormState = {
   nombre: string;
@@ -176,27 +177,26 @@ export default function Contacto() {
   return (
     <section id="contacto" className="section-transition section-transition-emerald relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
       {/* Fondo mejorado con efectos visuales */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.15),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.15),transparent_50%)]" />
+      <div className={styles.sectionBackground}>
+        <div className={styles.sectionBackgroundGradient} />
+        <div className={styles.sectionBackgroundRadial} />
         {/* Elementos decorativos */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className={`${styles.decorativeBlob} ${styles.decorativeBlobTop}`} />
+        <div className={`${styles.decorativeBlob} ${styles.decorativeBlobBottom}`} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className={styles.content}>
         {/* Header consistente con otras secciones */}
-        <div className="text-center mb-16">
-          <p className="text-sm uppercase tracking-[0.35em] text-emerald-500 mb-4">
+        <div className={styles.header}>
+          <p className={styles.tagline}>
             {language === "es" ? "Conversemos" : "Let's talk"}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className={styles.title}>
             {text.title.split(' ').map((word, index) => (
               <span key={index} className="inline-block mr-2">
                 {word === 'Contacto' || word === 'Contact' ? (
-                  <span className="relative inline-block">
-                    <span className="absolute inset-x-0 -bottom-2 h-3 bg-gradient-to-r from-emerald-200 via-green-200 to-transparent dark:from-emerald-500/20 dark:via-green-400/30 dark:to-transparent rounded-full" />
-                    <span className="relative text-emerald-600 dark:text-emerald-400">{word}</span>
+                  <span className={styles.titleHighlight}>
+                    <span className={styles.titleHighlightText}>{word}</span>
                   </span>
                 ) : (
                   word
@@ -204,22 +204,22 @@ export default function Contacto() {
               </span>
             ))}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          <p className={styles.intro}>
             {text.intro}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className={styles.mainGrid}>
           {/* Formulario simplificado */}
-          <div className="bg-white/85 dark:bg-gray-900/85 rounded-3xl p-8 shadow-xl shadow-blue-500/5 border border-white/60 dark:border-gray-700/60 backdrop-blur">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          <div className={styles.formCard}>
+            <h3 className={styles.formTitle}>
               {text.formTitle}
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <div className={styles.formRow}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="nombre" className={styles.formLabel}>
                     {text.nameLabel}
                   </label>
                   <input
@@ -229,12 +229,12 @@ export default function Contacto() {
                     value={formData.nombre}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className={styles.formInput}
                     placeholder={text.namePlaceholder}
                   />
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <div className={styles.formGroup}>
+                  <label htmlFor="email" className={styles.formLabel}>
                     {text.emailLabel}
                   </label>
                   <input
@@ -244,14 +244,14 @@ export default function Contacto() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className={styles.formInput}
                     placeholder={text.emailPlaceholder}
                   />
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="asunto" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <div className={styles.formGroup}>
+                <label htmlFor="asunto" className={styles.formLabel}>
                   {text.subjectLabel}
                 </label>
                 <input
@@ -261,13 +261,13 @@ export default function Contacto() {
                   value={formData.asunto}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                  className={styles.formInput}
                   placeholder={text.subjectPlaceholder}
                 />
               </div>
 
-              <div>
-                <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <div className={styles.formGroup}>
+                <label htmlFor="mensaje" className={styles.formLabel}>
                   {text.messageLabel}
                 </label>
                 <textarea
@@ -277,41 +277,43 @@ export default function Contacto() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none"
+                  className={styles.formTextarea}
                   placeholder={text.messagePlaceholder}
                 />
               </div>
 
-              <Button type="submit" className="w-full" size="lg" disabled={status === 'loading'}>
-                <Send className="w-5 h-5 mr-2" />
-                {status === 'loading' ? (language === 'es' ? 'Enviando...' : 'Sending...') : text.submitLabel}
-              </Button>
+              <div className={styles.formActions}>
+                <Button type="submit" className={styles.submitButton} size="lg" disabled={status === 'loading'}>
+                  <Send className="w-5 h-5 mr-2" />
+                  {status === 'loading' ? (language === 'es' ? 'Enviando...' : 'Sending...') : text.submitLabel}
+                </Button>
+              </div>
             </form>
             
-            {status === 'success' && <p className="text-green-500 mt-4">{text.successMessage}</p>}
-            {status === 'error' && <p className="text-red-500 mt-4">{language === 'es' ? 'Hubo un error al enviar el mensaje.' : 'There was an error sending the message.'}</p>}
+            {status === 'success' && <p className={`${styles.formMessage} ${styles.formMessageSuccess}`}>{text.successMessage}</p>}
+            {status === 'error' && <p className={`${styles.formMessage} ${styles.formMessageError}`}>{language === 'es' ? 'Hubo un error al enviar el mensaje.' : 'There was an error sending the message.'}</p>}
           </div>
 
           {/* Información de contacto simplificada */}
-          <div className="space-y-8">
-            <div className="bg-white/85 dark:bg-gray-900/85 rounded-3xl p-8 shadow-xl shadow-blue-500/5 border border-white/60 dark:border-gray-700/60 backdrop-blur">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          <div className={styles.infoSection}>
+            <div className={styles.infoCard}>
+              <h3 className={styles.infoTitle}>
                 {text.contactTitle}
               </h3>
 
-              <div className="space-y-6">
+              <div className={styles.contactInfoList}>
                 {info.map((item) => (
-                  <div key={item.title} className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
+                  <div key={item.title} className={styles.contactInfoItem}>
+                    <div className={styles.contactInfoIcon}>
                       {item.icon}
                     </div>
-                    <div className="ml-4">
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                    <div className={styles.contactInfoContent}>
+                      <h4 className={styles.contactInfoTitle}>
                         {item.title}
                       </h4>
                       <a
                         href={item.link}
-                        className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className={styles.contactInfoLink}
                       >
                         {item.value}
                       </a>
@@ -321,22 +323,22 @@ export default function Contacto() {
               </div>
             </div>
 
-            <div className="bg-white/85 dark:bg-gray-900/85 rounded-3xl p-8 shadow-xl shadow-blue-500/5 border border-white/60 dark:border-gray-700/60 backdrop-blur">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className={styles.infoCard}>
+              <h3 className={styles.infoTitle}>
                 {text.followTitle}
               </h3>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className={styles.socialLinksGrid}>
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-xl transition-all duration-200 hover:scale-105 ${social.color}`}
+                    className={`${styles.socialLinkCard} ${social.name.toLowerCase()}`}
                   >
-                    <div className="mb-2">{social.icon}</div>
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <div className={styles.socialLinkIcon}>{social.icon}</div>
+                    <span className={styles.socialLinkName}>
                       {social.name}
                     </span>
                   </a>
@@ -344,16 +346,16 @@ export default function Contacto() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-600 via-blue-900 to-purple-blue-200 rounded-3xl p-8 text-white shadow-xl shadow-blue-600/20">
-              <h3 className="text-2xl font-bold mb-4">
+            <div className={styles.availabilityCard}>
+              <h3 className={styles.availabilityTitle}>
                 {text.availabilityHeading}
               </h3>
-              <p className="text-blue-100 mb-6">
+              <p className={styles.availabilityDescription}>
                 {text.availabilityBody}
               </p>
-              <div className="flex items-center">
-                <div className="w-3 h-3 bg-emerald-400 rounded-full mr-3 animate-pulse" />
-                <span className="text-sm font-medium">
+              <div className={styles.availabilityStatus}>
+                <div className={styles.availabilityIndicator} />
+                <span className={styles.availabilityText}>
                   {text.availabilityStatus}
                 </span>
               </div>

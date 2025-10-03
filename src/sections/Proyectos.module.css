@@ -8,6 +8,78 @@
   background: var(--section-bg-proyectos);
 }
 
+/* Fondo de la sección */
+.sectionBackground {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(147, 197, 253, 0.12), transparent 55%), 
+              radial-gradient(circle at bottom left, rgba(167, 139, 250, 0.12), transparent 55%);
+}
+
+/* Header de la sección */
+.sectionHeader {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.sectionTagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-indigo-500);
+  margin-bottom: 1rem;
+}
+
+.sectionHeading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sectionHeading {
+    font-size: 3rem;
+  }
+}
+
+.sectionHighlight {
+  position: relative;
+  display: inline-block;
+}
+
+.sectionHighlight::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 0.75rem;
+  background: linear-gradient(to right, var(--color-purple-200), var(--color-blue-200), transparent);
+  border-radius: 9999px;
+  opacity: 0.6;
+}
+
+.sectionHighlightText {
+  position: relative;
+  color: var(--color-purple-600);
+  text-transform: capitalize;
+}
+
+.sectionIntro {
+  font-size: 1.125rem;
+  color: var(--text-gray-300);
+  line-height: 1.75;
+}
+
+@media (min-width: 768px) {
+  .sectionIntro {
+    font-size: 1.25rem;
+  }
+}
+
 .section::before {
   content: "";
   position: absolute;

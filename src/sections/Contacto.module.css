@@ -5,7 +5,436 @@
   position: relative;
   padding: 6rem 1rem;
   min-height: 100vh;
-  overflow: hidden;
+  background: var(--section-bg-contacto);
+}
+
+/* Fondo de la sección */
+.sectionBackground {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, var(--color-blue-50), var(--color-indigo-50), var(--color-purple-50));
+}
+
+@media (prefers-color-scheme: dark) {
+  .sectionBackground {
+    background: linear-gradient(to bottom right, var(--bg-gray-900), rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+  }
+}
+
+.sectionBackgroundOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.15), transparent 50%), 
+              radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.15), transparent 50%);
+}
+
+/* Elementos decorativos */
+.decorativeBlob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(3rem);
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.decorativeBlobTop {
+  top: 5rem;
+  left: 2.5rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.decorativeBlobBottom {
+  bottom: 5rem;
+  right: 2.5rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(168, 85, 247, 0.2);
+  animation-delay: 2s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Header de la sección */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-emerald-500);
+  margin-bottom: 1rem;
+}
+
+.sectionHeading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sectionHeading {
+    font-size: 3rem;
+  }
+}
+
+.sectionHighlight {
+  position: relative;
+  display: inline-block;
+}
+
+.sectionHighlight::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 0.75rem;
+  background: linear-gradient(to right, var(--color-emerald-200), var(--color-green-200), transparent);
+  border-radius: 9999px;
+  opacity: 0.6;
+}
+
+.sectionHighlightText {
+  position: relative;
+  color: var(--color-emerald-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  .sectionHighlight::before {
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.2), rgba(34, 197, 94, 0.3), transparent);
+  }
+  
+  .sectionHighlightText {
+    color: var(--color-emerald-400);
+  }
+}
+
+.sectionIntro {
+  font-size: 1.25rem;
+  color: var(--text-gray-600);
+  line-height: 1.75;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sectionIntro {
+    color: var(--text-gray-300);
+  }
+}
+
+/* Grid principal */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tarjetas */
+.card {
+  background: var(--bg-white-85);
+  border-radius: var(--radius-3xl);
+  border: 1px solid var(--border-white-60);
+  padding: 2rem;
+  box-shadow: var(--shadow-xl);
+  backdrop-filter: blur(8px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: var(--bg-gray-900-85);
+    border-color: var(--border-gray-700-60);
+  }
+}
+
+/* Formulario */
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .formTitle {
+    color: var(--text-primary);
+  }
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .formGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-gray-700);
+  margin-bottom: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .formLabel {
+    color: var(--text-gray-300);
+  }
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-gray-300);
+  border-radius: var(--radius-lg);
+  color: var(--text-gray-900);
+  transition: all var(--transition-fast);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--color-blue-500);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: var(--text-gray-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  .formInput,
+  .formTextarea {
+    background: var(--bg-gray-800);
+    border-color: var(--border-gray-600);
+    color: var(--text-primary);
+  }
+  
+  .formInput::placeholder,
+  .formTextarea::placeholder {
+    color: var(--text-gray-400);
+  }
+}
+
+.formTextarea {
+  resize: none;
+  min-height: 5rem;
+}
+
+.formActions {
+  margin-top: 1.5rem;
+}
+
+/* Estados del formulario */
+.successMessage {
+  color: var(--color-green-500);
+  margin-top: 1rem;
+}
+
+.errorMessage {
+  color: var(--color-red-500);
+  margin-top: 1rem;
+}
+
+/* Información de contacto */
+.infoTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .infoTitle {
+    color: var(--text-primary);
+  }
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.infoIcon {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.infoContent {
+  flex: 1;
+}
+
+.infoItemTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-gray-900);
+  margin-bottom: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .infoItemTitle {
+    color: var(--text-primary);
+  }
+}
+
+.infoLink {
+  color: var(--text-gray-600);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.infoLink:hover {
+  color: var(--color-blue-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  .infoLink {
+    color: var(--text-gray-300);
+  }
+  
+  .infoLink:hover {
+    color: var(--color-blue-400);
+  }
+}
+
+/* Redes sociales */
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.socialLink:hover {
+  transform: scale(1.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .socialLink {
+    background: var(--bg-gray-800);
+  }
+}
+
+.socialIcon {
+  margin-bottom: 0.5rem;
+  color: var(--text-gray-700);
+  transition: color var(--transition-fast);
+}
+
+@media (prefers-color-scheme: dark) {
+  .socialIcon {
+    color: var(--text-gray-300);
+  }
+}
+
+.socialLink:hover .socialIcon {
+  color: var(--text-gray-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  .socialLink:hover .socialIcon {
+    color: var(--text-primary);
+  }
+}
+
+.socialName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-gray-700);
+}
+
+@media (prefers-color-scheme: dark) {
+  .socialName {
+    color: var(--text-gray-300);
+  }
+}
+
+/* Tarjeta de disponibilidad */
+.availabilityCard {
+  background: linear-gradient(to right, var(--color-blue-600), var(--color-blue-900), var(--color-purple-600));
+  border-radius: var(--radius-3xl);
+  padding: 2rem;
+  color: var(--text-primary);
+  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+}
+
+.availabilityTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.availabilityDescription {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.availabilityStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.statusIndicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--color-emerald-400);
+  border-radius: 50%;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.statusText {
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 /* Fondo mejorado con efectos visuales */

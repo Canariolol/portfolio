@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import ProjectImageModal from "@/components/ProjectImageModal";
 import { useLanguage } from "@/context/LanguageContext";
 import { useEffect, useRef } from "react";
+import styles from "./Proyectos.module.css";
 
 type Language = "es" | "en";
 
@@ -440,175 +441,152 @@ export default function Proyectos() {
 
   return (
     <section id="proyectos" className="section-transition section-transition-emerald relative py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(147,197,253,0.12),transparent_55%),radial-gradient(circle_at_bottom_left,rgba(167,139,250,0.12),transparent_55%)]" />
+      <div className={styles.sectionBackground} />
       <div className="relative max-w-7xl mx-auto space-y-20">
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="text-sm uppercase tracking-[0.35em] text-indigo-500 mb-4">
+        <div className={styles.sectionHeader}>
+          <p className={styles.sectionTagline}>
             {text.sectionTag}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className={styles.sectionHeading}>
             {text.heading.replace(text.highlight, "").trim()} {" "}
-            <span className="relative inline-block">
-              <span className="absolute inset-x-0 -bottom-2 h-3 bg-gradient-to-r from-purple-200 via-blue-200 to-transparent dark:from-purple-500/20 dark:via-blue-400/30 dark:to-transparent rounded-full" />
-              <span className="relative text-purple-600 dark:text-purple-400 capitalize">{text.highlight}</span>
+            <span className={styles.sectionHighlight}>
+              <span className={styles.sectionHighlightText}>{text.highlight}</span>
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+          <p className={styles.sectionIntro}>
             {text.intro}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className={styles.projectsGrid}>
           {projects.map((project, index) => (
-            <div key={project.id} className="relative flex flex-col h-full">
+            <div key={project.id} className={styles.projectCardContainer}>
               {index > 0 && (
-                <div className="absolute -left-4 top-0 bottom-0 w-px hidden lg:block">
-                  <div className="h-full w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent" 
-                       style={{ 
-                         backgroundImage: 'repeating-linear-gradient(to bottom, transparent, transparent 4px, rgba(147, 51, 234, 0.3) 4px, rgba(147, 51, 234, 0.3) 8px)',
-                         width: '1px'
-                       }} />
+                <div className={styles.projectDivider}>
+                  <div className={styles.projectDividerLine} />
                 </div>
               )}
-              <article
-                className="group relative flex flex-col h-full overflow-hidden rounded-3xl border border-white/60 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 shadow-xl shadow-blue-500/5 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-              >
-              <div
-                className="relative h-56 overflow-hidden"
-                onClick={() => openGalleryModal(project.id)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    openGalleryModal(project.id);
-                  }
-                }}
-              >
-                <img
-                  src={project.image}
-                  alt={project.title[language]}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-slate-900 shadow">
-                    <Code className="h-4 w-4" />
-                    {text.viewGallery}
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex flex-1 flex-col p-8">
-                <div className="flex-grow space-y-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="space-y-2">
-                      <p className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                        <Calendar className="h-4 w-4" />
-                        {project.year}
-                      </p>
-                      <h3 className="text-2xl font-semibold text-gray-900 dark:text-white leading-tight">
-                        {project.title[language]}
-                      </h3>
-                    </div>
-                    <span className="inline-flex items-center rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-                      {project.status[language]}
+              <article className={styles.projectCard}>
+                <div
+                  className={styles.projectImageContainer}
+                  onClick={() => openGalleryModal(project.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      openGalleryModal(project.id);
+                    }
+                  }}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title[language]}
+                    className={styles.projectImage}
+                  />
+                  <div className={styles.projectImageOverlay}>
+                    <span className={styles.viewGalleryButton}>
+                      <Code className="h-4 w-4" />
+                      {text.viewGallery}
                     </span>
                   </div>
+                </div>
 
-                  {/* Mini contenedor 1: Descripción - altura ajustada por proyecto */}
-                  <div className={`${project.id === 3 ? 'h-21' : 'h-36'} flex flex-col justify-start`}>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm overflow-hidden">
-                      {project.description[language]}
-                    </p>
-                  </div>
-
-                  {/* Línea divisoria entre descripción y cliente */}
-                  <div className="relative py-2">
-                    <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
-                    </div>
-                  </div>
-
-                  {/* Mini contenedor 2: Cliente - altura fija */}
-                  <div className="h-12 flex flex-col justify-start">
-                    <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                      <Users className="h-4 w-4" />
-                      <span className="font-medium text-slate-700 dark:text-slate-200">
-                        {text.clientLabel}:
+                <div className={styles.projectContent}>
+                  <div className={styles.projectContentMain}>
+                    <div className={styles.projectHeader}>
+                      <div className={styles.projectMeta}>
+                        <p className={styles.projectDate}>
+                          <Calendar className="h-4 w-4" />
+                          {project.year}
+                        </p>
+                        <h3 className={styles.projectTitle}>
+                          {project.title[language]}
+                        </h3>
+                      </div>
+                      <span className={styles.projectStatus}>
+                        {project.status[language]}
                       </span>
-                      <span>{project.client[language]}</span>
                     </div>
-                  </div>
 
-                  {/* Línea divisoria entre cliente y logros */}
-                  <div className="relative py-2">
-                    <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
+                    <div className={styles.projectSection}>
+                      <div className={styles.projectSectionDivider} />
                     </div>
-                  </div>
-
-                  {/* Mini contenedor 3: Logros - altura fija */}
-                  <div className="h-40 flex flex-col justify-start">
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                        {text.achievementsTitle}:
-                      </h4>
-                      <ul className="space-y-1 overflow-hidden">
-                        {project.achievements[language].map((achievement) => (
-                          <li key={achievement} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
-                            <span className="text-green-500 mr-2 mt-0.5">•</span>
-                            <span className="line-clamp-2">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className={styles.projectDescription}>
+                      <p className={styles.projectDescriptionText}>
+                        {project.description[language]}
+                      </p>
                     </div>
-                  </div>
 
-                  {/* Línea divisoria entre logros y tecnologías */}
-                  <div className="relative py-2">
-                    <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-dashed border-purple-300/40 dark:border-purple-400/30"></div>
+                    <div className={styles.projectSection}>
+                      <div className={styles.projectSectionDivider} />
                     </div>
-                  </div>
+                    <div className={styles.projectClient}>
+                      <div className={styles.projectClientInfo}>
+                        <Users className="h-4 w-4" />
+                        <span className={styles.projectClientLabel}>
+                          {text.clientLabel}:
+                        </span>
+                        <span>{project.client[language]}</span>
+                      </div>
+                    </div>
 
-                  {/* Mini contenedor 4: Tecnologías - altura fija */}
-                  <div className="h-24 flex flex-col justify-start">
-                    <div className="space-y-2">
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                        {text.technologiesTitle}
-                      </h4>
-                      <div className="flex flex-wrap gap-1 overflow-hidden">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="rounded-full border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/70 px-2 py-1 text-xs font-medium text-slate-600 dark:text-slate-300"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                    <div className={styles.projectSection}>
+                      <div className={styles.projectSectionDivider} />
+                    </div>
+                    <div className={styles.projectAchievements}>
+                      <div>
+                        <h4 className={styles.projectAchievementsTitle}>
+                          {text.achievementsTitle}:
+                        </h4>
+                        <ul className={styles.projectAchievementsList}>
+                          {project.achievements[language].map((achievement) => (
+                            <li key={achievement} className={styles.projectAchievementItem}>
+                              <span className={styles.projectAchievementBullet}>•</span>
+                              <span className={styles.projectAchievementText}>{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className={styles.projectSection}>
+                      <div className={styles.projectSectionDivider} />
+                    </div>
+                    <div className={styles.projectTechnologies}>
+                      <div className={styles.projectTechnologiesHeader}>
+                        <h4 className={styles.projectTechnologiesTitle}>
+                          {text.technologiesTitle}
+                        </h4>
+                        <div className={styles.projectTechnologiesList}>
+                          {project.technologies.map((tech) => (
+                            <span key={tech} className={styles.projectTechnology}>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-6 flex items-center gap-3 pt-2">
-                  {project.repo && project.repo !== "#" && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <Github className="h-4 w-4" />
-                        {text.repoLabel}
-                      </a>
-                    </Button>
-                  )}
-                  {project.demo && project.demo !== "#" && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <ExternalLink className="h-4 w-4" />
-                        {text.demoLabel}
-                      </a>
-                    </Button>
-                  )}
-                </div>
+                  <div className={styles.projectActions}>
+                    {project.repo && project.repo !== "#" && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={project.repo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                          <Github className="h-4 w-4" />
+                          {text.repoLabel}
+                        </a>
+                      </Button>
+                    )}
+                    {project.demo && project.demo !== "#" && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                          <ExternalLink className="h-4 w-4" />
+                          {text.demoLabel}
+                        </a>
+                      </Button>
+                    )}
+                  </div>
               </div>
               </article>
             </div>
@@ -625,101 +603,92 @@ export default function Proyectos() {
           </Button>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/60 dark:border-slate-800 bg-white/85 dark:bg-slate-900/85 px-6 py-16 shadow-lg shadow-blue-500/5 backdrop-blur">
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <img
-              src="/PortafolioDir.png"
-              alt=""
-              aria-hidden="true"
-              className="absolute -left-20 top-1/2 hidden lg:block w-[440px] -translate-y-1/2 rotate-[-2deg] skew-y-[-3deg] opacity-80 shadow-[0_45px_120px_-60px_rgba(59,130,246,0.45)] transition-all duration-700 ease-out transform"
-              style={{ maskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, transparent 75%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 58%, transparent 94%)", transformOrigin: "center right" }}
-            />
-          </div>
-          <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl" />
-          <div className="relative max-w-5xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-              <p className="text-sm uppercase tracking-[0.3em] text-blue-500">
+        <div className={styles.processSection}>
+          <div className={styles.processDecorativeImage} />
+          <div className={styles.processDecorativeBlobs} />
+          <div className={styles.processContent}>
+            <div className={styles.processHeader}>
+              <p className={styles.processTagline}>
                 {text.processTag}
               </p>
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              <h3 className={styles.processTitle}>
                 {text.processHeading}
               </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-300">
+              <p className={styles.processSubtitle}>
                 {text.processSubtitle}
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] md:grid-rows-[1fr_auto_1fr] gap-x-8 gap-y-4 md:gap-y-8">
+            <div className={styles.processGrid}>
               {/* Step 1 */}
-              <div className="md:col-start-1 md:row-start-1 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/90 dark:bg-slate-900/90 p-6 shadow-sm">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-lg font-bold text-white shadow-md">
+              <div className={`${styles.processStep} ${styles.processStep1}`}>
+                <div className={styles.processStepIcon}>
                   {steps[0].step}
                 </div>
-                <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+                <h4 className={styles.processStepTitle}>
                   {steps[0].title}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className={styles.processStepDescription}>
                   {steps[0].description}
                 </p>
               </div>
 
               {/* Arrow 1 -> 2 */}
-              <div className="hidden md:flex col-start-2 row-start-1 items-center justify-center">
-                <ArrowRight className="w-10 h-10 text-slate-300 dark:text-slate-600" />
+              <div className={`${styles.processArrow} ${styles.processArrow1}`}>
+                <ArrowRight className="w-10 h-10" />
               </div>
 
               {/* Step 2 */}
-              <div className="md:col-start-3 md:row-start-1 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/90 dark:bg-slate-900/90 p-6 shadow-sm">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-lg font-bold text-white shadow-md">
+              <div className={`${styles.processStep} ${styles.processStep2}`}>
+                <div className={styles.processStepIcon}>
                   {steps[1].step}
                 </div>
-                <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+                <h4 className={styles.processStepTitle}>
                   {steps[1].title}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className={styles.processStepDescription}>
                   {steps[1].description}
                 </p>
               </div>
 
               {/* Arrow 2 -> 3 */}
-              <div className="hidden md:flex col-start-3 row-start-2 items-center justify-center">
-                <ArrowDown className="w-10 h-10 text-slate-300 dark:text-slate-600" />
+              <div className={`${styles.processArrow} ${styles.processArrow2}`}>
+                <ArrowDown className="w-10 h-10" />
               </div>
 
               {/* Step 3 */}
-              <div className="md:col-start-3 md:row-start-3 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/90 dark:bg-slate-900/90 p-6 shadow-sm">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-lg font-bold text-white shadow-md">
+              <div className={`${styles.processStep} ${styles.processStep3}`}>
+                <div className={styles.processStepIcon}>
                   {steps[2].step}
                 </div>
-                <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+                <h4 className={styles.processStepTitle}>
                   {steps[2].title}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className={styles.processStepDescription}>
                   {steps[2].description}
                 </p>
               </div>
 
               {/* Arrow 3 -> 4 */}
-              <div className="hidden md:flex col-start-2 row-start-3 items-center justify-center">
-                <ArrowLeft className="w-10 h-10 text-slate-300 dark:text-slate-600" />
+              <div className={`${styles.processArrow} ${styles.processArrow3}`}>
+                <ArrowLeft className="w-10 h-10" />
               </div>
 
               {/* Step 4 */}
-              <div className="md:col-start-1 md:row-start-3 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/90 dark:bg-slate-900/90 p-6 shadow-sm">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-lg font-bold text-white shadow-md">
+              <div className={`${styles.processStep} ${styles.processStep4}`}>
+                <div className={styles.processStepIcon}>
                   {steps[3].step}
                 </div>
-                <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+                <h4 className={styles.processStepTitle}>
                   {steps[3].title}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className={styles.processStepDescription}>
                   {steps[3].description}
                 </p>
               </div>
 
               {/* Arrow 4 -> 1 */}
-              <div className="hidden md:flex col-start-1 row-start-2 items-center justify-center">
-                <ArrowUp className="w-10 h-10 text-slate-300 dark:text-slate-600" />
+              <div className={`${styles.processArrow} ${styles.processArrow4}`}>
+                <ArrowUp className="w-10 h-10" />
               </div>
             </div>
           </div>
