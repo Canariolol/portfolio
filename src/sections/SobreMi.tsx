@@ -5,6 +5,7 @@ import TechStack from "@/components/TechStack";
 import ExpertiseCarousel from "@/components/ExpertiseCarousel";
 import { useLanguage } from "@/context/LanguageContext";
 import { useEffect, useState } from "react";
+import styles from "./SobreMi.module.css";
 
 const skillIconMap = {
   ai: <Zap className="w-8 h-8 text-purple-600" />,
@@ -272,43 +273,41 @@ export default function SobreMi() {
   const values = valuesContent[language];
 
   return (
-    <section id="sobre-mi" className="section-transition section-transition-purple relative py-24 px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.08),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.08),transparent_55%)]" />
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+    <section id="sobre-mi" className={styles.section}>
+      <div className={styles.sectionBackground} />
+      <div className={styles.sectionBackground}>
         <img
           src="/ReportesDir%20Backend.png"
           alt=""
           aria-hidden="true"
-          className="absolute right-[-5rem] bottom-[-6rem] hidden lg:block w-[460px] rotate-[3deg] skew-y-[2deg] opacity-70 shadow-[0_45px_120px_-70px_rgba(59,130,246,0.45)] transition-all duration-700 ease-out"
-          style={{ maskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 40%, transparent 83%)", WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 60%, transparent 93%)", transformOrigin: "center left" }}
+          className={styles.decorativeImage}
         />
       </div>
-      <div className="relative max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <p className="text-sm uppercase tracking-[0.35em] text-blue-500 mb-4">
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <p className={styles.tagline}>
             {language === "es" ? "Perfil" : "Profile"}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className={styles.title}>
             {section.title.split(section.highlight)[0]}
-            <span className="relative inline-block">
-              <span className="absolute inset-x-0 -bottom-2 h-3 bg-gradient-to-r from-blue-200 via-sky-200 to-transparent dark:from-blue-500/20 dark:via-sky-400/30 dark:to-transparent rounded-full" />
-              <span className="relative text-blue-600 dark:text-blue-400">{section.highlight}</span>
+            <span className={styles.titleHighlight}>
+              <span className={styles.titleHighlightText}>{section.highlight}</span>
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          <p className={styles.description}>
             {section.description}
           </p>
         </div>
 
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-[0.3em] text-purple-500 mb-3">
+        <div className={styles.expertiseSection}>
+          <div className={styles.expertiseHeader}>
+            <p className={styles.expertiseTagline}>
               {language === "es" ? "Expertise" : "Expertise"}
             </p>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h3 className={styles.expertiseTitle}>
               {section.expertiseTitle}
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className={styles.expertiseSubtitle}>
               {section.expertiseSubtitle}
             </p>
           </div>
@@ -317,48 +316,48 @@ export default function SobreMi() {
           </div>
         </div>
 
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-[0.3em] text-sky-500 mb-3">
+        <div className={styles.aiSection}>
+          <div className={styles.aiHeader}>
+            <p className={styles.aiTagline}>
               {language === "es" ? "IA" : "AI"}
             </p>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h3 className={styles.aiTitle}>
               {section.aiTitle}
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className={styles.aiSubtitle}>
               {section.aiSubtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className={styles.aiCardsGrid}>
             {cards.map((card) => (
               <div
                 key={card.key}
-                className="group relative bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg"
+                className={styles.aiCard}
               >
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className={styles.aiCardOverlay}>
                   <div className={card.overlayClass} />
-                  <div className="absolute inset-1 bg-gray-50 dark:bg-gray-900 rounded-xl" />
+                  <div className={styles.aiCardOverlayInner} />
                 </div>
 
-                <div className="relative z-10">
-                  <div className="flex items-center mb-6">
-                    <div className={card.iconWrapperClass}>
-                      <Zap className={card.iconClass} />
+                <div className={styles.aiCardContent}>
+                  <div className={styles.aiCardHeader}>
+                    <div className={styles.aiCardIconWrapper}>
+                      <Zap className={styles.aiCardIcon} />
                     </div>
-                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <h4 className={styles.aiCardTitle}>
                       {card.title}
                     </h4>
                   </div>
-                  <div className="space-y-4">
+                  <div className={styles.aiCardBullets}>
                     {card.bullets.map((bullet) => (
-                      <div key={bullet.heading} className="flex items-start">
-                        <span className="text-green-500 mr-3 mt-1">&#10003;</span>
+                      <div key={bullet.heading} className={styles.aiCardBullet}>
+                        <span className={styles.aiCardBulletIcon}>&#10003;</span>
                         <div>
-                          <h5 className="font-semibold text-gray-900 dark:text-white mb-1">
+                          <h5 className={styles.aiCardBulletHeading}>
                             {bullet.heading}
                           </h5>
-                          <p className="text-gray-600 dark:text-gray-300 text-sm">
+                          <p className={styles.aiCardBulletDescription}>
                             {bullet.description}
                           </p>
                         </div>
@@ -372,32 +371,31 @@ export default function SobreMi() {
 
           <TechStack />
         </div>
-        <br /><br /><br /><br />
 
-        <div>
-          <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-[0.3em] text-amber-500 mb-3">
+        <div className={styles.valuesSection}>
+          <div className={styles.valuesHeader}>
+            <p className={styles.valuesTagline}>
               {language === "es" ? "Valores" : "Values"}
             </p>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h3 className={styles.valuesTitle}>
               {section.valuesTitle}
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className={styles.valuesSubtitle}>
               {section.valuesSubtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className={styles.valuesGrid}>
             {values.map((valor) => (
               <div
                 key={valor.title}
-                className={`group relative text-center p-8 bg-white/80 dark:bg-gray-900/80 rounded-2xl border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 backdrop-blur ${valueCardClassMap[valor.key]}`}
+                className={`${styles.valueCard} ${styles[`valueCard${valor.key.charAt(0).toUpperCase() + valor.key.slice(1)}`]}`}
               >
-                <div className="flex justify-center mb-4">{valueIconMap[valor.key]}</div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <div className={styles.valueCardIcon}>{valueIconMap[valor.key]}</div>
+                <h4 className={styles.valueCardTitle}>
                   {valor.title}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className={styles.valueCardDescription}>
                   {valor.description}
                 </p>
               </div>

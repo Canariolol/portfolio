@@ -80,6 +80,21 @@
   --border-gray-600: #4b5563;
   --border-slate-100: #f1f5f9;
   
+  /* Colores para tarjetas - Consistentes sin importar tema del navegador */
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #1f2937;
+  --card-bg-light-hover: #f9fafb;
+  --card-bg-dark-hover: #374151;
+  --card-border-light: #e5e7eb;
+  --card-border-dark: #374151;
+  --card-shadow-light: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow-dark: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  
+  /* Colores para secciones */
+  --section-bg-sobremi: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08), transparent 55%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.08), transparent 55%);
+  --section-bg-proyectos: radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.12), transparent 55%), radial-gradient(circle at 20% 80%, rgba(167, 139, 250, 0.12), transparent 55%);
+  --section-bg-contacto: radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.15), transparent 50%), radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.15), transparent 50%);
+  
   /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);

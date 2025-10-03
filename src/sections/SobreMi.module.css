@@ -1,0 +1,460 @@
+/* Estilos para la sección Sobre Mi */
+
+/* Contenedor principal de la sección */
+.section {
+  position: relative;
+  padding: 6rem 1rem;
+  background: var(--section-bg-sobremi);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--section-bg-sobremi);
+  pointer-events: none;
+}
+
+/* Contenido */
+.content {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-blue-500);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.titleHighlight {
+  position: relative;
+  display: inline-block;
+}
+
+.titleHighlight::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 0.75rem;
+  background: linear-gradient(to right, var(--color-blue-200), var(--color-sky-200), transparent);
+  border-radius: 9999px;
+  opacity: 0.6;
+}
+
+.titleHighlightText {
+  position: relative;
+  color: var(--color-blue-600);
+}
+
+.description {
+  font-size: 1.25rem;
+  color: var(--text-gray-600);
+  line-height: 1.75;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* Sección de Expertise */
+.expertiseSection {
+  margin-bottom: 6rem;
+}
+
+.expertiseHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.expertiseTagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-purple-500);
+  margin-bottom: 0.75rem;
+}
+
+.expertiseTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1rem;
+}
+
+.expertiseSubtitle {
+  font-size: 1.125rem;
+  color: var(--text-gray-600);
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* Sección de IA */
+.aiSection {
+  margin-bottom: 6rem;
+}
+
+.aiHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.aiTagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-sky-500);
+  margin-bottom: 0.75rem;
+}
+
+.aiTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1rem;
+}
+
+.aiSubtitle {
+  font-size: 1.125rem;
+  color: var(--text-gray-600);
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+/* Tarjetas de IA */
+.aiCardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .aiCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.aiCard {
+  position: relative;
+  background: var(--card-bg-light);
+  border-radius: var(--radius-2xl);
+  padding: 2rem;
+  box-shadow: var(--card-shadow-light);
+  transition: all var(--transition-normal);
+}
+
+.aiCard:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: var(--shadow-xl);
+}
+
+.aiCardOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-2xl);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+
+.aiCard:hover .aiCardOverlay {
+  opacity: 1;
+}
+
+.aiCardOverlayInner {
+  position: absolute;
+  inset: 0.25rem;
+  background: var(--card-bg-light);
+  border-radius: var(--radius-xl);
+}
+
+.aiCardContent {
+  position: relative;
+  z-index: 10;
+}
+
+.aiCardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.aiCardIconWrapper {
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-purple-100);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.aiCardIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-purple-600);
+}
+
+.aiCardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+}
+
+.aiCardBullets {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aiCardBullet {
+  display: flex;
+  align-items: flex-start;
+}
+
+.aiCardBulletIcon {
+  color: var(--color-green-500);
+  margin-right: 0.75rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.aiCardBulletHeading {
+  font-weight: 600;
+  color: var(--text-gray-900);
+  margin-bottom: 0.25rem;
+}
+
+.aiCardBulletDescription {
+  font-size: 0.875rem;
+  color: var(--text-gray-600);
+  line-height: 1.5;
+}
+
+/* Sección de Valores */
+.valuesSection {
+  margin-top: 4rem;
+}
+
+.valuesHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.valuesTagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-amber-500);
+  margin-bottom: 0.75rem;
+}
+
+.valuesTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1rem;
+}
+
+.valuesSubtitle {
+  font-size: 1.125rem;
+  color: var(--text-gray-600);
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .valuesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.valueCard {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-white-90);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-slate-100);
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(8px);
+}
+
+.valueCard:hover {
+  transform: translateY(-0.5rem);
+}
+
+.valueCardIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.valueCardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-gray-900);
+  margin-bottom: 0.75rem;
+}
+
+.valueCardDescription {
+  color: var(--text-gray-600);
+  line-height: 1.6;
+}
+
+/* Efectos hover para tarjetas de valores */
+.valueCardCollaboration:hover {
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+}
+
+.valueCardResults:hover {
+  box-shadow: 0 20px 25px -5px rgba(34, 197, 94, 0.2), 0 10px 10px -5px rgba(34, 197, 94, 0.04);
+}
+
+.valueCardImprovement:hover {
+  box-shadow: 0 20px 25px -5px rgba(168, 85, 247, 0.2), 0 10px 10px -5px rgba(168, 85, 247, 0.04);
+}
+
+/* Imagen decorativa */
+.decorativeImage {
+  position: absolute;
+  right: -5rem;
+  bottom: -6rem;
+  width: 460px;
+  transform: rotate(3deg) skewY(2deg);
+  opacity: 0.7;
+  box-shadow: 0 45px 120px -70px rgba(59, 130, 246, 0.45);
+  transition: all 0.7s ease-out;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 40%, transparent 83%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 60%, transparent 93%);
+  transform-origin: center left;
+}
+
+@media (max-width: 1024px) {
+  .decorativeImage {
+    display: none;
+  }
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: var(--text-primary);
+  }
+  
+  .titleHighlight::before {
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(14, 165, 233, 0.3), transparent);
+  }
+  
+  .description {
+    color: var(--text-gray-300);
+  }
+  
+  .expertiseTitle,
+  .aiTitle,
+  .valuesTitle {
+    color: var(--text-primary);
+  }
+  
+  .expertiseSubtitle,
+  .aiSubtitle,
+  .valuesSubtitle {
+    color: var(--text-gray-300);
+  }
+  
+  .aiCard {
+    background: var(--card-bg-dark);
+  }
+  
+  .aiCardOverlayInner {
+    background: var(--card-bg-dark);
+  }
+  
+  .aiCardIconWrapper {
+    background: rgba(168, 85, 247, 0.2);
+  }
+  
+  .aiCardIcon {
+    color: var(--color-purple-400);
+  }
+  
+  .aiCardTitle,
+  .aiCardBulletHeading {
+    color: var(--text-primary);
+  }
+  
+  .aiCardBulletDescription {
+    color: var(--text-gray-300);
+  }
+  
+  .valueCard {
+    background: var(--bg-slate-900-80);
+    border-color: var(--border-slate-800);
+  }
+  
+  .valueCardTitle {
+    color: var(--text-primary);
+  }
+  
+  .valueCardDescription {
+    color: var(--text-gray-300);
+  }
+}
+
+/* Optimización para móviles */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 1.125rem;
+  }
+  
+  .expertiseTitle,
+  .aiTitle,
+  .valuesTitle {
+    font-size: 1.75rem;
+  }
+  
+  .aiCard {
+    padding: 1.5rem;
+  }
+  
+  .valueCard {
+    padding: 1.5rem;
+  }
+}

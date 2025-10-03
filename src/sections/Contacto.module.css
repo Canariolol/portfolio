@@ -1,0 +1,611 @@
+/* Estilos para la sección Contacto */
+
+/* Contenedor principal de la sección */
+.section {
+  position: relative;
+  padding: 6rem 1rem;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Fondo mejorado con efectos visuales */
+.sectionBackground {
+  position: absolute;
+  inset: 0;
+}
+
+.sectionBackgroundGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, var(--color-blue-50), var(--color-indigo-50), var(--color-purple-50));
+}
+
+@media (prefers-color-scheme: dark) {
+  .sectionBackgroundGradient {
+    background: linear-gradient(to bottom right, var(--bg-gray-900), rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+  }
+}
+
+.sectionBackgroundRadial {
+  position: absolute;
+  inset: 0;
+  background: var(--section-bg-contacto);
+}
+
+/* Elementos decorativos */
+.decorativeBlob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(3rem);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.decorativeBlobTop {
+  top: 5rem;
+  left: 2.5rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.decorativeBlobBottom {
+  bottom: 5rem;
+  right: 2.5rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(168, 85, 247, 0.2);
+  animation-delay: 2s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Contenido */
+.content {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-emerald-500);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.titleHighlight {
+  position: relative;
+  display: inline-block;
+}
+
+.titleHighlight::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 0.75rem;
+  background: linear-gradient(to right, var(--color-emerald-200), var(--color-green-200), transparent);
+  border-radius: 9999px;
+  opacity: 0.6;
+}
+
+.titleHighlightText {
+  position: relative;
+  color: var(--color-emerald-600);
+}
+
+.intro {
+  font-size: 1.25rem;
+  color: var(--text-gray-600);
+  line-height: 1.75;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* Grid principal */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tarjetas */
+.card {
+  background: var(--bg-white-85);
+  border-radius: var(--radius-3xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-white-60);
+  backdrop-filter: blur(8px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: var(--bg-gray-900-85);
+    border-color: var(--border-gray-700);
+  }
+}
+
+/* Tarjeta de formulario */
+.formCard {
+  /* Estilos base de .card */
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .formTitle {
+    color: var(--text-primary);
+  }
+}
+
+/* Formulario */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .formRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-gray-700);
+  margin-bottom: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .formLabel {
+    color: var(--text-gray-300);
+  }
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-gray-300);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  color: var(--text-gray-900);
+  transition: all var(--transition-fast);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--color-blue-500);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: var(--text-gray-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  .formInput,
+  .formTextarea {
+    background: var(--bg-gray-800);
+    border-color: var(--border-gray-600);
+    color: var(--text-primary);
+  }
+  
+  .formInput::placeholder,
+  .formTextarea::placeholder {
+    color: var(--text-gray-400);
+  }
+}
+
+.formTextarea {
+  resize: none;
+  font-family: inherit;
+}
+
+.submitButton {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  background: var(--color-blue-600);
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--color-blue-700);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Mensajes de formulario */
+.formMessage {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.formMessageSuccess {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--color-green-600);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.formMessageError {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--color-red-600);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+/* Sección de información */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoCard {
+  /* Estilos base de .card */
+}
+
+.infoTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .infoTitle {
+    color: var(--text-primary);
+  }
+}
+
+/* Lista de información de contacto */
+.contactInfoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactInfoItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.contactInfoIcon {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.contactInfoContent {
+  margin-left: 1rem;
+}
+
+.contactInfoTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-gray-900);
+  margin-bottom: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contactInfoTitle {
+    color: var(--text-primary);
+  }
+}
+
+.contactInfoLink {
+  color: var(--text-gray-600);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.contactInfoLink:hover {
+  color: var(--color-blue-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  .contactInfoLink {
+    color: var(--text-gray-300);
+  }
+  
+  .contactInfoLink:hover {
+    color: var(--color-blue-400);
+  }
+}
+
+/* Redes sociales */
+.socialLinksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.socialLinkCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  color: inherit;
+}
+
+.socialLinkCard:hover {
+  transform: scale(1.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .socialLinkCard {
+    background: var(--bg-gray-800);
+  }
+}
+
+.socialLinkIcon {
+  margin-bottom: 0.5rem;
+}
+
+.socialLinkName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-gray-700);
+}
+
+@media (prefers-color-scheme: dark) {
+  .socialLinkName {
+    color: var(--text-gray-300);
+  }
+}
+
+/* Efectos hover para redes sociales */
+.socialLinkCard:hover .socialLinkName {
+  color: var(--text-gray-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  .socialLinkCard:hover .socialLinkName {
+    color: var(--text-primary);
+  }
+}
+
+.socialLinkCard:hover.socialLinkGithub .socialLinkName {
+  color: var(--text-gray-900);
+}
+
+.socialLinkCard:hover.socialLinkLinkedin .socialLinkName {
+  color: var(--color-blue-600);
+}
+
+.socialLinkCard:hover.socialLinkTwitter .socialLinkName {
+  color: var(--color-blue-400);
+}
+
+/* Tarjeta de disponibilidad */
+.availabilityCard {
+  background: linear-gradient(to right, var(--color-blue-600), var(--color-blue-900), var(--color-purple-500));
+  border-radius: var(--radius-3xl);
+  padding: 2rem;
+  color: var(--text-primary);
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2);
+}
+
+.availabilityTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.availabilityDescription {
+  color: var(--color-blue-100);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.availabilityStatus {
+  display: flex;
+  align-items: center;
+}
+
+.availabilityIndicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--color-emerald-400);
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.availabilityText {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Optimización para móviles */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .socialLinksGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .socialLinkCard {
+    padding: 0.75rem;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .socialLinkIcon {
+    margin-bottom: 0;
+  }
+}
+
+/* Animaciones adicionales */
+.formInput,
+.formTextarea {
+  transform: translateY(0);
+  transition: all var(--transition-fast);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  transform: translateY(-1px);
+}
+
+.submitButton {
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.submitButton:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Estados de carga */
+.submitButtonLoading {
+  position: relative;
+  color: transparent;
+}
+
+.submitButtonLoading::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  border: 2px solid var(--text-primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Accesibilidad */
+.submitButton:focus-visible {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+}
+
+.formInput:focus-visible,
+.formTextarea:focus-visible {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+}
+
+.socialLinkCard:focus-visible {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+}
+
+.contactInfoLink:focus-visible {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+}
