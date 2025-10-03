@@ -70,7 +70,7 @@ export default function Header() {
         <div className={styles.headerContent}>
           <div className={styles.logoContainer}>
             <Link href="/" className={styles.logo}>
-              Rodrigo Yanez<span className={styles.logoHighlight}>.</span>
+              Rodrigo Yanez G<span className={styles.logoHighlight}>.</span>
             </Link>
           </div>
 
