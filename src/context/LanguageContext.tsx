@@ -1,4 +1,4 @@
-﻿"use client";
+﻿        "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
@@ -13,24 +13,22 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(undefine
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("es");
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    const storedLanguage = typeof window !== "undefined" ? localStorage.getItem("portfolio-language") : null;
+    setIsClient(true);
+    const storedLanguage = localStorage.getItem("portfolio-language");
     if (storedLanguage === "es" || storedLanguage === "en") {
       setLanguageState(storedLanguage);
-      document.documentElement.lang = storedLanguage;
-    } else {
-      document.documentElement.lang = "es";
     }
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
+    if (!isClient) return;
+    
     localStorage.setItem("portfolio-language", language);
     document.documentElement.lang = language;
-  }, [language]);
+  }, [language, isClient]);
 
   const setLanguage = useCallback((nextLanguage: Language) => {
     setLanguageState(nextLanguage);

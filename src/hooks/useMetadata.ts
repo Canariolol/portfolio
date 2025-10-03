@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const metadataByLanguage = {
@@ -22,8 +22,14 @@ const metadataByLanguage = {
 
 export function useMetadata() {
   const { language } = useLanguage();
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
     const meta = metadataByLanguage[language];
     
     // Actualizar título de la página
@@ -109,5 +115,5 @@ export function useMetadata() {
     // Actualizar idioma del documento
     document.documentElement.lang = language;
     
-  }, [language]);
+  }, [language, isClient]);
 }

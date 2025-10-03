@@ -1,11 +1,12 @@
 ﻿@import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #010025;
+  --foreground: #ffffff;
 }
 
-@theme inline {
+/* Theme configuration */
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -15,6 +16,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: linear-gradient(180deg, rgb(15, 23, 42));
     --foreground: #ededed;
   }
 }
@@ -39,7 +47,7 @@ body::before {
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(15, 23, 42, 0.15), transparent 65%),
-    repeating-linear-gradient(45deg, rgba(148, 163, 184, 0.05) 0, rgba(148, 163, 184, 0.05) 1px, transparent 1px, transparent 14px);
+    repeating-linear-gradient(45deg, rgba(148, 163, 184, 0.185) 0, rgba(148, 163, 184, 0.05) 1px, transparent 1px, transparent 14px);
   opacity: 0.35;
   z-index: -1;
 }
@@ -64,73 +72,89 @@ body::after {
 .section-transition::before {
   content: "";
   position: absolute;
-  inset-x: 0;
-  top: -4rem;
-  height: 4rem;
+  left: 0;
+  right: 0;
+  top: -5rem;
+  height: 5rem;
   background: linear-gradient(to bottom, var(--background), transparent);
   pointer-events: none;
   z-index: 10;
+  filter: blur(1.5rem);
 }
 
 .section-transition::after {
   content: "";
   position: absolute;
-  inset-x: 0;
-  bottom: -4rem;
-  height: 4rem;
+  left: 0;
+  right: 0;
+  bottom: -5rem;
+  height: 5rem;
   background: linear-gradient(to top, var(--background), transparent);
   pointer-events: none;
   z-index: 10;
+  filter: blur(1.5rem);
 }
 
 /* Variaciones de color para diferentes secciones */
 .section-transition-blue::before {
   background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), transparent);
+  filter: blur(1.5rem);
 }
 
 .section-transition-blue::after {
   background: linear-gradient(to top, rgba(59, 130, 246, 0.1), transparent);
+  filter: blur(1.5rem);
 }
 
 .section-transition-purple::before {
   background: linear-gradient(to bottom, rgba(168, 85, 247, 0.1), transparent);
+  filter: blur(1.5rem);
 }
 
 .section-transition-purple::after {
   background: linear-gradient(to top, rgba(168, 85, 247, 0.1), transparent);
+  filter: blur(1.5rem);
 }
 
 .section-transition-emerald::before {
   background: linear-gradient(to bottom, rgba(16, 185, 129, 0.1), transparent);
+  filter: blur(1.5rem);
 }
 
 .section-transition-emerald::after {
   background: linear-gradient(to top, rgba(16, 185, 129, 0.1), transparent);
+  filter: blur(1.5rem);
 }
 
 /* Dark mode variations */
 @media (prefers-color-scheme: dark) {
   .section-transition-blue::before {
     background: linear-gradient(to bottom, rgba(59, 130, 246, 0.05), transparent);
+    filter: blur(1.5rem);
   }
 
   .section-transition-blue::after {
     background: linear-gradient(to top, rgba(59, 130, 246, 0.05), transparent);
+    filter: blur(1.5rem);
   }
 
   .section-transition-purple::before {
     background: linear-gradient(to bottom, rgba(168, 85, 247, 0.05), transparent);
+    filter: blur(1.5rem);
   }
 
   .section-transition-purple::after {
     background: linear-gradient(to top, rgba(168, 85, 247, 0.05), transparent);
+    filter: blur(1.5rem);
   }
 
   .section-transition-emerald::before {
     background: linear-gradient(to bottom, rgba(16, 185, 129, 0.05), transparent);
+    filter: blur(1.5rem);
   }
 
   .section-transition-emerald::after {
     background: linear-gradient(to top, rgba(16, 185, 129, 0.05), transparent);
+    filter: blur(1.5rem);
   }
 }
