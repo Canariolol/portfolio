@@ -429,7 +429,7 @@
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 700;
-  color: var(--color-blue-600);
+  color: var(--color-blue-400);
 }
 
 @media (prefers-color-scheme: dark) {

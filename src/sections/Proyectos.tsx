@@ -446,14 +446,14 @@ export default function Proyectos() {
           <p className="text-sm uppercase tracking-[0.35em] text-indigo-500 mb-4">
             {text.sectionTag}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {text.heading.replace(text.highlight, "").trim()} {" "}
             <span className="relative inline-block">
               <span className="absolute inset-x-0 -bottom-2 h-3 bg-gradient-to-r from-purple-200 via-blue-200 to-transparent dark:from-purple-500/20 dark:via-blue-400/30 dark:to-transparent rounded-full" />
               <span className="relative text-purple-600 dark:text-purple-400 capitalize">{text.highlight}</span>
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             {text.intro}
           </p>
         </div>

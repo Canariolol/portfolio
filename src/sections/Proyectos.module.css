@@ -43,7 +43,7 @@
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-gray-900);
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
@@ -137,7 +137,8 @@
   overflow: hidden;
   border-radius: var(--radius-3xl);
   border: 1px solid var(--border-white-60);
-  background: var(--bg-white-85);
+  border-color: var(--border-slate-800);
+  background: var(--bg-slate-900-85);
   box-shadow: var(--shadow-blue-500-5);
   backdrop-filter: blur(8px);
   transition: all var(--transition-normal);

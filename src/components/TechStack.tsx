@@ -136,11 +136,11 @@ export default function TechStack() {
         <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
           <span className="relative inline-block">
             <span className="absolute inset-x-0 -bottom-2 h-3 bg-gradient-to-r from-sky-200 to-transparent dark:from-sky-500/20 dark:to-transparent rounded-full" />
-            <span className="relative text-sky-600 dark:text-sky-400">{text.title}</span>
+            <span className="relative text-sky-400">{text.title}</span>
           </span>
         </h3>
       </div>
-      <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
+      <p className="text-center text-gray-300 mb-8">
         {text.subtitle}
       </p>
       <Canvas camera={{ position: [0, 0, 40], fov: 90 }}>
