@@ -1,0 +1,302 @@
+/* Header Component Styles */
+
+.headerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  background: var(--bg-white-90);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-gray-200);
+  transition: all var(--transition-normal);
+}
+
+.headerContent {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gray-900);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.logo:hover {
+  color: var(--color-blue-600);
+}
+
+.logoHighlight {
+  background: var(--gradient-blue-purple);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: var(--text-slate-600);
+  text-decoration: none;
+  font-weight: 500;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--color-blue-600);
+  background: var(--color-blue-50);
+}
+
+.navLink.active {
+  color: var(--color-blue-600);
+  background: var(--color-blue-100);
+}
+
+.languageSelector {
+  position: relative;
+}
+
+.languageButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-blue-600);
+  color: var(--text-primary);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.languageButton:hover {
+  background: var(--color-blue-700);
+  transform: translateY(-1px);
+}
+
+.languageDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--spacing-sm);
+  background: var(--bg-white);
+  border: 1px solid var(--border-gray-300);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  z-index: var(--z-dropdown);
+  min-width: 120px;
+}
+
+.languageOption {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-gray-700);
+  transition: background-color var(--transition-fast);
+}
+
+.languageOption:hover {
+  background: var(--color-gray-50);
+}
+
+.languageOption.active {
+  background: var(--color-blue-100);
+  color: var(--color-blue-700);
+  font-weight: 500;
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  color: var(--text-gray-700);
+  transition: color var(--transition-fast);
+}
+
+.mobileMenuButton:hover {
+  color: var(--color-blue-600);
+}
+
+.mobileMenu {
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .headerContent {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .navigation {
+    display: none;
+  }
+  
+  .mobileMenuButton {
+    display: block;
+  }
+  
+  .mobileMenu {
+    display: block;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--bg-white-95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-gray-200);
+    transform: translateY(-100%);
+    transition: transform var(--transition-normal);
+    z-index: var(--z-sticky);
+  }
+  
+  .mobileMenu.open {
+    transform: translateY(0);
+  }
+  
+  .mobileNavList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .mobileNavLink {
+    display: block;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    color: var(--text-slate-600);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    border-bottom: 1px solid var(--border-gray-200);
+  }
+  
+  .mobileNavLink:hover {
+    color: var(--color-blue-600);
+    background: var(--color-blue-50);
+  }
+  
+  .mobileNavLink.active {
+    color: var(--color-blue-600);
+    background: var(--color-blue-100);
+  }
+  
+  .mobileLanguageSelector {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-bottom: 1px solid var(--border-gray-200);
+  }
+  
+  .mobileLanguageButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--color-blue-600);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .mobileLanguageButton:hover {
+    background: var(--color-blue-700);
+  }
+  
+  .mobileLanguageDropdown {
+    margin-top: var(--spacing-md);
+    background: var(--bg-gray-50);
+    border: 1px solid var(--border-gray-300);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  
+  .mobileLanguageOption {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-md);
+    background: none;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-gray-700);
+    transition: background-color var(--transition-fast);
+  }
+  
+  .mobileLanguageOption:hover {
+    background: var(--bg-white);
+  }
+  
+  .mobileLanguageOption.active {
+    background: var(--color-blue-100);
+    color: var(--color-blue-700);
+    font-weight: 500;
+  }
+}
+
+/* Overlay for mobile menu */
+.mobileMenuOverlay {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-sticky);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.mobileMenuOverlay.open {
+  display: block;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuOverlay {
+    display: block;
+  }
+}

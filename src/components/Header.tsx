@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import styles from "./Header.module.css";
 
 type NavigationItem = {
   name: string;
@@ -64,117 +65,114 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 border-b border-slate-200 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <Link href="/" className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              Rodrigo Yanez G.
+    <>
+      <header className={styles.headerContainer}>
+        <div className={styles.headerContent}>
+          <div className={styles.logoContainer}>
+            <Link href="/" className={styles.logo}>
+              Rodrigo Yanez<span className={styles.logoHighlight}>.</span>
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center gap-6">
-            <nav className="flex items-center gap-6">
-              {items.map((item) => (
-                item.type === "scroll" ? (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href.substring(1))}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {item.name}
-                  </button>
-                ) : (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                )
-              ))}
+          <div className={styles.navigation}>
+            <nav>
+              <ul className={styles.navList}>
+                {items.map((item) => (
+                  <li key={item.name}>
+                    {item.type === "scroll" ? (
+                      <button
+                        onClick={() => scrollToSection(item.href.substring(1))}
+                        className={styles.navLink}
+                      >
+                        {item.name}
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className={styles.navLink}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </nav>
-            <div className="flex items-center gap-2 rounded-full border border-slate-200/70 dark:border-slate-700/70 bg-white/70 dark:bg-gray-800/70 px-2 py-1 text-xs font-semibold shadow-sm" aria-label={labels.selector}>
+            
+            <div className={styles.languageSelector}>
               <button
-                type="button"
                 onClick={() => handleLanguageChange("es")}
-                className={`px-3 py-1 rounded-full transition-colors ${language === "es" ? "bg-blue-600 text-white" : "text-slate-600 dark:text-slate-300 hover:text-blue-600"}`}
-                aria-pressed={language === "es"}
+                className={`${styles.languageOption} ${language === "es" ? styles.active : ""}`}
               >
                 ES
               </button>
               <button
-                type="button"
                 onClick={() => handleLanguageChange("en")}
-                className={`px-3 py-1 rounded-full transition-colors ${language === "en" ? "bg-blue-600 text-white" : "text-slate-600 dark:text-slate-300 hover:text-blue-600"}`}
-                aria-pressed={language === "en"}
+                className={`${styles.languageOption} ${language === "en" ? styles.active : ""}`}
               >
                 EN
               </button>
             </div>
           </div>
 
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-              aria-label={toggleLabel}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={styles.mobileMenuButton}
+            aria-label={toggleLabel}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-800">
-            <nav className="flex flex-col space-y-2">
+        <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ""}`}>
+          <nav>
+            <ul className={styles.mobileNavList}>
               {items.map((item) => (
-                item.type === "scroll" ? (
-                  <button
-                    key={item.name}
-                    onClick={() => {
-                      scrollToSection(item.href.substring(1));
-                      setIsMenuOpen(false);
-                    }}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 text-left"
-                  >
-                    {item.name}
-                  </button>
-                ) : (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
-                  >
-                    {item.name}
-                  </Link>
-                )
+                <li key={item.name}>
+                  {item.type === "scroll" ? (
+                    <button
+                      onClick={() => {
+                        scrollToSection(item.href.substring(1));
+                        setIsMenuOpen(false);
+                      }}
+                      className={styles.mobileNavLink}
+                    >
+                      {item.name}
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={styles.mobileNavLink}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </li>
               ))}
-            </nav>
-            <div className="flex items-center gap-3 mt-6">
-              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                {labels.selector}
-              </span>
+            </ul>
+          </nav>
+          
+          <div className={styles.mobileLanguageSelector}>
+            <div className={styles.mobileLanguageDropdown}>
               <button
-                type="button"
                 onClick={() => handleLanguageChange("es")}
-                className={`px-3 py-1 text-sm rounded-full border transition-colors ${language === "es" ? "bg-blue-600 text-white border-blue-600" : "border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300"}`}
+                className={`${styles.mobileLanguageOption} ${language === "es" ? styles.active : ""}`}
               >
                 {labels.mobile.es}
               </button>
               <button
-                type="button"
                 onClick={() => handleLanguageChange("en")}
-                className={`px-3 py-1 text-sm rounded-full border transition-colors ${language === "en" ? "bg-blue-600 text-white border-blue-600" : "border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300"}`}
+                className={`${styles.mobileLanguageOption} ${language === "en" ? styles.active : ""}`}
               >
                 {labels.mobile.en}
               </button>
             </div>
           </div>
-        )}
-      </div>
-    </header>
+        </div>
+      </header>
+
+      <div className={`${styles.mobileMenuOverlay} ${isMenuOpen ? styles.open : ""}`} />
+    </>
   );
 }

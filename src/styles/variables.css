@@ -1,0 +1,144 @@
+/* Variables CSS globales para consistencia de colores y estilos */
+
+/* Colores principales - Fijos para consistencia sin importar el tema del navegador */
+:root {
+  /* Colores de fondo */
+  --bg-primary: #010025;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #ededed;
+  --bg-white: #ffffff;
+  --bg-gray-50: #f9fafb;
+  --bg-gray-900: #111827;
+  
+  /* Colores de texto */
+  --text-primary: #ffffff;
+  --text-secondary: #171717;
+  --text-gray-900: #111827;
+  --text-gray-800: #1f2937;
+  --text-gray-700: #374151;
+  --text-gray-600: #4b5563;
+  --text-gray-500: #6b7280;
+  --text-gray-400: #9ca3af;
+  --text-gray-300: #d1d5db;
+  --text-slate-900: #0f172a;
+  --text-slate-800: #1e293b;
+  --text-slate-700: #334155;
+  --text-slate-600: #475569;
+  --text-slate-500: #64748b;
+  --text-slate-400: #94a3b8;
+  --text-slate-300: #cbd5e1;
+  
+  /* Colores de acento */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-900: #1e3a8a;
+  
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;
+  --color-sky-600: #0284c7;
+  
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  
+  --color-red-600: #dc2626;
+  --color-amber-500: #f59e0b;
+  
+  /* Colores con transparencia */
+  --bg-white-85: rgba(255, 255, 255, 0.85);
+  --bg-white-90: rgba(255, 255, 255, 0.90);
+  --bg-white-75: rgba(255, 255, 255, 0.75);
+  --bg-gray-900-85: rgba(17, 24, 39, 0.85);
+  --bg-gray-900-90: rgba(17, 24, 39, 0.90);
+  --bg-gray-900-80: rgba(17, 24, 39, 0.80);
+  --bg-slate-900-85: rgba(15, 23, 42, 0.85);
+  --bg-slate-900-90: rgba(15, 23, 42, 0.90);
+  --bg-slate-900-80: rgba(15, 23, 42, 0.80);
+  
+  /* Bordes */
+  --border-white-60: rgba(255, 255, 255, 0.6);
+  --border-slate-200: #e2e8f0;
+  --border-slate-700: #334155;
+  --border-slate-800: #1e293b;
+  --border-gray-300: #d1d5db;
+  --border-gray-600: #4b5563;
+  --border-slate-100: #f1f5f9;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-blue: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+  --shadow-blue-500-5: 0 4px 6px -1px rgba(59, 130, 246, 0.05);
+  --shadow-blue-500-20: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+  --shadow-blue-600-20: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
+  
+  /* Gradientes */
+  --gradient-blue-purple: linear-gradient(to right, #2563eb, #0ea5e9, #9333ea);
+  --gradient-blue-sky-purple: linear-gradient(to right, #2563eb, #0ea5e9, #9333ea);
+  --gradient-blue-purple-button: linear-gradient(to right, #2563eb, #9333ea);
+  --gradient-hero-light: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.12), transparent 55%), radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.12), transparent 55%), linear-gradient(135deg, rgba(15, 23, 42, 0.05), rgba(2, 132, 199, 0.08));
+  --gradient-hero-dark: radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.12), transparent 55%), radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.14), transparent 55%), linear-gradient(135deg, rgba(15, 23, 42, 0.55), rgba(30, 64, 175, 0.35));
+  
+  /* Espaciado */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+  
+  /* Tipografía */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  /* Transiciones */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* Z-index */
+  --z-dropdown: 50;
+  --z-sticky: 100;
+  --z-fixed: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-tooltip: 600;
+}
+
+/* Forzar colores consistentes sin importar el tema del navegador */
+* {
+  color-scheme: light dark;
+}
+
+html, body {
+  color-scheme: light dark;
+}

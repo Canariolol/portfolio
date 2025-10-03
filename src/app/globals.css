@@ -1,45 +1,22 @@
 ﻿@import "tailwindcss";
+@import "../styles/variables.css";
 
-:root {
-  --background: #010025;
-  --foreground: #ffffff;
-}
-
-/* Theme configuration */
-:root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: linear-gradient(180deg, rgb(15, 23, 42));
-    --foreground: #ededed;
-  }
-}
-
+/* Estilos globales base */
 html {
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   position: relative;
   min-height: 100%;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
+/* Fondo decorativo consistente */
 body::before {
   content: "";
   position: fixed;
@@ -67,6 +44,7 @@ body::after {
 /* Transiciones suaves entre secciones */
 .section-transition {
   position: relative;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-transition::before {
@@ -76,7 +54,7 @@ body::after {
   right: 0;
   top: -5rem;
   height: 5rem;
-  background: linear-gradient(to bottom, var(--background), transparent);
+  background: linear-gradient(to bottom, var(--bg-primary), transparent);
   pointer-events: none;
   z-index: 10;
   filter: blur(1.5rem);
@@ -89,13 +67,17 @@ body::after {
   right: 0;
   bottom: -5rem;
   height: 5rem;
-  background: linear-gradient(to top, var(--background), transparent);
+  background: linear-gradient(to top, var(--bg-primary), transparent);
   pointer-events: none;
   z-index: 10;
   filter: blur(1.5rem);
 }
 
 /* Variaciones de color para diferentes secciones */
+.section-transition-blue {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .section-transition-blue::before {
   background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), transparent);
   filter: blur(1.5rem);
@@ -104,6 +86,10 @@ body::after {
 .section-transition-blue::after {
   background: linear-gradient(to top, rgba(59, 130, 246, 0.1), transparent);
   filter: blur(1.5rem);
+}
+
+.section-transition-purple {
+  transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-transition-purple::before {
@@ -116,6 +102,10 @@ body::after {
   filter: blur(1.5rem);
 }
 
+.section-transition-emerald {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .section-transition-emerald::before {
   background: linear-gradient(to bottom, rgba(16, 185, 129, 0.1), transparent);
   filter: blur(1.5rem);
@@ -126,35 +116,31 @@ body::after {
   filter: blur(1.5rem);
 }
 
-/* Dark mode variations */
-@media (prefers-color-scheme: dark) {
-  .section-transition-blue::before {
-    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.05), transparent);
-    filter: blur(1.5rem);
+/* Animaciones personalizadas */
+@keyframes border-rise {
+  0% {
+    background-position: 0% 200%;
   }
+  100% {
+    background-position: 0% -200%;
+  }
+}
 
-  .section-transition-blue::after {
-    background: linear-gradient(to top, rgba(59, 130, 246, 0.05), transparent);
-    filter: blur(1.5rem);
-  }
+.animate-border-rise {
+  animation: border-rise 3s linear infinite;
+}
 
-  .section-transition-purple::before {
-    background: linear-gradient(to bottom, rgba(168, 85, 247, 0.05), transparent);
-    filter: blur(1.5rem);
+/* Optimización para móviles */
+@media (max-width: 768px) {
+  .section-transition,
+  .section-transition-blue,
+  .section-transition-emerald,
+  .section-transition-purple {
+    transition-duration: 0.4s;
   }
+}
 
-  .section-transition-purple::after {
-    background: linear-gradient(to top, rgba(168, 85, 247, 0.05), transparent);
-    filter: blur(1.5rem);
-  }
-
-  .section-transition-emerald::before {
-    background: linear-gradient(to bottom, rgba(16, 185, 129, 0.05), transparent);
-    filter: blur(1.5rem);
-  }
-
-  .section-transition-emerald::after {
-    background: linear-gradient(to top, rgba(16, 185, 129, 0.05), transparent);
-    filter: blur(1.5rem);
-  }
+/* Prevenir parpadeo durante transiciones */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
