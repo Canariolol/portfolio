@@ -45,7 +45,7 @@ const content: Record<"es" | "en", HeroContent> = {
       { label: "Español", lang: "es", url: "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/CVs/CV%20-%20Rodrigo%20Yanez%2010-2025%20Esp.pdf" },
     ],
     stats: [
-      { value: "2+", label: "Años de experiencia (Dev)" },
+      { value: "2+", label: "Años de experiencia en Desarrollo" },
       { value: "4", label: "Proyectos en producción (creados desde cero)" },
       { value: "10+", label: "Trabajos freelance completados" },
       { value: "Sí", label: ["Déficit de horas de sueño", "(café... por favor)"] },
@@ -74,7 +74,7 @@ const content: Record<"es" | "en", HeroContent> = {
       { label: "Spanish", lang: "es", url: "https://storage.googleapis.com/tu-bucket/cv-espanol.pdf" },
     ],
     stats: [
-      { value: "2+", label: "Years of experience" },
+      { value: "2+", label: "Years of experience as Developer" },
       { value: "4", label: "Production projects (built from scratch)" },
       { value: "10+", label: "Freelance engagements delivered" },
       { value: "Yes", label: ["Sleep hours deficit", "(coffee... please)"] },
