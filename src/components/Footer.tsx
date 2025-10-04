@@ -1,9 +1,8 @@
 ﻿"use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, ExternalLink, Star } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useEffect, useState } from "react";
 
 type FooterLink = {
   name: string;
@@ -70,24 +69,6 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const footerContent = content[language];
-  const [starCount, setStarCount] = useState(0);
-
-  useEffect(() => {
-    // Obtener contador inicial del localStorage
-    const initialCount = parseInt(localStorage.getItem('starClickCount') || '0');
-    setStarCount(initialCount);
-
-    // Escuchar eventos de clic en estrellas
-    const handleStarClick = (event: CustomEvent) => {
-      setStarCount(event.detail.count);
-    };
-
-    window.addEventListener('starClicked', handleStarClick as EventListener);
-
-    return () => {
-      window.removeEventListener('starClicked', handleStarClick as EventListener);
-    };
-  }, []);
 
   return (
     <footer className="relative bg-gray-950 text-white overflow-hidden">

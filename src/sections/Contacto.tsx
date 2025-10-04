@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle, Sparkles, ArrowRight, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "./Contacto.module.css";
@@ -113,7 +113,7 @@ const socialLinks = [
   {
     icon: <Linkedin className="w-6 h-6" />,
     name: "LinkedIn",
-    url: "www.linkedin.com/in/rodrigo-yanez-garcia-025614141",
+    url: "https://www.linkedin.com/in/rodrigo-yanez-garcia-025614141",
   },
   {
     icon: <Twitter className="w-6 h-6" />,

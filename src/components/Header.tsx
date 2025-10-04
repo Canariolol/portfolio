@@ -50,7 +50,6 @@ export default function Header() {
   const { language, setLanguage } = useLanguage();
 
   const items = navigation[language];
-  const labels = languageLabels[language];
   const toggleLabel = language === "es" ? "Abrir o cerrar menú" : "Toggle menu";
   const expandLabel = language === "es" ? "Mostrar menú" : "Show menu";
 

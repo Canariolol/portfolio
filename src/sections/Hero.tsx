@@ -1,8 +1,7 @@
 ﻿"use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ArrowDown, Download, ExternalLink, ChevronDown, Globe } from "lucide-react";
-import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "./Hero.module.css";
 
@@ -90,7 +89,7 @@ export default function Hero() {
   const { language } = useLanguage();
 
   const heroContent = content[language];
-  const roles = useMemo(() => heroContent.roles, [heroContent.roles]);
+  const roles = heroContent.roles;
 
   useEffect(() => {
     setCurrentRole(0);
@@ -148,7 +147,7 @@ export default function Hero() {
           <p className={styles.description}>{heroContent.description}</p>
 
           <blockquote className={styles.quote}>
-            "{heroContent.quote}"
+            &ldquo;{heroContent.quote}&rdquo;
           </blockquote>
 
           <div className={styles.actionsContainer}>

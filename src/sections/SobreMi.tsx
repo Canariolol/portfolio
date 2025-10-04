@@ -4,7 +4,6 @@ import { Code2, Server, Zap, Users, Target, BrainCogIcon, Brain } from "lucide-r
 import TechStack from "@/components/TechStack";
 import ExpertiseCarousel from "@/components/ExpertiseCarousel";
 import { useLanguage } from "@/context/LanguageContext";
-import { useEffect, useState } from "react";
 import styles from "./SobreMi.module.css";
 
 const skillIconMap = {
@@ -342,8 +341,8 @@ export default function SobreMi() {
 
                 <div className={styles.aiCardContent}>
                   <div className={styles.aiCardHeader}>
-                    <div className={styles.aiCardIconWrapper}>
-                      <Zap className={styles.aiCardIcon} />
+                    <div className={card.iconWrapperClass}>
+                      <Zap className={card.iconClass} />
                     </div>
                     <h4 className={styles.aiCardTitle}>
                       {card.title}

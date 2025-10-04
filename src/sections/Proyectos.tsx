@@ -4,9 +4,7 @@ import { useMemo, useState } from "react";
 import { ExternalLink, Github, Calendar, Users, Code, CheckCircle, ArrowRight, ArrowDown, ArrowLeft, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProjectImageModal from "@/components/ProjectImageModal";
-import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { useEffect, useRef } from "react";
 import styles from "./Proyectos.module.css";
 
 type Language = "es" | "en";
@@ -605,11 +603,9 @@ export default function Proyectos() {
         </div>
 
         <div className="relative">
-          <Image
+          <img
             src="/PortafolioDir.png"
             alt="Imagen decorativa del proceso de trabajo"
-            width={440}
-            height={550}
             className={styles.processDecorativeImage}
           />
           <div className={styles.processSection}>
