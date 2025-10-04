@@ -325,11 +325,34 @@
 .cvDropdownContent {
   display: flex;
   border-bottom: 1px solid var(--border-gray-200);
+  position: relative;
 }
 
 @media (prefers-color-scheme: dark) {
   .cvDropdownContent {
     border-bottom-color: var(--border-slate-700);
+  }
+}
+
+.cvDropdownContent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
+  background-size: 200% 200%;
+  animation: gradient-slide-vertical 3s ease-in-out infinite;
+  transform: translateX(-50%);
+}
+
+@keyframes gradient-slide-vertical {
+  0%, 100% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
   }
 }
 
@@ -341,7 +364,9 @@
   padding: var(--spacing-md);
   color: var(--text-slate-700);
   text-decoration: none;
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -350,14 +375,41 @@
   }
 }
 
+.cvOption::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.05));
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
 .cvOption:hover {
-  background: var(--color-gray-50);
+  background: var(--color-blue-100);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.cvOption:hover::before {
+  opacity: 1;
 }
 
 @media (prefers-color-scheme: dark) {
   .cvOption:hover {
     background: var(--bg-slate-800);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
   }
+}
+
+.cvOption:first-child:hover {
+  border-radius: var(--radius-lg) 0 0 0;
+}
+
+.cvOption:last-child:hover {
+  border-radius: 0 var(--radius-lg) 0 0;
 }
 
 .cvOptionIcon {

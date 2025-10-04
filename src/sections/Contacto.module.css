@@ -4,19 +4,19 @@
 
 /* === VARIABLES PRINCIPALES (Modifica estas para cambiar colores) === */
 :root {
-  /* Fondo de la sección */
+  /* Fondo de la sección - Aplicar colores oscuros a ambos modos */
   --contacto-bg-section: var(--section-bg-contacto);
-  --contacto-bg-card: #ffffff;
+  --contacto-bg-card: #1f2937;
   --contacto-bg-card-dark: #1f2937;
   
-  /* Textos principales */
+  /* Textos principales - Aplicar colores claros a ambos modos */
   --contacto-text-primary: #ffffff;
-  --contacto-text-secondary: #9ca3af;
-  --contacto-text-title: #111827;
+  --contacto-text-secondary: #e9e9e9;;
+  --contacto-text-title: #ffffff;
   
-  /* Bordes y fondos de formularios */
-  --contacto-border-input: #d1d5db;
-  --contacto-bg-input: #ffffff;
+  /* Bordes y fondos de formularios - Aplicar colores oscuros a ambos modos */
+  --contacto-border-input: #4b5563;
+  --contacto-bg-input: #374151;
   --contacto-bg-input-dark: #374151;
   
   /* Colores de acento */
@@ -259,21 +259,15 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-gray-300);
+  color: #d1d5db;
   margin-bottom: 0.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .formLabel {
-    color: var(--text-gray-300);
-  }
 }
 
 .formInput,
 .formTextarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  background: var(--contacto-bg-input-dark);
+  background: var(--contacto-bg-input);
   border: 1px solid var(--contacto-border-input);
   border-radius: var(--radius-lg);
   font-size: 1rem;
@@ -284,27 +278,13 @@
 .formInput:focus,
 .formTextarea:focus {
   outline: none;
-  border-color: var(--color-blue-500);
+  border-color: #3b82f6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
 .formInput::placeholder,
 .formTextarea::placeholder {
-  color: var(--text-gray-400);
-}
-
-@media (prefers-color-scheme: dark) {
-  .formInput,
-  .formTextarea {
-    background: var(--contacto-bg-input-dark);
-    border-color: var(--border-gray-600);
-    color: var(--contacto-text-primary);
-  }
-  
-  .formInput::placeholder,
-  .formTextarea::placeholder {
-    color: var(--text-gray-400);
-  }
+  color: #9ca3af;
 }
 
 .formTextarea {
@@ -430,17 +410,7 @@
 }
 
 .contactInfoLink:hover {
-  color: var(--color-blue-300);
-}
-
-@media (prefers-color-scheme: dark) {
-  .contactInfoLink {
-    color: var(--text-gray-300);
-  }
-  
-  .contactInfoLink:hover {
-    color: var(--color-blue-300);
-  }
+  color: #93c5fd;
 }
 
 /* =============================================
@@ -458,46 +428,96 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: var(--bg-gray-600);
+  background: #374151;
   border-radius: var(--radius-xl);
   transition: all var(--transition-normal);
   text-decoration: none;
   color: inherit;
+  position: relative;
+  overflow: hidden;
 }
 
 .socialLinkCard:hover {
   transform: scale(1.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  .socialLinkCard {
-    background: var(--bg-gray-600);
+.socialLinkCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
+  background-size: 200% 100%;
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+.socialLinkCard:hover::after {
+  transform: translateY(0);
+  animation: gradient-slide 3s ease-in-out infinite;
+}
+
+@keyframes gradient-slide {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
 .socialLinkIcon {
   margin-bottom: 0.5rem;
+  transition: all var(--transition-normal);
 }
 
 .socialLinkName {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-gray-200);
+  color: #e5e7eb;
+  transition: all var(--transition-normal);
 }
 
-@media (prefers-color-scheme: dark) {
-  .socialLinkName {
-    color: var(--text-gray-200);
+.socialLinkCard:hover .socialLinkIcon {
+  color: #60a5fa;
+  filter: drop-shadow(0 0 2px #3b82f6) drop-shadow(0 0 4px #60a5fa);
+  animation: icon-glow 3s ease-in-out infinite;
+}
+
+@keyframes icon-glow {
+  0%, 100% {
+    color: #3b82f6;
+    filter: drop-shadow(0 0 2px #3b82f6) drop-shadow(0 0 4px #60a5fa);
+  }
+  50% {
+    color: #93c5fd;
+    filter: drop-shadow(0 0 2px #60a5fa) drop-shadow(0 0 6px #93c5fd);
   }
 }
 
 .socialLinkCard:hover .socialLinkName {
-  color: var(--contacto-text-title);
+  background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-slide 3s ease-in-out infinite;
 }
 
 @media (prefers-color-scheme: dark) {
   .socialLinkCard:hover .socialLinkName {
-    color: var(--contacto-text-primary);
+    background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-slide 3s ease-in-out infinite;
   }
 }
 
