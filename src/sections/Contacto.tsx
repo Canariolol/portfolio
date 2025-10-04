@@ -63,19 +63,19 @@ const copy = {
 const contactInfo = {
   es: [
     {
-      icon: <Mail className="w-6 h-6 text-blue-600" />,
+      icon: <Mail className={`w-6 h-6 ${styles.contactIconEmail}`} />,
       title: "Email",
       value: "rodrigo.iyagar@gmail.com",
       link: "mailto:rodrigo.iyagar@gmail.com",
     },
     {
-      icon: <Phone className="w-6 h-6 text-green-600" />,
+      icon: <Phone className={`w-6 h-6 ${styles.contactIconPhone}`} />,
       title: "Teléfono",
       value: "+56 9 5660 3856",
       link: "tel:+56956603856",
     },
     {
-      icon: <MapPin className="w-6 h-6 text-red-600" />,
+      icon: <MapPin className={`w-6 h-6 ${styles.contactIconLocation}`} />,
       title: "Ubicación",
       value: "Valdivia, Chile",
       link: "https://maps.google.com",
@@ -83,19 +83,19 @@ const contactInfo = {
   ],
   en: [
     {
-      icon: <Mail className="w-6 h-6 text-blue-600" />,
+      icon: <Mail className={`w-6 h-6 ${styles.contactIconEmail}`} />,
       title: "Email",
       value: "rodrigo.iyagar@gmail.com",
       link: "mailto:rodrigo.iyagar@gmail.com",
     },
     {
-      icon: <Phone className="w-6 h-6 text-green-600" />,
+      icon: <Phone className={`w-6 h-6 ${styles.contactIconPhone}`} />,
       title: "Phone",
       value: "+56 9 5660 3856",
       link: "tel:+56956603856",
     },
     {
-      icon: <MapPin className="w-6 h-6 text-red-600" />,
+      icon: <MapPin className={`w-6 h-6 ${styles.contactIconLocation}`} />,
       title: "Location",
       value: "Valdivia, Chile",
       link: "https://maps.google.com",
@@ -109,19 +109,16 @@ const socialLinks = [
     icon: <Github className="w-6 h-6" />,
     name: "GitHub",
     url: "https://github.com/Canariolol/",
-    color: "hover:text-white",
   },
   {
     icon: <Linkedin className="w-6 h-6" />,
     name: "LinkedIn",
     url: "www.linkedin.com/in/rodrigo-yanez-garcia-025614141",
-    color: "hover:text-blue-600",
   },
   {
     icon: <Twitter className="w-6 h-6" />,
     name: "Twitter",
     url: "#",
-    color: "hover:text-blue-400",
   },
 ];
 

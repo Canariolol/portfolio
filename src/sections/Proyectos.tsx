@@ -596,7 +596,7 @@ export default function Proyectos() {
         <div className="text-center">
           <Button
             onClick={openOtherProjectsModal}
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+            className={styles.otherProjectsButton}
           >
             {text.otherProjectsButton}
             <ExternalLink className="h-4 w-4" />
@@ -707,16 +707,16 @@ export default function Proyectos() {
 
       {isOtherProjectsModalOpen && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isOtherProjectsModalVisible ? "opacity-100" : "opacity-0"}`}
+          className={`${styles.modalBackdropInline} ${isOtherProjectsModalVisible ? styles.modalBackdropInlineVisible : styles.modalBackdropInlineHidden}`}
           onClick={closeOtherProjectsModal}
         >
           <div
-            className={`relative max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl border border-white/60 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-2xl transition-all duration-300 ${isOtherProjectsModalVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+            className={`${styles.modalInline} ${isOtherProjectsModalVisible ? styles.modalInlineVisible : styles.modalInlineHidden}`}
             onClick={(event) => event.stopPropagation()}
           >
             <button
               onClick={closeOtherProjectsModal}
-              className="absolute right-6 top-6 rounded-full border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 p-2 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors z-10"
+              className={styles.modalCloseButtonInline}
               aria-label={closeLabel}
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -724,49 +724,49 @@ export default function Proyectos() {
               </svg>
             </button>
 
-            <div className="space-y-2 pt-8 pb-6 text-center">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+            <div className={`${styles.modalHeaderInline} space-y-2 pt-8 pb-6 text-center`}>
+              <h3 className={styles.modalTitleInline}>
                 {text.otherProjectsTitle}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className={styles.modalSubtitleInline}>
                 {text.otherProjectsSubtitle}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-8 pb-8">
+            <div className={`${styles.modalContentInline} ${styles.otherProjectsGridInline}`}>
               {otherProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="flex flex-col rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/90 dark:bg-slate-900/90 shadow-sm overflow-hidden"
+                  className={styles.otherProjectCardInline}
                 >
                   <img
                     src={project.image}
                     alt={project.title[language]}
-                    className="w-full h-40 object-cover cursor-pointer transition-transform duration-300 hover:scale-105"
+                    className={styles.otherProjectImageInline}
                     onClick={() => openImageZoomModal(project.image)}
                   />
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <div className={styles.otherProjectContentInline}>
+                    <div className={`${styles.otherProjectHeaderInline} mb-4`}>
+                      <h4 className={styles.otherProjectTitleInline}>
                         {project.title[language]}
                       </h4>
-                      <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-600 dark:text-slate-300">
+                      <span className={styles.otherProjectStatusInline}>
                         <CheckCircle className="h-3 w-3" />
                         {project.status[language]}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4 flex-grow">
+                    <p className={`${styles.otherProjectDescriptionInline} mb-4 flex-grow`}>
                       {project.description[language]}
                     </p>
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    <div className={`${styles.otherProjectDateInline} mb-4`}>
                       <Calendar className="h-4 w-4" />
                       {project.year}
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className={styles.otherProjectTechnologiesInline}>
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/70 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300"
+                          className={styles.otherProjectTechnologyInline}
                         >
                           {tech}
                         </span>
@@ -782,21 +782,21 @@ export default function Proyectos() {
 
       {isImageZoomModalOpen && selectedImageUrl && (
         <div
-          className={`fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-lg p-4 transition-opacity duration-300 ${isImageZoomModalVisible ? "opacity-100" : "opacity-0"}`}
+          className={`${styles.imageZoomModalInline} ${isImageZoomModalVisible ? styles.imageZoomModalInlineVisible : styles.imageZoomModalInlineHidden}`}
           onClick={closeImageZoomModal}
         >
           <div
-            className={`relative transition-all duration-300 ${isImageZoomModalVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+            className={`${styles.imageZoomContentInline} ${isImageZoomModalVisible ? styles.imageZoomContentInlineVisible : styles.imageZoomContentInlineHidden}`}
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={selectedImageUrl}
               alt="Project image zoom"
-              className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              className={styles.imageZoomImageInline}
             />
             <button
               onClick={closeImageZoomModal}
-              className="absolute -right-4 -top-4 rounded-full bg-white/20 p-2 text-white hover:bg-white/30 transition-colors"
+              className={styles.imageZoomCloseButtonInline}
               aria-label={closeLabel}
             >
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

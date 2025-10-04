@@ -1,464 +1,48 @@
-/* Estilos para la sección Contacto */
+/* =============================================
+   SECCIÓN CONTACTO - VARIABLES DE COLOR FÁCILES DE MODIFICAR
+   ============================================= */
 
-/* Contenedor principal de la sección */
+/* === VARIABLES PRINCIPALES (Modifica estas para cambiar colores) === */
+:root {
+  /* Fondo de la sección */
+  --contacto-bg-section: var(--section-bg-contacto);
+  --contacto-bg-card: #ffffff;
+  --contacto-bg-card-dark: #1f2937;
+  
+  /* Textos principales */
+  --contacto-text-primary: #ffffff;
+  --contacto-text-secondary: #9ca3af;
+  --contacto-text-title: #111827;
+  
+  /* Bordes y fondos de formularios */
+  --contacto-border-input: #d1d5db;
+  --contacto-bg-input: #ffffff;
+  --contacto-bg-input-dark: #374151;
+  
+  /* Colores de acento */
+  --contacto-accent: #10b981;
+  --contacto-accent-text: #059669;
+  --contacto-button-bg: #2563eb;
+  --contacto-button-hover: #1d4ed8;
+}
+
+/* =============================================
+   ESTILOS BASE (No modificar a menos que sea necesario)
+   ============================================= */
+
+/* Contenedor principal */
 .section {
   position: relative;
   padding: 6rem 1rem;
   min-height: 100vh;
-  background: var(--section-bg-contacto);
+  background: var(--contacto-bg-section);
 }
 
-/* Fondo de la sección */
+/* Fondo decorativo */
 .sectionBackground {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom right, var(--bg-gray-900), rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
-}
-
-@media (prefers-color-scheme: dark) {
-  .sectionBackground {
-    background: linear-gradient(to bottom right, var(--bg-gray-900), rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
-  }
-}
-
-.sectionBackgroundOverlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.15), transparent 50%), 
-              radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.15), transparent 50%);
-}
-
-/* Elementos decorativos */
-.decorativeBlob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(3rem);
-  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.decorativeBlobTop {
-  top: 5rem;
-  left: 2.5rem;
-  width: 18rem;
-  height: 18rem;
-  background: rgba(59, 130, 246, 0.2);
-}
-
-.decorativeBlobBottom {
-  bottom: 5rem;
-  right: 2.5rem;
-  width: 24rem;
-  height: 24rem;
-  background: rgba(168, 85, 247, 0.2);
-  animation-delay: 2s;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-/* Header de la sección */
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.sectionTagline {
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.35em;
-  color: var(--color-emerald-500);
-  margin-bottom: 1rem;
-}
-
-.sectionHeading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-gray-900);
-  margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .sectionHeading {
-    font-size: 3rem;
-  }
-}
-
-.sectionHighlight {
-  position: relative;
-  display: inline-block;
-}
-
-.sectionHighlight::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.5rem;
-  height: 0.75rem;
-  background: linear-gradient(to right, var(--color-emerald-200), var(--color-green-200), transparent);
-  border-radius: 9999px;
-  opacity: 0.6;
-}
-
-.sectionHighlightText {
-  position: relative;
-  color: var(--color-emerald-600);
-}
-
-@media (prefers-color-scheme: dark) {
-  .sectionHighlight::before {
-    background: linear-gradient(to right, rgba(16, 185, 129, 0.2), rgba(34, 197, 94, 0.3), transparent);
-  }
-  
-  .sectionHighlightText {
-    color: var(--color-emerald-400);
-  }
-}
-
-.sectionIntro {
-  font-size: 1.25rem;
-  color: var(--text-gray-600);
-  line-height: 1.75;
-  max-width: 48rem;
-  margin: 0 auto;
-}
-
-@media (prefers-color-scheme: dark) {
-  .sectionIntro {
-    color: var(--text-gray-300);
-  }
-}
-
-/* Grid principal */
-.contentGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-}
-
-@media (min-width: 1024px) {
-  .contentGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Tarjetas */
-.card {
-  background: var(--bg-white-85);
-  border-radius: var(--radius-3xl);
-  border: 1px solid var(--border-white-60);
-  padding: 2rem;
-  box-shadow: var(--shadow-xl);
-  backdrop-filter: blur(8px);
-}
-
-@media (prefers-color-scheme: dark) {
-  .card {
-    background: var(--bg-gray-900-85);
-    border-color: var(--border-gray-700-60);
-  }
-}
-
-/* Formulario */
-.formTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-gray-900);
-  margin-bottom: 1.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .formTitle {
-    color: var(--text-primary);
-  }
-}
-
-.formGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .formGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-}
-
-.formLabel {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-gray-700);
-  margin-bottom: 0.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .formLabel {
-    color: var(--text-gray-300);
-  }
-}
-
-.formInput,
-.formTextarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: var(--bg-white);
-  border: 1px solid var(--border-gray-300);
-  border-radius: var(--radius-lg);
-  color: var(--text-gray-900);
-  transition: all var(--transition-fast);
-}
-
-.formInput:focus,
-.formTextarea:focus {
-  outline: none;
-  border-color: var(--color-blue-500);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-}
-
-.formInput::placeholder,
-.formTextarea::placeholder {
-  color: var(--text-gray-500);
-}
-
-@media (prefers-color-scheme: dark) {
-  .formInput,
-  .formTextarea {
-    background: var(--bg-gray-800);
-    border-color: var(--border-gray-600);
-    color: var(--text-primary);
-  }
-  
-  .formInput::placeholder,
-  .formTextarea::placeholder {
-    color: var(--text-gray-400);
-  }
-}
-
-.formTextarea {
-  resize: none;
-  min-height: 5rem;
-}
-
-.formActions {
-  margin-top: 1.5rem;
-}
-
-/* Estados del formulario */
-.successMessage {
-  color: var(--color-green-500);
-  margin-top: 1rem;
-}
-
-.errorMessage {
-  color: var(--color-red-500);
-  margin-top: 1rem;
-}
-
-/* Información de contacto */
-.infoTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-gray-900);
-  margin-bottom: 1.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .infoTitle {
-    color: var(--text-primary);
-  }
-}
-
-.infoList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.infoItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.infoIcon {
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-}
-
-.infoContent {
-  flex: 1;
-}
-
-.infoItemTitle {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--text-gray-900);
-  margin-bottom: 0.25rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .infoItemTitle {
-    color: var(--text-primary);
-  }
-}
-
-.infoLink {
-  color: var(--text-gray-600);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.infoLink:hover {
-  color: var(--color-blue-600);
-}
-
-@media (prefers-color-scheme: dark) {
-  .infoLink {
-    color: var(--text-gray-300);
-  }
-  
-  .infoLink:hover {
-    color: var(--color-blue-400);
-  }
-}
-
-/* Redes sociales */
-.socialGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.socialLink {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  background: var(--bg-white);
-  border-radius: var(--radius-xl);
-  text-decoration: none;
-  transition: all var(--transition-normal);
-}
-
-.socialLink:hover {
-  transform: scale(1.05);
-}
-
-@media (prefers-color-scheme: dark) {
-  .socialLink {
-    background: var(--bg-gray-800);
-  }
-}
-
-.socialIcon {
-  margin-bottom: 0.5rem;
-  color: var(--text-gray-700);
-  transition: color var(--transition-fast);
-}
-
-@media (prefers-color-scheme: dark) {
-  .socialIcon {
-    color: var(--text-gray-300);
-  }
-}
-
-.socialLink:hover .socialIcon {
-  color: var(--text-gray-900);
-}
-
-@media (prefers-color-scheme: dark) {
-  .socialLink:hover .socialIcon {
-    color: var(--text-primary);
-  }
-}
-
-.socialName {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-gray-700);
-}
-
-@media (prefers-color-scheme: dark) {
-  .socialName {
-    color: var(--text-gray-300);
-  }
-}
-
-/* Tarjeta de disponibilidad */
-.availabilityCard {
-  background: linear-gradient(to right, var(--color-blue-600), var(--color-blue-900), var(--color-purple-600));
-  border-radius: var(--radius-3xl);
-  padding: 2rem;
-  color: var(--text-primary);
-  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
-}
-
-.availabilityTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.availabilityDescription {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 1.5rem;
-}
-
-.availabilityStatus {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.statusIndicator {
-  width: 0.75rem;
-  height: 0.75rem;
-  background: var(--color-emerald-400);
-  border-radius: 50%;
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.statusText {
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-/* Fondo mejorado con efectos visuales */
-.sectionBackground {
-  position: absolute;
-  inset: 0;
-}
-
-.sectionBackgroundGradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom right, var(--color-blue-50), var(--color-indigo-50), var(--color-purple-50));
-}
-
-@media (prefers-color-scheme: dark) {
-  .sectionBackgroundGradient {
-    background: linear-gradient(to bottom right, var(--bg-gray-900), rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
-  }
-}
-
-.sectionBackgroundRadial {
-  position: absolute;
-  inset: 0;
-  background: var(--section-bg-contacto);
 }
 
 /* Elementos decorativos */
@@ -505,7 +89,10 @@
   z-index: 1;
 }
 
-/* Header */
+/* =============================================
+   HEADER DE LA SECCIÓN
+   ============================================= */
+
 .header {
   text-align: center;
   margin-bottom: 4rem;
@@ -516,16 +103,22 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.35em;
-  color: var(--color-emerald-500);
+  color: var(--contacto-accent);
   margin-bottom: 1rem;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-gray-900);
+  color: var(--contacto-text-title);
   margin-bottom: 1.5rem;
   line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
 }
 
 .titleHighlight {
@@ -547,18 +140,21 @@
 
 .titleHighlightText {
   position: relative;
-  color: var(--color-emerald-600);
+  color: var(--contacto-accent-text);
 }
 
 .intro {
   font-size: 1.25rem;
-  color: var(--text-gray-600);
+  color: var(--contacto-text-secondary);
   line-height: 1.75;
   max-width: 48rem;
   margin: 0 auto;
 }
 
-/* Grid principal */
+/* =============================================
+   GRID PRINCIPAL
+   ============================================= */
+
 .mainGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -571,9 +167,30 @@
   }
 }
 
-/* Tarjetas */
+/* =============================================
+   TARJETAS
+   ============================================= */
+
 .card {
-  background: var(--bg-white-85);
+  background: var(--contacto-bg-card);
+  border-radius: var(--radius-3xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-white-60);
+  backdrop-filter: blur(8px);
+}
+
+.formCard {
+  background: var(--contacto-bg-card);
+  border-radius: var(--radius-3xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-white-60);
+  backdrop-filter: blur(8px);
+}
+
+.infoCard {
+  background: var(--contacto-bg-card);
   border-radius: var(--radius-3xl);
   padding: 2rem;
   box-shadow: var(--shadow-xl);
@@ -583,30 +200,38 @@
 
 @media (prefers-color-scheme: dark) {
   .card {
-    background: var(--bg-gray-900-85);
+    background: var(--contacto-bg-card-dark);
+    border-color: var(--border-gray-700);
+  }
+  
+  .formCard {
+    background: var(--contacto-bg-card-dark);
+    border-color: var(--border-gray-700);
+  }
+  
+  .infoCard {
+    background: var(--contacto-bg-card-dark);
     border-color: var(--border-gray-700);
   }
 }
 
-/* Tarjeta de formulario */
-.formCard {
-  /* Estilos base de .card */
-}
+/* =============================================
+   FORMULARIO
+   ============================================= */
 
 .formTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-gray-900);
+  color: var(--contacto-text-title);
   margin-bottom: 1.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   .formTitle {
-    color: var(--text-primary);
+    color: var(--contacto-text-primary);
   }
 }
 
-/* Formulario */
 .form {
   display: flex;
   flex-direction: column;
@@ -634,7 +259,7 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-gray-700);
+  color: var(--text-gray-300);
   margin-bottom: 0.5rem;
 }
 
@@ -648,11 +273,11 @@
 .formTextarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  background: var(--bg-white);
-  border: 1px solid var(--border-gray-300);
+  background: var(--contacto-bg-input-dark);
+  border: 1px solid var(--contacto-border-input);
   border-radius: var(--radius-lg);
   font-size: 1rem;
-  color: var(--text-gray-900);
+  color: var(--contacto-text-primary);
   transition: all var(--transition-fast);
 }
 
@@ -665,15 +290,15 @@
 
 .formInput::placeholder,
 .formTextarea::placeholder {
-  color: var(--text-gray-500);
+  color: var(--text-gray-400);
 }
 
 @media (prefers-color-scheme: dark) {
   .formInput,
   .formTextarea {
-    background: var(--bg-gray-800);
+    background: var(--contacto-bg-input-dark);
     border-color: var(--border-gray-600);
-    color: var(--text-primary);
+    color: var(--contacto-text-primary);
   }
   
   .formInput::placeholder,
@@ -685,6 +310,11 @@
 .formTextarea {
   resize: none;
   font-family: inherit;
+  min-height: 5rem;
+}
+
+.formActions {
+  margin-top: 1.5rem;
 }
 
 .submitButton {
@@ -697,15 +327,15 @@
   font-size: 1rem;
   font-weight: 500;
   border-radius: var(--radius-lg);
-  background: var(--color-blue-600);
-  color: var(--text-primary);
+  background: var(--contacto-button-bg);
+  color: var(--contacto-text-primary);
   border: none;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .submitButton:hover:not(:disabled) {
-  background: var(--color-blue-700);
+  background: var(--contacto-button-hover);
 }
 
 .submitButton:disabled {
@@ -713,7 +343,10 @@
   cursor: not-allowed;
 }
 
-/* Mensajes de formulario */
+/* =============================================
+   MENSAJES DE FORMULARIO
+   ============================================= */
+
 .formMessage {
   margin-top: 1rem;
   padding: 0.75rem;
@@ -734,31 +367,29 @@
   border: 1px solid rgba(220, 38, 38, 0.2);
 }
 
-/* Sección de información */
+/* =============================================
+   SECCIÓN DE INFORMACIÓN
+   ============================================= */
+
 .infoSection {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.infoCard {
-  /* Estilos base de .card */
-}
-
 .infoTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-gray-900);
+  color: var(--contacto-text-title);
   margin-bottom: 1.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   .infoTitle {
-    color: var(--text-primary);
+    color: var(--contacto-text-primary);
   }
 }
 
-/* Lista de información de contacto */
 .contactInfoList {
   display: flex;
   flex-direction: column;
@@ -782,24 +413,24 @@
 .contactInfoTitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-gray-900);
+  color: var(--contacto-text-title);
   margin-bottom: 0.25rem;
 }
 
 @media (prefers-color-scheme: dark) {
   .contactInfoTitle {
-    color: var(--text-primary);
+    color: var(--contacto-text-primary);
   }
 }
 
 .contactInfoLink {
-  color: var(--text-gray-600);
+  color: var(--contacto-text-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .contactInfoLink:hover {
-  color: var(--color-blue-600);
+  color: var(--color-blue-300);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -808,11 +439,14 @@
   }
   
   .contactInfoLink:hover {
-    color: var(--color-blue-400);
+    color: var(--color-blue-300);
   }
 }
 
-/* Redes sociales */
+/* =============================================
+   REDES SOCIALES
+   ============================================= */
+
 .socialLinksGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -824,7 +458,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: var(--bg-white);
+  background: var(--bg-gray-600);
   border-radius: var(--radius-xl);
   transition: all var(--transition-normal);
   text-decoration: none;
@@ -837,7 +471,7 @@
 
 @media (prefers-color-scheme: dark) {
   .socialLinkCard {
-    background: var(--bg-gray-800);
+    background: var(--bg-gray-600);
   }
 }
 
@@ -848,44 +482,34 @@
 .socialLinkName {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-gray-700);
+  color: var(--text-gray-200);
 }
 
 @media (prefers-color-scheme: dark) {
   .socialLinkName {
-    color: var(--text-gray-300);
+    color: var(--text-gray-200);
   }
 }
 
-/* Efectos hover para redes sociales */
 .socialLinkCard:hover .socialLinkName {
-  color: var(--text-gray-900);
+  color: var(--contacto-text-title);
 }
 
 @media (prefers-color-scheme: dark) {
   .socialLinkCard:hover .socialLinkName {
-    color: var(--text-primary);
+    color: var(--contacto-text-primary);
   }
 }
 
-.socialLinkCard:hover.socialLinkGithub .socialLinkName {
-  color: var(--text-gray-900);
-}
+/* =============================================
+   TARJETA DE DISPONIBILIDAD
+   ============================================= */
 
-.socialLinkCard:hover.socialLinkLinkedin .socialLinkName {
-  color: var(--color-blue-600);
-}
-
-.socialLinkCard:hover.socialLinkTwitter .socialLinkName {
-  color: var(--color-blue-400);
-}
-
-/* Tarjeta de disponibilidad */
 .availabilityCard {
   background: linear-gradient(to right, var(--color-blue-600), var(--color-blue-900), var(--color-purple-500));
   border-radius: var(--radius-3xl);
   padding: 2rem;
-  color: var(--text-primary);
+  color: var(--contacto-text-primary);
   box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2);
 }
 
@@ -920,7 +544,40 @@
   font-weight: 500;
 }
 
-/* Optimización para móviles */
+/* =============================================
+   ICONOS DE CONTACTO
+   ============================================= */
+
+.contactIconEmail {
+  color: var(--color-blue-600);
+}
+
+.contactIconPhone {
+  color: var(--color-green-600);
+}
+
+.contactIconLocation {
+  color: var(--color-red-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  .contactIconEmail {
+    color: var(--color-blue-400);
+  }
+  
+  .contactIconPhone {
+    color: var(--color-green-400);
+  }
+  
+  .contactIconLocation {
+    color: var(--color-red-400);
+  }
+}
+
+/* =============================================
+   RESPONSIVE Y OPTIMIZACIONES
+   ============================================= */
+
 @media (max-width: 768px) {
   .section {
     padding: 4rem 1rem;
@@ -955,7 +612,10 @@
   }
 }
 
-/* Animaciones adicionales */
+/* =============================================
+   ANIMACIONES Y EFECTOS
+   ============================================= */
+
 .formInput,
 .formTextarea {
   transform: translateY(0);
@@ -1005,7 +665,7 @@
   left: 50%;
   margin-left: -0.5rem;
   margin-top: -0.5rem;
-  border: 2px solid var(--text-primary);
+  border: 2px solid var(--contacto-text-primary);
   border-radius: 50%;
   border-top-color: transparent;
   animation: spin 1s linear infinite;
