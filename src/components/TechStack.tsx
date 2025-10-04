@@ -127,7 +127,7 @@ export default function TechStack() {
   const text = copy[language];
 
   return (
-    <div className="w-full h-[600px] relative z-10">
+    <div className="w-full h-[800px] relative z-10">
       <div className="text-center mb-6">
         <p className="text-xs uppercase tracking-[0.3em] text-sky-500 mb-3">
           <br /><br />
@@ -146,7 +146,7 @@ export default function TechStack() {
       <Canvas camera={{ position: [0, 0, 40], fov: 90 }}>
         <ambientLight intensity={0.8} />
         <pointLight intensity={1} position={[0, 0, 0]} />
-        <Cloud count={icons.length} radius={20} />
+        <Cloud count={icons.length} radius={18} />
         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.3} />
       </Canvas>
     </div>

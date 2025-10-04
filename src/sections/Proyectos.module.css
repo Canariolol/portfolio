@@ -8,6 +8,18 @@
   background: var(--section-bg-proyectos);
 }
 
+.section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--section-bg-contacto));
+}
+
 /* Fondo de la sección */
 .sectionBackground {
   position: absolute;

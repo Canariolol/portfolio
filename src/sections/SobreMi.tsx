@@ -371,7 +371,7 @@ export default function SobreMi() {
 
           <TechStack />
         </div>
-
+            <br  />
         <div className={styles.valuesSection}>
           <div className={styles.valuesHeader}>
             <p className={styles.valuesTagline}>

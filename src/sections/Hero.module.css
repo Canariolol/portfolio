@@ -7,7 +7,18 @@
   justify-content: center;
   background: var(--gradient-hero-light);
   position: relative;
-  overflow: hidden;
+}
+
+.heroSection::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--section-bg-sobremi));
 }
 
 .heroSection::before {
