@@ -172,7 +172,7 @@
    ============================================= */
 
 .card {
-  background: var(--contacto-bg-card);
+  background: rgba(31, 41, 55, 0.85);
   border-radius: var(--radius-3xl);
   padding: 2rem;
   box-shadow: var(--shadow-xl);
@@ -181,7 +181,7 @@
 }
 
 .formCard {
-  background: var(--contacto-bg-card);
+  background: rgba(31, 41, 55, 0.85);
   border-radius: var(--radius-3xl);
   padding: 2rem;
   box-shadow: var(--shadow-xl);
@@ -190,7 +190,7 @@
 }
 
 .infoCard {
-  background: var(--contacto-bg-card);
+  background: rgba(31, 41, 55, 0.85);
   border-radius: var(--radius-3xl);
   padding: 2rem;
   box-shadow: var(--shadow-xl);
@@ -200,17 +200,17 @@
 
 @media (prefers-color-scheme: dark) {
   .card {
-    background: var(--contacto-bg-card-dark);
+    background: rgba(31, 41, 55, 0.85);
     border-color: var(--border-gray-700);
   }
   
   .formCard {
-    background: var(--contacto-bg-card-dark);
+    background: rgba(31, 41, 55, 0.85);
     border-color: var(--border-gray-700);
   }
   
   .infoCard {
-    background: var(--contacto-bg-card-dark);
+    background: rgba(31, 41, 55, 0.85);
     border-color: var(--border-gray-700);
   }
 }
@@ -428,7 +428,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: #374151;
+  background: rgba(55, 65, 81, 0.85);
   border-radius: var(--radius-xl);
   transition: all var(--transition-normal);
   text-decoration: none;

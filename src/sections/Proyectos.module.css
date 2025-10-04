@@ -210,7 +210,7 @@
   border-radius: var(--radius-3xl);
   border: 1px solid var(--border-white-60);
   border-color: var(--border-slate-800);
-  background: var(--bg-slate-900-85);
+  background: rgba(15, 23, 42, 0.85);
   box-shadow: var(--shadow-blue-500-5);
   backdrop-filter: blur(8px);
   transition: all var(--transition-normal);
@@ -516,15 +516,14 @@
 /* Sección de proceso */
 .processSection {
   position: relative;
-  overflow: hidden;
   border-radius: var(--radius-3xl);
-  border: 1px solid var(--border-white-60);
-  background: var(--bg-slate-900-85);
+  border: 2px solid var(--border-white-60);
+  background: rgba(15, 23, 42, 0.37);
   border-color: var(--border-slate-800);
   padding: 4rem 1.5rem;
-  box-shadow: var(--shadow-blue-500-5);
+  box-shadow: var(--shadow-blue-400-25);
   backdrop-filter: blur(8px);
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 .processSection::before {
@@ -537,16 +536,17 @@
 
 .processDecorativeImage {
   position: absolute;
-  left: -5rem;
+  left: -21rem;
   top: 50%;
   width: 440px;
   transform: translateY(-50%) rotate(-2deg) skewY(-3deg);
-  opacity: 0.8;
+  opacity: 0.6;
   box-shadow: 0 45px 120px -60px rgba(59, 130, 246, 0.45);
   transition: all 0.7s ease-out;
   mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 58%, transparent 94%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 48%, transparent 84%);
   transform-origin: center right;
+  z-index: 0;
 }
 
 @media (max-width: 1024px) {
@@ -634,6 +634,7 @@
   border-color: var(--border-slate-700);
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
+  z-index: 5;
 }
 
 /* Posicionamiento de pasos en desktop */
@@ -1030,14 +1031,17 @@
   .processStep {
     background: var(--bg-slate-800-90);
     border-color: var(--border-slate-700);
+    z-index: 5;
   }
   
   .processStepTitle {
     color: var(--text-primary);
+    z-index: 5;
   }
   
   .processStepDescription {
     color: var(--text-gray-300);
+    z-index: 5;
   }
   
   .modal {

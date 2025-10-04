@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronLeft, ChevronRight, Hand } from 'lucide-react';
 
 type EmblaOptionsType = {
   loop?: boolean;
@@ -41,6 +42,7 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
   ]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   const onSelect = useCallback(() => {
     if (emblaApi) {
@@ -48,9 +50,20 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
     }
   }, [emblaApi]);
 
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   useEffect(() => {
     if (!emblaApi) return;
+    
     emblaApi.on('select', onSelect);
+    emblaApi.on('pointerDown', () => setIsDragging(true));
+    emblaApi.on('pointerUp', () => setIsDragging(false));
     onSelect();
   }, [emblaApi, onSelect]);
 
@@ -89,6 +102,28 @@ const ExpertiseCarousel: React.FC<ExpertiseCarouselProps> = ({ slides }) => {
             );
           })}
         </div>
+      </div>
+      
+      {/* Navigation buttons */}
+      <button 
+        className="embla__button embla__button--prev" 
+        onClick={scrollPrev}
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button 
+        className="embla__button embla__button--next" 
+        onClick={scrollNext}
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      {/* Drag indicator for mobile */}
+      <div className="embla__drag-indicator">
+        <Hand className="w-3 h-3" />
+        <span>{isDragging ? 'Suelta para ver' : 'Arrastra para explorar'}</span>
       </div>
     </div>
   );

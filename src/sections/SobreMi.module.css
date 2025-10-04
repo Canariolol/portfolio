@@ -156,7 +156,7 @@
 
 .aiCard {
   position: relative;
-  background: var(--card-bg-dark);
+  background: rgba(15, 23, 42, 0.85);
   border-radius: var(--radius-2xl);
   padding: 2rem;
   box-shadow: var(--card-shadow-light);
@@ -184,7 +184,7 @@
 .aiCardOverlayInner {
   position: absolute;
   inset: 0.25rem;
-  background: var(--card-bg-dark);
+  background: rgba(15, 23, 42, 0.85);
   border-radius: var(--radius-xl);
 }
 
@@ -301,7 +301,7 @@
   position: relative;
   text-align: center;
   padding: 2rem;
-  background: var(--bg-slate-900-80);
+  background: rgba(15, 23, 42, 0.85);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border-slate-100);
   border-color: var(--border-slate-800);

@@ -193,7 +193,7 @@
   font-style: italic;
   margin: 2.5rem 0;
   padding: var(--spacing-xl) var(--spacing-lg);
-  background: var(--bg-slate-900-80);
+  background: rgba(15, 23, 42, 0.85);
   border-left: 4px solid var(--color-blue-400);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
@@ -205,7 +205,7 @@
 
 @media (prefers-color-scheme: dark) {
   .quote {
-    background: var(--bg-slate-900-80);
+    background: rgba(15, 23, 42, 0.85);
     border-left-color: var(--color-blue-400);
   }
 }

@@ -6,9 +6,9 @@
 
 .embla__viewport {
   overflow: hidden;
-  padding: 2rem;
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.98) 15%, rgba(0, 0, 0, 0.98) 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.98) 15%, rgba(0, 0, 0, 0.98) 85%, transparent 100%);
+  padding: 2rem 1rem;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.98) 10%, rgba(0, 0, 0, 0.98) 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.98) 10%, rgba(0, 0, 0, 0.98) 90%, transparent 100%);
 }
 
 .embla__container {
@@ -16,18 +16,49 @@
   height: 100%;
 }
 
-.embla__slide {
-  flex: 0 0 40%;
-  min-width: 0;
-  position: relative;
+/* Desktop: Show 3 cards with center focus */
+@media (min-width: 768px) {
+  .embla__slide {
+    flex: 0 0 33.333%;
+    min-width: 280px;
+    position: relative;
+  }
+}
+
+/* Mobile: Show only 1 card at a time */
+@media (max-width: 767px) {
+  .embla__slide {
+    flex: 0 0 85%;
+    min-width: 280px;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Hide non-selected slides on mobile */
+  .embla__slide:not(.is-selected) {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+  }
+  
+  .embla__slide.is-selected {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 /* The new inner wrapper for the transform */
 .embla__slide__transformer {
   padding: 1rem;
   opacity: 0.4;
-  transform: scale(0.8);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: scale(0.85);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: grab;
+}
+
+.embla__slide__transformer:active {
+  cursor: grabbing;
 }
 
 .embla__slide.is-selected .embla__slide__transformer {
@@ -35,3 +66,82 @@
   transform: scale(1);
 }
 
+/* Navigation buttons */
+.embla__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #e2e8f0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.embla__button:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.embla__button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.embla__button--prev {
+  left: 1rem;
+}
+
+.embla__button--next {
+  right: 1rem;
+}
+
+/* Hide navigation on very small screens */
+@media (max-width: 480px) {
+  .embla__button {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .embla__button--prev {
+    left: 0.5rem;
+  }
+  
+  .embla__button--next {
+    right: 0.5rem;
+  }
+}
+
+/* Drag indicators */
+.embla__drag-indicator {
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.embla__drag-indicator:hover {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .embla__drag-indicator {
+    display: none;
+  }
+}

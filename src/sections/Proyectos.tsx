@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import { ExternalLink, Github, Calendar, Users, Code, CheckCircle, ArrowRight, ArrowDown, ArrowLeft, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProjectImageModal from "@/components/ProjectImageModal";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { useEffect, useRef } from "react";
 import styles from "./Proyectos.module.css";
@@ -603,92 +604,100 @@ export default function Proyectos() {
           </Button>
         </div>
 
-        <div className={styles.processSection}>
-          <div className={styles.processDecorativeImage} />
-          <div className={styles.processDecorativeBlobs} />
-          <div className={styles.processContent}>
-            <div className={styles.processHeader}>
-              <p className={styles.processTagline}>
-                {text.processTag}
-              </p>
-              <h3 className={styles.processTitle}>
-                {text.processHeading}
-              </h3>
-              <p className={styles.processSubtitle}>
-                {text.processSubtitle}
-              </p>
-            </div>
-            <div className={styles.processGrid}>
-              {/* Step 1 */}
-              <div className={`${styles.processStep} ${styles.processStep1}`}>
-                <div className={styles.processStepIcon}>
-                  {steps[0].step}
-                </div>
-                <h4 className={styles.processStepTitle}>
-                  {steps[0].title}
-                </h4>
-                <p className={styles.processStepDescription}>
-                  {steps[0].description}
+        <div className="relative">
+          <Image
+            src="/PortafolioDir.png"
+            alt="Imagen decorativa del proceso de trabajo"
+            width={440}
+            height={550}
+            className={styles.processDecorativeImage}
+          />
+          <div className={styles.processSection}>
+            <div className={styles.processDecorativeBlobs} />
+            <div className={styles.processContent}>
+              <div className={styles.processHeader}>
+                <p className={styles.processTagline}>
+                  {text.processTag}
+                </p>
+                <h3 className={styles.processTitle}>
+                  {text.processHeading}
+                </h3>
+                <p className={styles.processSubtitle}>
+                  {text.processSubtitle}
                 </p>
               </div>
-
-              {/* Arrow 1 -> 2 */}
-              <div className={`${styles.processArrow} ${styles.processArrow1}`}>
-                <ArrowRight className="w-10 h-10" />
-              </div>
-
-              {/* Step 2 */}
-              <div className={`${styles.processStep} ${styles.processStep2}`}>
-                <div className={styles.processStepIcon}>
-                  {steps[1].step}
+              <div className={styles.processGrid}>
+                {/* Step 1 */}
+                <div className={`${styles.processStep} ${styles.processStep1}`}>
+                  <div className={styles.processStepIcon}>
+                    {steps[0].step}
+                  </div>
+                  <h4 className={styles.processStepTitle}>
+                    {steps[0].title}
+                  </h4>
+                  <p className={styles.processStepDescription}>
+                    {steps[0].description}
+                  </p>
                 </div>
-                <h4 className={styles.processStepTitle}>
-                  {steps[1].title}
-                </h4>
-                <p className={styles.processStepDescription}>
-                  {steps[1].description}
-                </p>
-              </div>
 
-              {/* Arrow 2 -> 3 */}
-              <div className={`${styles.processArrow} ${styles.processArrow2}`}>
-                <ArrowDown className="w-10 h-10" />
-              </div>
-
-              {/* Step 3 */}
-              <div className={`${styles.processStep} ${styles.processStep3}`}>
-                <div className={styles.processStepIcon}>
-                  {steps[2].step}
+                {/* Arrow 1 -> 2 */}
+                <div className={`${styles.processArrow} ${styles.processArrow1}`}>
+                  <ArrowRight className="w-10 h-10" />
                 </div>
-                <h4 className={styles.processStepTitle}>
-                  {steps[2].title}
-                </h4>
-                <p className={styles.processStepDescription}>
-                  {steps[2].description}
-                </p>
-              </div>
 
-              {/* Arrow 3 -> 4 */}
-              <div className={`${styles.processArrow} ${styles.processArrow3}`}>
-                <ArrowLeft className="w-10 h-10" />
-              </div>
-
-              {/* Step 4 */}
-              <div className={`${styles.processStep} ${styles.processStep4}`}>
-                <div className={styles.processStepIcon}>
-                  {steps[3].step}
+                {/* Step 2 */}
+                <div className={`${styles.processStep} ${styles.processStep2}`}>
+                  <div className={styles.processStepIcon}>
+                    {steps[1].step}
+                  </div>
+                  <h4 className={styles.processStepTitle}>
+                    {steps[1].title}
+                  </h4>
+                  <p className={styles.processStepDescription}>
+                    {steps[1].description}
+                  </p>
                 </div>
-                <h4 className={styles.processStepTitle}>
-                  {steps[3].title}
-                </h4>
-                <p className={styles.processStepDescription}>
-                  {steps[3].description}
-                </p>
-              </div>
 
-              {/* Arrow 4 -> 1 */}
-              <div className={`${styles.processArrow} ${styles.processArrow4}`}>
-                <ArrowUp className="w-10 h-10" />
+                {/* Arrow 2 -> 3 */}
+                <div className={`${styles.processArrow} ${styles.processArrow2}`}>
+                  <ArrowDown className="w-10 h-10" />
+                </div>
+
+                {/* Step 3 */}
+                <div className={`${styles.processStep} ${styles.processStep3}`}>
+                  <div className={styles.processStepIcon}>
+                    {steps[2].step}
+                  </div>
+                  <h4 className={styles.processStepTitle}>
+                    {steps[2].title}
+                  </h4>
+                  <p className={styles.processStepDescription}>
+                    {steps[2].description}
+                  </p>
+                </div>
+
+                {/* Arrow 3 -> 4 */}
+                <div className={`${styles.processArrow} ${styles.processArrow3}`}>
+                  <ArrowLeft className="w-10 h-10" />
+                </div>
+
+                {/* Step 4 */}
+                <div className={`${styles.processStep} ${styles.processStep4}`}>
+                  <div className={styles.processStepIcon}>
+                    {steps[3].step}
+                  </div>
+                  <h4 className={styles.processStepTitle}>
+                    {steps[3].title}
+                  </h4>
+                  <p className={styles.processStepDescription}>
+                    {steps[3].description}
+                  </p>
+                </div>
+
+                {/* Arrow 4 -> 1 */}
+                <div className={`${styles.processArrow} ${styles.processArrow4}`}>
+                  <ArrowUp className="w-10 h-10" />
+                </div>
               </div>
             </div>
           </div>
