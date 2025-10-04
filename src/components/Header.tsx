@@ -45,12 +45,10 @@ const languageLabels = {
 };
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
   const { language, setLanguage } = useLanguage();
 
   const items = navigation[language];
-  const toggleLabel = language === "es" ? "Abrir o cerrar menú" : "Toggle menu";
   const expandLabel = language === "es" ? "Mostrar menú" : "Show menu";
 
   const scrollToSection = (sectionId: string) => {
@@ -62,7 +60,6 @@ export default function Header() {
 
   const handleLanguageChange = (lang: "es" | "en") => {
     setLanguage(lang);
-    setIsMenuOpen(false);
   };
 
   // Close expanded header when clicking outside
@@ -157,13 +154,6 @@ export default function Header() {
             </div>
           </div>
 
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={styles.mobileMenuButton}
-            aria-label={toggleLabel}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
         {/* Navigation menu for expanded header */}

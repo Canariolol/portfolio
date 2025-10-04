@@ -509,6 +509,20 @@
   color: var(--text-gray-900);
 }
 
+/* Mobile-specific styles for projectActionButton */
+@media (max-width: 640px) {
+  .projectActionButton {
+    border-color: #d1d5db;
+    background: #ffffff;
+    color: #374151;
+  }
+  
+  .projectActionButton:hover {
+    background: #f9fafb;
+    color: #111827;
+  }
+}
+
 /* Botón de otros proyectos */
 .otherProjectsButton {
   display: inline-flex;

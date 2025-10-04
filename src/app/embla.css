@@ -119,6 +119,16 @@
   .embla__button--next {
     right: 0.5rem;
   }
+  
+  /* Simplify transformations on mobile */
+  .embla__button:hover {
+    transform: translateY(-50%);
+    background: rgba(30, 41, 59, 0.95);
+  }
+  
+  .embla__button:active {
+    transform: translateY(-50%);
+  }
 }
 
 /* Drag indicators */

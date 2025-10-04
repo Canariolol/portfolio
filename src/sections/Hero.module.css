@@ -274,6 +274,20 @@
 }
 }
 
+/* Mobile-specific styles for primaryButton */
+@media (max-width: 640px) {
+  .primaryButton {
+    border-color: #cbd5e1;
+    color: #e2e8f0;
+    background: transparent;
+  }
+  
+  .primaryButton:hover {
+    background: #f9fafb;
+    color: #2563eb;
+  }
+}
+
 .cvDropdown {
   position: relative;
 }
