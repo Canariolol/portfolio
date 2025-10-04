@@ -17,7 +17,10 @@
   height: 150px;
   z-index: 3;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent, var(--section-bg-contacto));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  mask-image: linear-gradient(to top, black, transparent);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
 }
 
 /* Fondo de la sección */
@@ -307,6 +310,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .projectDate {
@@ -329,12 +334,14 @@
   align-items: center;
   border-radius: 9999px;
   background: linear-gradient(to right, var(--color-purple-600), var(--color-blue-600));
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.625rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-primary);
+  flex-shrink: 0;
+  margin-top: -0.25rem;
 }
 
 /* Secciones de contenido */
@@ -1125,7 +1132,8 @@
   overflow-y: auto;
   border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(30, 41, 59, 1);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transition: all 0.3s;
 }
@@ -1146,7 +1154,8 @@
   top: 1.5rem;
   border-radius: 50%;
   border: 1px solid rgba(226, 232, 240, 1);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(51, 65, 85, 1);
   padding: 0.5rem;
   color: rgba(100, 116, 139, 1);
   transition: color 0.2s;
@@ -1154,7 +1163,7 @@
 }
 
 .modalCloseButtonInline:hover {
-  color: rgba(30, 41, 59, 1);
+  color: rgba(226, 232, 240, 1);
 }
 
 .modalHeaderInline {
@@ -1165,13 +1174,13 @@
 .modalTitleInline {
   font-size: 1.5rem;
   font-weight: 600;
-  color: rgba(17, 24, 39, 1);
+  color: rgba(241, 245, 249, 1);
   margin-bottom: 0.5rem;
 }
 
 .modalSubtitleInline {
   font-size: 0.875rem;
-  color: rgba(75, 85, 99, 1);
+  color: rgba(203, 213, 225, 1);
 }
 
 .modalContentInline {
@@ -1195,7 +1204,8 @@
   flex-direction: column;
   border-radius: 1rem;
   border: 1px solid rgba(226, 232, 240, 0.7);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(51, 65, 85, 0.7);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -1230,7 +1240,7 @@
 .otherProjectTitleInline {
   font-size: 1.125rem;
   font-weight: 600;
-  color: rgba(17, 24, 39, 1);
+  color: rgba(241, 245, 249, 1);
 }
 
 .otherProjectStatusInline {
@@ -1238,16 +1248,16 @@
   align-items: center;
   gap: 0.25rem;
   border-radius: 9999px;
-  background: rgba(241, 245, 249, 1);
+  background: rgba(30, 41, 59, 1);
+  color: rgba(148, 163, 184, 1);
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(71, 85, 105, 1);
 }
 
 .otherProjectDescriptionInline {
   font-size: 0.875rem;
-  color: rgba(75, 85, 99, 1);
+  color: rgba(203, 213, 225, 1);
   line-height: 1.5;
   margin-bottom: 1rem;
   flex-grow: 1;
@@ -1258,7 +1268,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  color: rgba(100, 116, 139, 1);
+  color: rgba(148, 163, 184, 1);
   margin-bottom: 1rem;
 }
 
@@ -1271,11 +1281,12 @@
 .otherProjectTechnologyInline {
   border-radius: 9999px;
   border: 1px solid rgba(226, 232, 240, 1);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(51, 65, 85, 1);
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: rgba(71, 85, 105, 1);
+  color: rgba(148, 163, 184, 1);
 }
 
 /* Modal de imagen zoom */
