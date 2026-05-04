@@ -4,7 +4,6 @@ import { Code2, Server, Zap, Users, Target, BrainCogIcon, Brain } from "lucide-r
 import TechStack from "@/components/TechStack";
 import ExpertiseCarousel from "@/components/ExpertiseCarousel";
 import { useLanguage } from "@/context/LanguageContext";
-import { useEffect, useState } from "react";
 
 const skillIconMap = {
   ai: <Zap className="w-8 h-8 text-purple-600" />,
@@ -25,10 +24,10 @@ const sectionContent = {
     title: "Sobre mí",
     highlight: "mí",
     description:
-      "Con más de 5 años analizando problemas y los últimos 2 impulsando soluciones tecnológicas, he consolidado mi experiencia en base a la práctica y los desafíos del mundo empresarial real. Hoy cubro todo el ciclo: desde la idea hasta el despliegue y la iteración continua.",
+      "Soy Arquitecto de Soluciones especializado en IA y sistemas. Tengo 14 años de experiencia en telecomunicaciones y TI, combinando atención a clientes, análisis operativo, desarrollo fullstack, automatización e infraestructura para llevar ideas desde el descubrimiento técnico hasta producción.",
     expertiseTitle: "Mi Expertise",
     expertiseSubtitle:
-      "Inteligencia Artificial · Desarrollo web sólido · Arquitectura de soluciones · Lógica de negocios · APIs y microservicios · DevOps & CI/CD",
+      "Arquitectura de soluciones · IA aplicada · Microservicios · Datos e infraestructura · Observabilidad · Spec-driven development",
     aiTitle: "IA en Acción",
     aiSubtitle: "Cómo transformo los procesos en resultados reales",
     valuesTitle: "Mis Valores",
@@ -38,10 +37,10 @@ const sectionContent = {
     title: "About me",
     highlight: "me",
     description:
-      "With 5+ years dissecting business problems and the last 2 driving tech solutions, I've honed my expertise through hands-on practice and real-world challenges. Today, I cover the full cycle: from ideation to deployment and continuous iteration.",
+      "I am a Solution Architect focused on AI and systems. I bring 14 years across telecommunications and IT, combining customer-facing work, operational analysis, fullstack development, automation, and infrastructure to take ideas from technical discovery to production.",
     expertiseTitle: "My Expertise",
     expertiseSubtitle:
-      "Artificial Intelligence · Solid web foundations · Solution architecture · Business logic · APIs & microservices · DevOps & CI/CD",
+      "Solution architecture · Applied AI · Microservices · Data and infrastructure · Observability · Spec-driven development",
     aiTitle: "AI in Action",
     aiSubtitle: "How I turn complex workflows into tangible outcomes",
     valuesTitle: "My Values",
@@ -55,25 +54,25 @@ const expertiseContent = {
       key: "ai" as const,
       title: "IA & Automatización",
       description:
-        "Ingeniería de contexto, integración de LLM en entornos productivos, entrenamiento y fine-tuning en Vertex AI y Document AI. Workflows con n8n y automatizaciones a medida.",
+        "Context/prompt engineering, LangChain, RAG, LLMs y flujos de automatización orientados a reducir tiempos operativos con IA responsable.",
     },
     {
       key: "fullstack" as const,
       title: "Fullstack & DevOps",
       description:
-        "Aplicaciones web con Next.js, React, FastAPI y Flask. Contenedores Docker, CI/CD con GitHub Actions, autenticación, bases de datos y despliegues en GCP.",
+        "Aplicaciones con TypeScript, React, Next.js, Python, FastAPI, Node.js y APIs RESTful. CI/CD, Docker, testing y despliegues en Google Cloud.",
     },
     {
       key: "architecture" as const,
       title: "Arquitectura de Soluciones",
       description:
-        "Diseño de sistemas escalables que combinan IA, frontend, backend y nube. Optimización continua de costos y rendimiento.",
+        "Diseño de roadmaps, PRDs, especificaciones, arquitecturas de microservicios y sistemas escalables con observabilidad desde etapas tempranas.",
     },
     {
       key: "additional" as const,
       title: "Habilidades Complementarias",
       description:
-        "Español nativo, inglés C2, dominio de CRMs como Salesforce, fundamentos UX, QA y testing. Experiencia en diseño y desarrollo de videojuegos.",
+        "PostgreSQL, Redis, RabbitMQ, Terraform, Prometheus, Loki, Grafana, Salesforce, Notion, n8n, QA manual y automatizado con Playwright, Selenium y Postman.",
     },
     {
       key: "soft" as const,
@@ -87,25 +86,25 @@ const expertiseContent = {
       key: "ai" as const,
       title: "AI & Automation",
       description:
-        "Context engineering beyond prompts, LLM integrations in production, training and fine-tuning on Vertex AI and Document AI. Tailored automation workflows with n8n.",
+        "Context/prompt engineering, LangChain, RAG, LLMs, and automation workflows focused on reducing operational time with responsible AI.",
     },
     {
       key: "fullstack" as const,
       title: "Fullstack & DevOps",
       description:
-        "Web applications with Next.js, React, FastAPI and Flask. Dockerized services, GitHub Actions pipelines, authentication, databases, and GCP deployments.",
+        "Applications with TypeScript, React, Next.js, Python, FastAPI, Node.js, and RESTful APIs. CI/CD, Docker, testing, and Google Cloud deployments.",
     },
     {
       key: "architecture" as const,
       title: "Solution Architecture",
       description:
-        "End-to-end systems that blend AI, frontend, backend, and cloud infrastructure. Continuous tuning for cost efficiency and performance.",
+        "Roadmaps, PRDs, specifications, microservice architectures, and scalable systems with observability from the early stages.",
     },
     {
       key: "additional" as const,
       title: "Additional Skillset",
       description:
-        "Native Spanish, C2 English, advanced CRM usage (Salesforce), UX fundamentals, QA/testing know-how, and game design experience.",
+        "PostgreSQL, Redis, RabbitMQ, Terraform, Prometheus, Loki, Grafana, Salesforce, Notion, n8n, and manual/automated QA with Playwright, Selenium, and Postman.",
     },
     {
       key: "soft" as const,

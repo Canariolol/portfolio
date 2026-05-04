@@ -14,17 +14,17 @@ const inter = Inter({
 // Metadatos multilingües
 const metadataByLanguage = {
   es: {
-    title: "Rodrigo Yanez Dev - Portafolio",
-    description: "Portafolio profesional de desarrollador especializado en IA y optimización de procesos.",
-    keywords: ["desarrollador", "fullstack", "devops", "freelance", "desarrollo web", "next.js", "react", "inteligencia artificial", "procesos", "ia"],
-    author: "Rodrigo Yanez",
+    title: "Rodrigo Yáñez García - Arquitecto de Soluciones",
+    description: "Portafolio profesional de Rodrigo Yáñez García, Arquitecto de Soluciones especializado en IA, sistemas, automatización y plataformas cloud.",
+    keywords: ["arquitecto de soluciones", "inteligencia artificial", "sistemas", "fullstack", "microservicios", "devops", "automatización", "next.js", "react", "google cloud"],
+    author: "Rodrigo Yáñez García",
     locale: "es_ES",
   },
   en: {
-    title: "Rodrigo Yanez Dev - Portfolio",
-    description: "Professional portfolio of a fullstack developer specialized in AI and process optimization.",
-    keywords: ["fullstack", "developer", "devops", "freelance", "web development", "next.js", "react", "artificial intelligence", "processes", "ai"],
-    author: "Rodrigo Yanez",
+    title: "Rodrigo Yáñez García - Solution Architect",
+    description: "Professional portfolio of Rodrigo Yáñez García, Solution Architect specialized in AI, systems, automation, and cloud platforms.",
+    keywords: ["solution architect", "artificial intelligence", "systems", "fullstack", "microservices", "devops", "automation", "next.js", "react", "google cloud"],
+    author: "Rodrigo Yáñez García",
     locale: "en_US",
   },
 };

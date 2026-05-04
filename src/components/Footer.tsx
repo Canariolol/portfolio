@@ -1,9 +1,8 @@
 ﻿"use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, ExternalLink, Star } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useEffect, useState } from "react";
 
 type FooterLink = {
   name: string;
@@ -26,7 +25,7 @@ type FooterContent = {
 const content: Record<"es" | "en", FooterContent> = {
   es: {
     description:
-      "Mi enfoque principal es resolver problemas y optimizar procesos. Integraciones en herramientas existentes o creaci\u00f3n de aplicaciones web fullstack desde cero, siempre equilibrando resultados, usabilidad y velocidad de entrega.",
+      "Arquitecto de Soluciones especializado en IA y sistemas. Diseño, construyo y despliego soluciones digitales que conectan objetivos de negocio con arquitecturas escalables y mantenibles.",
     quickLinksTitle: "Enlaces r\u00e1pidos",
     quickLinks: [
       { name: "Sobre m\u00ed", href: "#sobre-mi" },
@@ -34,7 +33,7 @@ const content: Record<"es" | "en", FooterContent> = {
       { name: "Contacto", href: "#contacto" },
     ],
     contactTitle: "Contacto",
-    contactAvailability: "Disponible para trabajo y proyectos freelance.",
+    contactAvailability: "Disponible para conversar sobre arquitectura, IA aplicada y automatización.",
     contactResponse: "Respuesta r\u00e1pida garantizada",
     sendMessage: "Enviar mensaje",
     privacy: "Pol\u00edtica de Privacidad",
@@ -43,7 +42,7 @@ const content: Record<"es" | "en", FooterContent> = {
   },
   en: {
     description:
-      "My focus is on solving problems and streamlining processes. Whether integrating with existing tools or building fullstack web applications from scratch, I balance outcomes, usability, and delivery speed.",
+      "Solution Architect specialized in AI and systems. I design, build, and ship digital products that connect business goals with scalable, maintainable architectures.",
     quickLinksTitle: "Quick links",
     quickLinks: [
       { name: "About", href: "#sobre-mi" },
@@ -51,12 +50,12 @@ const content: Record<"es" | "en", FooterContent> = {
       { name: "Contact", href: "#contacto" },
     ],
     contactTitle: "Contact",
-    contactAvailability: "Available for work and freelance projects.",
+    contactAvailability: "Available to discuss architecture, applied AI, and automation.",
     contactResponse: "Fast response guaranteed",
     sendMessage: "Send message",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
-    copyright: (year: number) => `\u00a9 ${year} Rodrigo Yanez G. All rights reserved.`,
+    copyright: (year: number) => `\u00a9 ${year} Rodrigo Yáñez G. All rights reserved.`,
   },
 };
 
@@ -70,24 +69,6 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const footerContent = content[language];
-  const [starCount, setStarCount] = useState(0);
-
-  useEffect(() => {
-    // Obtener contador inicial del localStorage
-    const initialCount = parseInt(localStorage.getItem('starClickCount') || '0');
-    setStarCount(initialCount);
-
-    // Escuchar eventos de clic en estrellas
-    const handleStarClick = (event: CustomEvent) => {
-      setStarCount(event.detail.count);
-    };
-
-    window.addEventListener('starClicked', handleStarClick as EventListener);
-
-    return () => {
-      window.removeEventListener('starClicked', handleStarClick as EventListener);
-    };
-  }, []);
 
   return (
     <footer className="relative bg-gray-950 text-white overflow-hidden">
@@ -95,7 +76,7 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <h2 className="text-2xl text-cyan-700 font-bold mb-4">Rodrigo Yanez G.</h2>
+            <h2 className="text-2xl text-cyan-700 font-bold mb-4">Rodrigo Yáñez G.</h2>
             <p className="text-gray-300 mb-6 max-w-md">
               {footerContent.description}
             </p>

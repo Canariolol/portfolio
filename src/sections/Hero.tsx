@@ -3,7 +3,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, ExternalLink, ChevronDown, Globe } from "lucide-react";
-import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 type HeroContent = {
@@ -24,60 +23,58 @@ type HeroContent = {
 
 const content: Record<"es" | "en", HeroContent> = {
   es: {
-    badge: "Disponible para proyectos",
-    tagline: "Siempre aprendiendo, siempre mejorando",
+    badge: "Arquitecto de Soluciones | IA y Sistemas",
+    tagline: "Diseño, construyo y despliego soluciones digitales que ahorran tiempo",
     name: "Rodrigo Yáñez",
     roles: [
-      "Experto en IA y LLM",
-      "Fullstack y Plataformas Cloud",
-      "Ingeniería de Contexto",
       "Arquitecto de Soluciones",
+      "IA aplicada y automatización",
+      "Microservicios y plataformas cloud",
+      "Spec-driven development",
     ],
     description:
-      "Especialista en implementar soluciones que resuelven problemas reales y optimizan procesos de forma innovadora. Aprovechando al máximo las tecnologías de vanguardia.",
+      "Profesional en ciencias de la computación, diplomado en IA, backend y data science. Conecto objetivos de negocio con arquitecturas escalables, mantenibles y listas para producción.",
     quote:
-      "Te ayudaré con tus proyectos, ideas y desafíos, desde la planificación hasta el despliegue y CI/CD.",
+      "Mi misión es ayudar a ahorrar el recurso más valioso de todos: el tiempo.",
     primaryCta: "Ver mi trabajo",
     contactCta: "Contactarme",
     cvButton: "Descarga mi CV",
     cvOptions: [
-      { label: "Inglés", lang: "en", url: "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/CVs/CV%20-%20Rodrigo%20Yanez%2010-2025%20Eng.pdf" },
-      { label: "Español", lang: "es", url: "https://storage.googleapis.com/imagenes-portafolio-rodrigoyg/CVs/CV%20-%20Rodrigo%20Yanez%2010-2025%20Esp.pdf" },
+      { label: "Español 2026", lang: "es", url: "/cv/rodrigo-yanez-2026-es.pdf" },
     ],
     stats: [
-      { value: "2+", label: "Años de experiencia (Dev)" },
-      { value: "4", label: "Proyectos en producción (creados desde cero)" },
-      { value: "10+", label: "Trabajos freelance completados" },
-      { value: "Sí", label: ["Déficit de horas de sueño", "(café... por favor)"] },
+      { value: "14", label: "Años en telecomunicaciones y TI" },
+      { value: "2025", label: "Arquitecto de Soluciones en Orion" },
+      { value: "90%", label: "Reducción de tiempo en procesos documentales" },
+      { value: "3.5k/s", label: "Puntos GPS procesados en promedio" },
     ],
     mobileLanguageLabel: "Idioma",
   },
   en: {
-    badge: "Available for new projects",
-    tagline: "Always learning, always improving",
+    badge: "Solution Architect | AI & Systems",
+    tagline: "I design, build, and ship digital systems that save time",
     name: "Rodrigo Yáñez",
     roles: [
-      "AI & LLM Specialist",
-      "Fullstack & Cloud Platforms",
-      "Context Engineering",
       "Solution Architect",
+      "Applied AI & automation",
+      "Microservices & cloud platforms",
+      "Spec-driven development",
     ],
     description:
-      "Specialist in implementing solutions that solve real problems and streamline processes in innovative ways. Always leveraging cutting-edge technology.",
+      "Computer science professional with diplomas in AI, backend, and data science. I connect business goals with scalable, maintainable architectures ready for production.",
     quote:
-      "I'll help you bring ideas to life—from planning to deployment and CI/CD, every step of the way.",
+      "My main mission is to help save the most valuable resource of all: time.",
     primaryCta: "View my work",
     contactCta: "Get in touch",
     cvButton: "Download my CV",
     cvOptions: [
-      { label: "English", lang: "en", url: "https://storage.googleapis.com/tu-bucket/cv-english.pdf" },
-      { label: "Spanish", lang: "es", url: "https://storage.googleapis.com/tu-bucket/cv-espanol.pdf" },
+      { label: "Spanish 2026", lang: "es", url: "/cv/rodrigo-yanez-2026-es.pdf" },
     ],
     stats: [
-      { value: "2+", label: "Years of experience" },
-      { value: "4", label: "Production projects (built from scratch)" },
-      { value: "10+", label: "Freelance engagements delivered" },
-      { value: "Yes", label: ["Sleep hours deficit", "(coffee... please)"] },
+      { value: "14", label: "Years across telecom and IT" },
+      { value: "2025", label: "Solution Architect at Orion" },
+      { value: "90%", label: "Time reduction in document workflows" },
+      { value: "3.5k/s", label: "Average GPS points processed" },
     ],
     mobileLanguageLabel: "Language",
   },

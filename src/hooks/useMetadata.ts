@@ -5,17 +5,17 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const metadataByLanguage = {
   es: {
-    title: "Rodrigo Yanez Dev - Portfolio",
-    description: "Portafolio profesional de desarrollador fullstack especializado en crear aplicaciones web modernas y optimizar procesos con DevOps.",
-    keywords: ["desarrollador fullstack", "devops", "freelance", "web development", "next.js", "react"],
-    author: "Rodrigo Yanez",
+    title: "Rodrigo Yáñez García - Arquitecto de Soluciones",
+    description: "Portafolio profesional de Rodrigo Yáñez García, Arquitecto de Soluciones especializado en IA, sistemas, automatización y plataformas cloud.",
+    keywords: ["arquitecto de soluciones", "inteligencia artificial", "sistemas", "fullstack", "microservicios", "devops", "automatización", "next.js", "react", "google cloud"],
+    author: "Rodrigo Yáñez García",
     locale: "es_ES",
   },
   en: {
-    title: "Rodrigo Yanez Dev - Portfolio",
-    description: "Professional portfolio of a fullstack developer specialized in creating modern web applications and optimizing processes with DevOps.",
-    keywords: ["fullstack developer", "devops", "freelance", "web development", "next.js", "react"],
-    author: "Rodrigo Yanez",
+    title: "Rodrigo Yáñez García - Solution Architect",
+    description: "Professional portfolio of Rodrigo Yáñez García, Solution Architect specialized in AI, systems, automation, and cloud platforms.",
+    keywords: ["solution architect", "artificial intelligence", "systems", "fullstack", "microservices", "devops", "automation", "next.js", "react", "google cloud"],
+    author: "Rodrigo Yáñez García",
     locale: "en_US",
   },
 };

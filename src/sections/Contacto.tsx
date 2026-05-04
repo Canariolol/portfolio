@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle, Sparkles, ArrowRight, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -32,8 +32,8 @@ const copy = {
     followTitle: "Sígueme en",
     availabilityHeading: "¿Listo para comenzar?",
     availabilityBody:
-      "Estoy disponible para trabajar en empresas y para proyectos freelance. Si tienes una idea que quieres llevar a producción, hablemos.",
-    availabilityStatus: "Disponible al 100%",
+      "Estoy disponible para conversar sobre roles de Arquitecto de Soluciones, integraciones con IA, automatización de procesos y proyectos donde la tecnología deba generar impacto medible.",
+    availabilityStatus: "Disponible para conversar",
   },
   en: {
     title: "Contact",
@@ -54,8 +54,8 @@ const copy = {
     followTitle: "Follow me",
     availabilityHeading: "Ready to get started?",
     availabilityBody:
-      "I’m currently available for corporate work or freelance proyects. If you have an idea you want to launch, let’s talk.",
-    availabilityStatus: "Available 100%",
+      "I am available to discuss Solution Architect roles, AI integrations, workflow automation, and projects where technology needs to create measurable impact.",
+    availabilityStatus: "Available to talk",
   },
 };
 
@@ -113,7 +113,7 @@ const socialLinks = [
   {
     icon: <Linkedin className="w-6 h-6" />,
     name: "LinkedIn",
-    url: "www.linkedin.com/in/rodrigo-yanez-garcia-025614141",
+    url: "https://www.linkedin.com/in/rodrigo-yanez-garcia-025614141",
     color: "hover:text-blue-600",
   },
   {
