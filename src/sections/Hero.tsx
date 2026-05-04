@@ -1,14 +1,15 @@
 ﻿"use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowDown, ArrowRight, ChevronDown, Download, Globe, RadioTower, ShieldCheck, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Download, ExternalLink, ChevronDown, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 type HeroContent = {
   badge: string;
-  tagline: string;
+  eyebrow: string;
   name: string;
+  headline: string;
   roles: string[];
   description: string;
   quote: string;
@@ -16,67 +17,58 @@ type HeroContent = {
   contactCta: string;
   cvButton: string;
   cvOptions: { label: string; lang: "es" | "en"; url: string }[];
-  stats: { value: string; label: string | string[] }[];
-  mobileLanguageLabel: string;
-  quoteAttribution?: string;
+  stats: { value: string; label: string }[];
+  systemCards: { title: string; value: string; detail: string }[];
 };
 
 const content: Record<"es" | "en", HeroContent> = {
   es: {
     badge: "Arquitecto de Soluciones | IA y Sistemas",
-    tagline: "Diseño, construyo y despliego soluciones digitales que ahorran tiempo",
-    name: "Rodrigo Yáñez",
-    roles: [
-      "Arquitecto de Soluciones",
-      "IA aplicada y automatización",
-      "Microservicios y plataformas cloud",
-      "Spec-driven development",
-    ],
+    eyebrow: "Chile · IA aplicada · Plataformas cloud",
+    name: "Rodrigo Yáñez García",
+    headline: "Diseño sistemas que convierten procesos lentos en ventaja operativa.",
+    roles: ["Arquitectura", "IA aplicada", "Microservicios", "Observabilidad"],
     description:
-      "Profesional en ciencias de la computación, diplomado en IA, backend y data science. Conecto objetivos de negocio con arquitecturas escalables, mantenibles y listas para producción.",
-    quote:
-      "Mi misión es ayudar a ahorrar el recurso más valioso de todos: el tiempo.",
-    primaryCta: "Ver mi trabajo",
-    contactCta: "Contactarme",
-    cvButton: "Descarga mi CV",
-    cvOptions: [
-      { label: "Español 2026", lang: "es", url: "/cv/rodrigo-yanez-2026-es.pdf" },
-    ],
+      "Conecto objetivos de negocio con arquitecturas escalables y mantenibles. Trabajo desde el descubrimiento técnico hasta producción, con planificación, documentación, testing y foco en impacto medible.",
+    quote: "Mi misión es ayudar a ahorrar el recurso más valioso de todos: el tiempo.",
+    primaryCta: "Ver casos",
+    contactCta: "Hablemos",
+    cvButton: "CV actualizado",
+    cvOptions: [{ label: "Español 2026", lang: "es", url: "/cv/rodrigo-yanez-2026-es.pdf" }],
     stats: [
-      { value: "14", label: "Años en telecomunicaciones y TI" },
-      { value: "2025", label: "Arquitecto de Soluciones en Orion" },
-      { value: "90%", label: "Reducción de tiempo en procesos documentales" },
-      { value: "3.5k/s", label: "Puntos GPS procesados en promedio" },
+      { value: "14", label: "años en telecomunicaciones y TI" },
+      { value: "90%", label: "menos tiempo en gestión documental" },
+      { value: "3.5k/s", label: "puntos GPS procesados en promedio" },
     ],
-    mobileLanguageLabel: "Idioma",
+    systemCards: [
+      { title: "Discovery", value: "PRD", detail: "requerimientos, alcance y criterios" },
+      { title: "Build", value: "API + IA", detail: "microservicios, datos y automatización" },
+      { title: "Run", value: "Obs", detail: "métricas, logs y mejora continua" },
+    ],
   },
   en: {
     badge: "Solution Architect | AI & Systems",
-    tagline: "I design, build, and ship digital systems that save time",
-    name: "Rodrigo Yáñez",
-    roles: [
-      "Solution Architect",
-      "Applied AI & automation",
-      "Microservices & cloud platforms",
-      "Spec-driven development",
-    ],
+    eyebrow: "Chile · Applied AI · Cloud platforms",
+    name: "Rodrigo Yáñez García",
+    headline: "I design systems that turn slow processes into operational advantage.",
+    roles: ["Architecture", "Applied AI", "Microservices", "Observability"],
     description:
-      "Computer science professional with diplomas in AI, backend, and data science. I connect business goals with scalable, maintainable architectures ready for production.",
-    quote:
-      "My main mission is to help save the most valuable resource of all: time.",
-    primaryCta: "View my work",
-    contactCta: "Get in touch",
-    cvButton: "Download my CV",
-    cvOptions: [
-      { label: "Spanish 2026", lang: "es", url: "/cv/rodrigo-yanez-2026-es.pdf" },
-    ],
+      "I connect business goals with scalable, maintainable architectures. I work from technical discovery to production with planning, documentation, testing, and measurable impact.",
+    quote: "My mission is to help save the most valuable resource of all: time.",
+    primaryCta: "View cases",
+    contactCta: "Let's talk",
+    cvButton: "Updated CV",
+    cvOptions: [{ label: "Spanish 2026", lang: "es", url: "/cv/rodrigo-yanez-2026-es.pdf" }],
     stats: [
-      { value: "14", label: "Years across telecom and IT" },
-      { value: "2025", label: "Solution Architect at Orion" },
-      { value: "90%", label: "Time reduction in document workflows" },
-      { value: "3.5k/s", label: "Average GPS points processed" },
+      { value: "14", label: "years across telecom and IT" },
+      { value: "90%", label: "less time in document workflows" },
+      { value: "3.5k/s", label: "average GPS points processed" },
     ],
-    mobileLanguageLabel: "Language",
+    systemCards: [
+      { title: "Discovery", value: "PRD", detail: "requirements, scope, and criteria" },
+      { title: "Build", value: "API + AI", detail: "microservices, data, and automation" },
+      { title: "Run", value: "Obs", detail: "metrics, logs, and evolution" },
+    ],
   },
 };
 
@@ -95,10 +87,10 @@ export default function Hero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 3000);
+      setCurrentRole((previousRole) => (previousRole + 1) % roles.length);
+    }, 2400);
     return () => clearInterval(interval);
-  }, [language, roles.length]);
+  }, [roles.length]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -106,150 +98,149 @@ export default function Hero() {
         setIsCvDropdownOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const scrollToProjects = () => {
-    const projectsSection = document.getElementById('proyectos');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollTo = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="section-transition section-transition-blue min-h-screen flex items-center justify-center bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.12),transparent_55%),linear-gradient(135deg,rgba(15,23,42,0.05),rgba(2,132,199,0.08))] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(96,165,250,0.12),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.14),transparent_55%),linear-gradient(135deg,rgba(15,23,42,0.55),rgba(30,64,175,0.35))] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-40">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 25% 25%, rgba(59,130,246,0.28) 1px, transparent 1px), radial-gradient(circle at 75% 75%, rgba(139,92,246,0.28) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="space-y-8">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100/70 dark:bg-blue-900/40 text-blue-700 dark:text-blue-200 rounded-full text-sm font-medium backdrop-blur">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-70" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
-            </span>
-            <span className="ml-2">
-              {heroContent.badge}
-            </span>
+    <section className="portfolio-shell relative flex min-h-screen items-center overflow-hidden px-4 pb-20 pt-28 sm:px-6 lg:px-8">
+      <div className="absolute inset-x-0 top-16 h-px bg-[color:var(--border)]" />
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.06fr_0.94fr]">
+        <div className="max-w-3xl">
+          <div className="mb-8 inline-flex items-center gap-3 rounded-md border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-[color:var(--accent-strong)]">
+            <span className="h-2 w-2 rounded-full bg-[color:var(--accent)]" />
+            {heroContent.badge}
           </div>
 
-          <div>
-            <div className="text-xl md:text-2xl italic text-slate-500 dark:text-slate-300 mb-1">
-              {heroContent.tagline}
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-500 to-purple-600">
-                {heroContent.name}
-              </span>
-            </h1>
+          <p className="mb-5 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--muted)]">{heroContent.eyebrow}</p>
+          <h1 className="max-w-5xl text-5xl font-black leading-[0.96] tracking-tight text-[color:var(--foreground)] sm:text-6xl lg:text-7xl">
+            {heroContent.name}
+            <span className="mt-5 block text-[color:var(--accent-strong)]">{heroContent.headline}</span>
+          </h1>
+
+          <div className="mt-8 flex min-h-10 flex-wrap items-center gap-3 text-xl font-black text-[color:var(--foreground)]">
+            <span className="rounded-md bg-[color:var(--accent-soft)] px-3 py-1 text-[color:var(--accent-strong)]">{roles[currentRole]}</span>
+            <span className="text-[color:var(--muted)]">/ {language === "es" ? "de idea a producción" : "from idea to production"}</span>
           </div>
 
-          <div className="text-2xl md:text-3xl text-slate-700 dark:text-slate-200 h-12 flex items-center justify-center gap-2">
-            <span className="font-medium">{roles[currentRole]}</span>
-            <span className="animate-pulse">|</span>
-          </div>
-
-          <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
-            {heroContent.description}
-          </p>
-
-          <blockquote className="italic mt-10 mb-10 px-6 py-6 bg-white/75 dark:bg-slate-900/80 border-l-4 border-blue-500 dark:border-blue-400 rounded-xl shadow-lg max-w-3xl mx-auto">
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">{heroContent.description}</p>
+          <blockquote className="mt-7 border-l-4 border-[color:var(--accent)] pl-5 text-lg font-semibold text-[color:var(--foreground)]">
             “{heroContent.quote}”
           </blockquote>
 
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button
-                variant="outline"
-                size="lg"
-                onClick={scrollToProjects}
-                className="border-2 border-slate-200 dark:border-slate-600 px-8 py-3 text-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
+              size="lg"
+              onClick={() => scrollTo("proyectos")}
+              className="h-12 rounded-md bg-[color:var(--foreground)] px-6 text-[color:var(--background)] hover:opacity-90"
+            >
               {heroContent.primaryCta}
-              <ArrowDown className="ml-3 h-5 w-5" />
+              <ArrowDown className="ml-2 h-4 w-4" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => scrollTo("contacto")}
+              className="h-12 rounded-md border-[color:var(--border)] bg-[color:var(--surface)] px-6 text-[color:var(--foreground)] hover:bg-[color:var(--surface-muted)]"
+            >
+              {heroContent.contactCta}
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
 
             <div className="relative" ref={dropdownRef}>
               <Button
-                variant="outline"
                 size="lg"
-                onClick={() => setIsCvDropdownOpen(!isCvDropdownOpen)}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg shadow-lg shadow-blue-500/20"
+                variant="outline"
+                onClick={() => setIsCvDropdownOpen((isOpen) => !isOpen)}
+                className="h-12 rounded-md border-[color:var(--border)] bg-transparent px-6 text-[color:var(--foreground)] hover:bg-[color:var(--surface-muted)]"
               >
-                <Download className="h-5 w-5" />
+                <Download className="mr-2 h-4 w-4" />
                 {heroContent.cvButton}
-                <ChevronDown className={`h-4 w-4 transition-transform ${isCvDropdownOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${isCvDropdownOpen ? "rotate-180" : ""}`} />
               </Button>
-
               {isCvDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-lg shadow-2xl border border-slate-200 dark:border-slate-700 z-50 overflow-hidden">
-                  <div className="flex divide-x divide-slate-200 dark:divide-slate-700">
-                    {heroContent.cvOptions.map((option) => (
-                      <a
-                        key={option.lang}
-                        href={option.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center px-4 py-3 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                        onClick={() => setIsCvDropdownOpen(false)}
-                      >
-                        <Globe className="h-4 w-4 mr-2 text-blue-600" />
-                        <span>{option.label}</span>
-                      </a>
-                    ))}
-                  </div>
+                <div className="absolute left-0 top-full z-30 mt-2 w-56 overflow-hidden rounded-md border border-[color:var(--border)] bg-[color:var(--surface)] shadow-2xl">
+                  {heroContent.cvOptions.map((option) => (
+                    <a
+                      key={option.label}
+                      href={option.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-3 text-sm font-bold text-[color:var(--foreground)] hover:bg-[color:var(--surface-muted)]"
+                      onClick={() => setIsCvDropdownOpen(false)}
+                    >
+                      <Globe className="h-4 w-4 text-[color:var(--accent-strong)]" />
+                      {option.label}
+                    </a>
+                  ))}
                 </div>
               )}
             </div>
-
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => {
-                const contactSection = document.getElementById('contacto');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="border-2 border-slate-200 dark:border-slate-600 px-8 py-3 text-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              {heroContent.contactCta}
-              <ExternalLink className="ml-2 h-5 w-5" />
-            </Button>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+          <div className="mt-12 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
             {heroContent.stats.map((stat) => (
-  <div key={stat.value} className="text-center">
-    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stat.value}</div>
-    <div className="text-slate-600 dark:text-slate-400 text-sm md:text-base">
-      {Array.isArray(stat.label) 
-        ? stat.label.map((line, lineIndex) => (
-            <React.Fragment key={lineIndex}>
-              {line}
-              {lineIndex < stat.label.length - 1 && <br />}
-            </React.Fragment>
-          ))
-        : stat.label
-      }
-    </div>
-  </div>
-))}
-
+              <div key={stat.value} className="border-l border-[color:var(--border)] pl-4">
+                <div className="text-3xl font-black text-[color:var(--foreground)]">{stat.value}</div>
+                <div className="mt-1 text-sm font-semibold leading-5 text-[color:var(--muted)]">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ArrowDown className="h-6 w-6 text-slate-400" />
+        <div className="relative">
+          <div className="surface-panel overflow-hidden rounded-lg">
+            <div className="flex items-center justify-between border-b border-[color:var(--border)] px-5 py-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[color:var(--muted)]">Architecture map</p>
+                <h2 className="mt-1 text-xl font-black text-[color:var(--foreground)]">Business goal → production system</h2>
+              </div>
+              <RadioTower className="h-6 w-6 text-[color:var(--accent-strong)]" />
+            </div>
+
+            <div className="grid gap-4 p-5">
+              {heroContent.systemCards.map((card, index) => (
+                <div key={card.title} className="grid grid-cols-[auto_1fr] gap-4 rounded-md border border-[color:var(--border)] bg-[color:var(--background)] p-4">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-md bg-[color:var(--foreground)] text-sm font-black text-[color:var(--background)]">
+                    0{index + 1}
+                  </div>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-black text-[color:var(--foreground)]">{card.title}</h3>
+                      <span className="rounded bg-[color:var(--accent-soft)] px-2 py-1 text-xs font-black text-[color:var(--accent-strong)]">{card.value}</span>
+                    </div>
+                    <p className="mt-1 text-sm font-medium text-[color:var(--muted)]">{card.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 border-t border-[color:var(--border)]">
+              <div className="p-5">
+                <ShieldCheck className="mb-3 h-6 w-6 text-[color:var(--accent-strong)]" />
+                <p className="text-sm font-black text-[color:var(--foreground)]">QA + docs</p>
+                <p className="mt-1 text-sm text-[color:var(--muted)]">manual, automated, spec-driven</p>
+              </div>
+              <div className="border-l border-[color:var(--border)] p-5">
+                <Workflow className="mb-3 h-6 w-6 text-[color:var(--accent-strong)]" />
+                <p className="text-sm font-black text-[color:var(--foreground)]">Ops ready</p>
+                <p className="mt-1 text-sm text-[color:var(--muted)]">metrics, logs, delivery</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-5 grid grid-cols-3 gap-3 text-xs font-black uppercase tracking-[0.16em] text-[color:var(--muted)]">
+            <span>Node</span>
+            <span>Python</span>
+            <span>GCP</span>
+            <span>Redis</span>
+            <span>RabbitMQ</span>
+            <span>PostgreSQL</span>
+          </div>
         </div>
       </div>
     </section>

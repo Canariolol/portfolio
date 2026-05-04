@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { MetadataUpdater } from "@/components/MetadataUpdater";
 
 const inter = Inter({
@@ -75,14 +76,16 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <LanguageProvider>
-          <MetadataUpdater />
-          <Header />
-          <main className="pt-16">
-            {children}
-          </main>
-          <Footer />
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <MetadataUpdater />
+            <Header />
+            <main>
+              {children}
+            </main>
+            <Footer />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

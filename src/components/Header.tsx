@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 
 type NavigationItem = {
   name: string;
@@ -14,48 +15,28 @@ type NavigationItem = {
 const navigation: Record<"es" | "en", NavigationItem[]> = {
   es: [
     { name: "Inicio", href: "/", type: "link" },
-    { name: "Sobre mí", href: "#sobre-mi", type: "scroll" },
-    { name: "Proyectos", href: "#proyectos", type: "scroll" },
+    { name: "Perfil", href: "#sobre-mi", type: "scroll" },
+    { name: "Casos", href: "#proyectos", type: "scroll" },
     { name: "Contacto", href: "#contacto", type: "scroll" },
   ],
   en: [
     { name: "Home", href: "/", type: "link" },
-    { name: "About", href: "#sobre-mi", type: "scroll" },
-    { name: "Projects", href: "#proyectos", type: "scroll" },
+    { name: "Profile", href: "#sobre-mi", type: "scroll" },
+    { name: "Cases", href: "#proyectos", type: "scroll" },
     { name: "Contact", href: "#contacto", type: "scroll" },
   ],
-};
-
-const languageLabels = {
-  es: {
-    selector: "Idioma",
-    mobile: {
-      es: "Español",
-      en: "Inglés",
-    },
-  },
-  en: {
-    selector: "Language",
-    mobile: {
-      es: "Spanish",
-      en: "English",
-    },
-  },
 };
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const items = navigation[language];
-  const labels = languageLabels[language];
-  const toggleLabel = language === "es" ? "Abrir o cerrar menú" : "Toggle menu";
+  const toggleLabel = language === "es" ? "Cambiar tema" : "Toggle theme";
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleLanguageChange = (lang: "es" | "en") => {
@@ -63,43 +44,56 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
-  return (
-    <header className="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 border-b border-slate-200 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <Link href="/" className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              Rodrigo Yáñez G.
-            </Link>
-          </div>
+  const renderNavigationItem = (item: NavigationItem, mobile = false) => {
+    const className = mobile
+      ? "block w-full rounded-md px-3 py-3 text-left text-sm font-semibold text-[color:var(--foreground)] hover:bg-[color:var(--surface-muted)]"
+      : "text-sm font-semibold text-[color:var(--muted)] transition-colors hover:text-[color:var(--foreground)]";
 
-          <div className="hidden md:flex items-center gap-6">
-            <nav className="flex items-center gap-6">
-              {items.map((item) => (
-                item.type === "scroll" ? (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href.substring(1))}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {item.name}
-                  </button>
-                ) : (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                )
-              ))}
-            </nav>
-            <div className="flex items-center gap-2 rounded-full border border-slate-200/70 dark:border-slate-700/70 bg-white/70 dark:bg-gray-800/70 px-2 py-1 text-xs font-semibold shadow-sm" aria-label={labels.selector}>
+    if (item.type === "scroll") {
+      return (
+        <button
+          key={item.name}
+          type="button"
+          onClick={() => {
+            scrollToSection(item.href.substring(1));
+            setIsMenuOpen(false);
+          }}
+          className={className}
+        >
+          {item.name}
+        </button>
+      );
+    }
+
+    return (
+      <Link key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className={className}>
+        {item.name}
+      </Link>
+    );
+  };
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[color:var(--border)]/80 bg-[color:var(--background)]/88 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="group flex items-center gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[color:var(--foreground)] text-sm font-black text-[color:var(--background)]">
+            RY
+          </span>
+          <span className="leading-tight">
+            <span className="block text-sm font-black tracking-tight text-[color:var(--foreground)]">Rodrigo Yáñez G.</span>
+            <span className="block text-xs font-semibold text-[color:var(--muted)]">Solution Architect</span>
+          </span>
+        </Link>
+
+        <div className="hidden items-center gap-7 md:flex">
+          <nav className="flex items-center gap-6">{items.map((item) => renderNavigationItem(item))}</nav>
+
+          <div className="flex items-center gap-2">
+            <div className="flex rounded-md border border-[color:var(--border)] bg-[color:var(--surface)] p-1 text-xs font-black">
               <button
                 type="button"
                 onClick={() => handleLanguageChange("es")}
-                className={`px-3 py-1 rounded-full transition-colors ${language === "es" ? "bg-blue-600 text-white" : "text-slate-600 dark:text-slate-300 hover:text-blue-600"}`}
+                className={`rounded px-2.5 py-1.5 ${language === "es" ? "bg-[color:var(--foreground)] text-[color:var(--background)]" : "text-[color:var(--muted)]"}`}
                 aria-pressed={language === "es"}
               >
                 ES
@@ -107,74 +101,63 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => handleLanguageChange("en")}
-                className={`px-3 py-1 rounded-full transition-colors ${language === "en" ? "bg-blue-600 text-white" : "text-slate-600 dark:text-slate-300 hover:text-blue-600"}`}
+                className={`rounded px-2.5 py-1.5 ${language === "en" ? "bg-[color:var(--foreground)] text-[color:var(--background)]" : "text-[color:var(--muted)]"}`}
                 aria-pressed={language === "en"}
               >
                 EN
               </button>
             </div>
-          </div>
-
-          <div className="md:hidden">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              type="button"
+              onClick={toggleTheme}
+              className="flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--foreground)] transition-transform hover:-translate-y-0.5"
               aria-label={toggleLabel}
+              title={toggleLabel}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
           </div>
         </div>
 
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-800">
-            <nav className="flex flex-col space-y-2">
-              {items.map((item) => (
-                item.type === "scroll" ? (
-                  <button
-                    key={item.name}
-                    onClick={() => {
-                      scrollToSection(item.href.substring(1));
-                      setIsMenuOpen(false);
-                    }}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 text-left"
-                  >
-                    {item.name}
-                  </button>
-                ) : (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
-                  >
-                    {item.name}
-                  </Link>
-                )
-              ))}
-            </nav>
-            <div className="flex items-center gap-3 mt-6">
-              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                {labels.selector}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleLanguageChange("es")}
-                className={`px-3 py-1 text-sm rounded-full border transition-colors ${language === "es" ? "bg-blue-600 text-white border-blue-600" : "border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300"}`}
-              >
-                {labels.mobile.es}
-              </button>
-              <button
-                type="button"
-                onClick={() => handleLanguageChange("en")}
-                className={`px-3 py-1 text-sm rounded-full border transition-colors ${language === "en" ? "bg-blue-600 text-white border-blue-600" : "border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300"}`}
-              >
-                {labels.mobile.en}
-              </button>
-            </div>
-          </div>
-        )}
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--foreground)] md:hidden"
+          aria-label={language === "es" ? "Abrir menú" : "Open menu"}
+        >
+          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <div className="border-t border-[color:var(--border)] bg-[color:var(--background)] px-4 py-4 md:hidden">
+          <nav className="space-y-1">{items.map((item) => renderNavigationItem(item, true))}</nav>
+          <div className="mt-4 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => handleLanguageChange("es")}
+              className={`rounded-md border border-[color:var(--border)] px-4 py-2 text-sm font-bold ${language === "es" ? "bg-[color:var(--foreground)] text-[color:var(--background)]" : "text-[color:var(--foreground)]"}`}
+            >
+              Español
+            </button>
+            <button
+              type="button"
+              onClick={() => handleLanguageChange("en")}
+              className={`rounded-md border border-[color:var(--border)] px-4 py-2 text-sm font-bold ${language === "en" ? "bg-[color:var(--foreground)] text-[color:var(--background)]" : "text-[color:var(--foreground)]"}`}
+            >
+              English
+            </button>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="ml-auto flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--border)] text-[color:var(--foreground)]"
+              aria-label={toggleLabel}
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

@@ -4,58 +4,32 @@ import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-type FooterLink = {
-  name: string;
-  href: string;
-};
-
-type FooterContent = {
-  description: string;
-  quickLinks: FooterLink[];
-  quickLinksTitle: string;
-  contactTitle: string;
-  contactAvailability: string;
-  contactResponse: string;
-  sendMessage: string;
-  privacy: string;
-  terms: string;
-  copyright: (year: number) => string;
-};
-
-const content: Record<"es" | "en", FooterContent> = {
+const content = {
   es: {
     description:
-      "Arquitecto de Soluciones especializado en IA y sistemas. Diseño, construyo y despliego soluciones digitales que conectan objetivos de negocio con arquitecturas escalables y mantenibles.",
-    quickLinksTitle: "Enlaces r\u00e1pidos",
-    quickLinks: [
-      { name: "Sobre m\u00ed", href: "#sobre-mi" },
-      { name: "Proyectos", href: "#proyectos" },
+      "Arquitecto de Soluciones especializado en IA y sistemas. Diseño, construyo y despliego productos digitales que conectan objetivos de negocio con arquitecturas escalables y mantenibles.",
+    linksTitle: "Navegación",
+    contactTitle: "Contacto",
+    availability: "Disponible para conversar sobre arquitectura, IA aplicada y automatización.",
+    copyright: (year: number) => `© ${year} Rodrigo Yáñez García. Todos los derechos reservados.`,
+    links: [
+      { name: "Perfil", href: "#sobre-mi" },
+      { name: "Casos", href: "#proyectos" },
       { name: "Contacto", href: "#contacto" },
     ],
-    contactTitle: "Contacto",
-    contactAvailability: "Disponible para conversar sobre arquitectura, IA aplicada y automatización.",
-    contactResponse: "Respuesta r\u00e1pida garantizada",
-    sendMessage: "Enviar mensaje",
-    privacy: "Pol\u00edtica de Privacidad",
-    terms: "T\u00e9rminos de Servicio",
-    copyright: (year: number) => `\u00a9 ${year} Rodrigo Yáñez G. Todos los derechos reservados.`,
   },
   en: {
     description:
       "Solution Architect specialized in AI and systems. I design, build, and ship digital products that connect business goals with scalable, maintainable architectures.",
-    quickLinksTitle: "Quick links",
-    quickLinks: [
-      { name: "About", href: "#sobre-mi" },
-      { name: "Projects", href: "#proyectos" },
+    linksTitle: "Navigation",
+    contactTitle: "Contact",
+    availability: "Available to discuss architecture, applied AI, and automation.",
+    copyright: (year: number) => `© ${year} Rodrigo Yáñez García. All rights reserved.`,
+    links: [
+      { name: "Profile", href: "#sobre-mi" },
+      { name: "Cases", href: "#proyectos" },
       { name: "Contact", href: "#contacto" },
     ],
-    contactTitle: "Contact",
-    contactAvailability: "Available to discuss architecture, applied AI, and automation.",
-    contactResponse: "Fast response guaranteed",
-    sendMessage: "Send message",
-    privacy: "Privacy Policy",
-    terms: "Terms of Service",
-    copyright: (year: number) => `\u00a9 ${year} Rodrigo Yáñez G. All rights reserved.`,
   },
 };
 
@@ -68,97 +42,57 @@ const socialLinks = [
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
-  const footerContent = content[language];
+  const text = content[language];
 
   return (
-    <footer className="relative bg-gray-950 text-white overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.18),transparent_55%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.12),transparent_55%)]" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <h2 className="text-2xl text-cyan-700 font-bold mb-4">Rodrigo Yáñez G.</h2>
-            <p className="text-gray-300 mb-6 max-w-md">
-              {footerContent.description}
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                  aria-label={link.name}
-                >
-                  <link.icon size={20} />
-                </a>
-              ))}
-            </div>
-          </div>
+    <footer className="border-t border-[color:var(--border)] bg-[color:var(--background)] px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.7fr_0.8fr]">
+        <div>
+          <Link href="/" className="inline-flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--foreground)] text-sm font-black text-[color:var(--background)]">
+              RY
+            </span>
+            <span>
+              <span className="block text-lg font-black text-[color:var(--foreground)]">Rodrigo Yáñez García</span>
+              <span className="block text-sm font-semibold text-[color:var(--muted)]">Solution Architect · AI & Systems</span>
+            </span>
+          </Link>
+          <p className="mt-5 max-w-xl text-sm leading-7 text-[color:var(--muted)]">{text.description}</p>
+        </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4 capitalize">{footerContent.quickLinksTitle}</h3>
-            <ul className="space-y-2">
-              {footerContent.quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <div>
+          <h2 className="text-sm font-black uppercase tracking-[0.18em] text-[color:var(--foreground)]">{text.linksTitle}</h2>
+          <div className="mt-5 grid gap-3">
+            {text.links.map((link) => (
+              <Link key={link.name} href={link.href} className="text-sm font-bold text-[color:var(--muted)] hover:text-[color:var(--foreground)]">
+                {link.name}
+              </Link>
+            ))}
           </div>
+        </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">{footerContent.contactTitle}</h3>
-            <div className="space-y-2 text-gray-400">
-              <p>{footerContent.contactAvailability}</p>
-              <p>{footerContent.contactResponse}</p>
+        <div>
+          <h2 className="text-sm font-black uppercase tracking-[0.18em] text-[color:var(--foreground)]">{text.contactTitle}</h2>
+          <p className="mt-5 text-sm leading-7 text-[color:var(--muted)]">{text.availability}</p>
+          <div className="mt-5 flex gap-3">
+            {socialLinks.map((link) => (
               <a
-                href="mailto:rodrigo.iyagar@gmail.com"
-                className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center gap-1"
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--foreground)]"
+                aria-label={link.name}
               >
-                <Mail size={16} />
-                {footerContent.sendMessage}
+                <link.icon className="h-5 w-5" />
               </a>
-            </div>
+            ))}
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-col md:flex-row items-center gap-4">
-            <p className="text-gray-400 text-sm">
-              {footerContent.copyright(currentYear)}
-            </p>
-            {/*starCount > 0 && (
-              <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full border border-purple-400/30 animate-pulse">
-                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                <span className="text-sm text-purple-300 font-medium">
-                  {language === "es" ? `Clickeaste ${starCount} estrellita${starCount !== 1 ? 's' : ''}` : `You clicked ${starCount} star${starCount !== 1 ? 's' : ''}`}
-                </span>
-              </div>
-            )*/}
-          </div>
-          {/*<div className="flex space-x-6">
-            <a
-              href="#"
-              className="flex items-center gap-1 text-gray-400 hover:text-white text-sm transition-colors"
-            >
-              {footerContent.privacy}
-              <ExternalLink size={14} />
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-1 text-gray-400 hover:text-white text-sm transition-colors"
-            >
-              {footerContent.terms}
-              <ExternalLink size={14} />
-            </a>
-          </div>*/}
-        </div>
+      <div className="mx-auto mt-10 flex max-w-7xl border-t border-[color:var(--border)] pt-6">
+        <p className="text-xs font-semibold text-[color:var(--muted)]">{text.copyright(currentYear)}</p>
       </div>
     </footer>
   );

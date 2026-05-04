@@ -1,8 +1,33 @@
 ﻿@import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f2eb;
+  --foreground: #171a18;
+  --surface: #fffaf1;
+  --surface-muted: #e9e1d3;
+  --surface-strong: #242722;
+  --muted: #676b62;
+  --border: #d7cebf;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --accent-soft: #d7f0e8;
+  --signal: #b45309;
+  --ink: #171a18;
+}
+
+.dark {
+  --background: #11140f;
+  --foreground: #f6f2e9;
+  --surface: #191d17;
+  --surface-muted: #252b22;
+  --surface-strong: #f6f2e9;
+  --muted: #b8b2a6;
+  --border: #31382e;
+  --accent: #5eead4;
+  --accent-strong: #2dd4bf;
+  --accent-soft: #123c36;
+  --signal: #fbbf24;
+  --ink: #11140f;
 }
 
 @theme inline {
@@ -12,15 +37,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html {
   min-height: 100%;
+  background: var(--background);
 }
 
 body {
@@ -28,7 +47,7 @@ body {
   min-height: 100%;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -38,9 +57,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.15), transparent 65%),
-    repeating-linear-gradient(45deg, rgba(148, 163, 184, 0.05) 0, rgba(148, 163, 184, 0.05) 1px, transparent 1px, transparent 14px);
-  opacity: 0.35;
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 45%),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--border) 32%, transparent) 0, color-mix(in srgb, var(--border) 32%, transparent) 1px, transparent 1px, transparent 72px);
+  opacity: 0.38;
   z-index: -1;
 }
 
@@ -49,88 +68,39 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath fill='rgba(79,70,229,0.04)' d='M80 0h1v160h-1zM0 80h160v1H0z'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
-  mix-blend-mode: soft-light;
-  opacity: 0.25;
+  background: linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--border) 18%, transparent) 48% 49%, transparent 49% 100%);
+  background-size: 32px 32px;
+  opacity: 0.16;
   z-index: -2;
 }
 
-/* Transiciones suaves entre secciones */
 .section-transition {
   position: relative;
 }
 
-.section-transition::before {
-  content: "";
-  position: absolute;
-  inset-x: 0;
-  top: -4rem;
-  height: 4rem;
-  background: linear-gradient(to bottom, var(--background), transparent);
-  pointer-events: none;
-  z-index: 10;
+.portfolio-shell {
+  background: var(--background);
+  color: var(--foreground);
 }
 
-.section-transition::after {
-  content: "";
-  position: absolute;
-  inset-x: 0;
-  bottom: -4rem;
-  height: 4rem;
-  background: linear-gradient(to top, var(--background), transparent);
-  pointer-events: none;
-  z-index: 10;
+.portfolio-section {
+  padding: 7rem 1rem;
 }
 
-/* Variaciones de color para diferentes secciones */
-.section-transition-blue::before {
-  background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), transparent);
+.surface-panel {
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow: 0 24px 80px -58px color-mix(in srgb, var(--foreground) 50%, transparent);
 }
 
-.section-transition-blue::after {
-  background: linear-gradient(to top, rgba(59, 130, 246, 0.1), transparent);
+.section-kicker {
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
-.section-transition-purple::before {
-  background: linear-gradient(to bottom, rgba(168, 85, 247, 0.1), transparent);
-}
-
-.section-transition-purple::after {
-  background: linear-gradient(to top, rgba(168, 85, 247, 0.1), transparent);
-}
-
-.section-transition-emerald::before {
-  background: linear-gradient(to bottom, rgba(16, 185, 129, 0.1), transparent);
-}
-
-.section-transition-emerald::after {
-  background: linear-gradient(to top, rgba(16, 185, 129, 0.1), transparent);
-}
-
-/* Dark mode variations */
-@media (prefers-color-scheme: dark) {
-  .section-transition-blue::before {
-    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.05), transparent);
-  }
-
-  .section-transition-blue::after {
-    background: linear-gradient(to top, rgba(59, 130, 246, 0.05), transparent);
-  }
-
-  .section-transition-purple::before {
-    background: linear-gradient(to bottom, rgba(168, 85, 247, 0.05), transparent);
-  }
-
-  .section-transition-purple::after {
-    background: linear-gradient(to top, rgba(168, 85, 247, 0.05), transparent);
-  }
-
-  .section-transition-emerald::before {
-    background: linear-gradient(to bottom, rgba(16, 185, 129, 0.05), transparent);
-  }
-
-  .section-transition-emerald::after {
-    background: linear-gradient(to top, rgba(16, 185, 129, 0.05), transparent);
-  }
+.muted-text {
+  color: var(--muted);
 }
