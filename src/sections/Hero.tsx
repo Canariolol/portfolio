@@ -238,11 +238,11 @@ export default function Hero() {
           </div>
 
           <div className="mt-5 grid grid-cols-3 gap-3 text-xs font-black uppercase tracking-[0.16em] text-[color:var(--muted)]">
-            <span>Node</span>
+            <span>React</span>
             <span>Python</span>
             <span>GCP</span>
-            <span>Redis</span>
-            <span>RabbitMQ</span>
+            <span>Safe AI</span>
+            <span>REST APIs</span>
             <span>PostgreSQL</span>
           </div>
         </div>
