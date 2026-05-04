@@ -29,7 +29,7 @@ const content: Record<"es" | "en", HeroContent> = {
     headline: "Diseño sistemas que convierten procesos lentos en ventaja operativa.",
     roles: ["Arquitectura", "IA aplicada", "Microservicios", "Observabilidad"],
     description:
-      "Conecto objetivos de negocio con arquitecturas escalables y mantenibles. Trabajo desde el descubrimiento técnico hasta producción, con planificación, documentación, testing y foco en impacto medible.",
+      "Conecto objetivos de negocio con arquitecturas escalables: descubrimiento técnico, planificación, desarrollo, testing, despliegue y observabilidad.",
     quote: "Mi misión es ayudar a ahorrar el recurso más valioso de todos: el tiempo.",
     primaryCta: "Ver casos",
     contactCta: "Hablemos",
@@ -53,7 +53,7 @@ const content: Record<"es" | "en", HeroContent> = {
     headline: "I design systems that turn slow processes into operational advantage.",
     roles: ["Architecture", "Applied AI", "Microservices", "Observability"],
     description:
-      "I connect business goals with scalable, maintainable architectures. I work from technical discovery to production with planning, documentation, testing, and measurable impact.",
+      "I connect business goals with scalable architectures: technical discovery, planning, development, testing, deployment, and observability.",
     quote: "My mission is to help save the most valuable resource of all: time.",
     primaryCta: "View cases",
     contactCta: "Let's talk",
@@ -107,32 +107,36 @@ export default function Hero() {
   };
 
   return (
-    <section className="portfolio-shell relative flex min-h-screen items-center overflow-hidden px-4 pb-20 pt-28 sm:px-6 lg:px-8">
+    <section className="portfolio-shell hero-backdrop relative flex min-h-screen items-center overflow-hidden px-4 pb-20 pt-28 sm:px-6 lg:px-8">
       <div className="absolute inset-x-0 top-16 h-px bg-[color:var(--border)]" />
+      <div className="absolute left-6 top-28 hidden h-28 w-px bg-[color:var(--accent)]/60 lg:block" />
+      <div className="absolute bottom-16 right-8 hidden h-px w-40 bg-[color:var(--accent)]/50 lg:block" />
       <div className="mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.06fr_0.94fr]">
         <div className="max-w-3xl">
-          <div className="mb-8 inline-flex items-center gap-3 rounded-md border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-[color:var(--accent-strong)]">
+          <div className="mb-7 inline-flex items-center gap-3 rounded-md border border-[color:var(--border)] bg-[color:var(--surface)]/86 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-[color:var(--accent-strong)] backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-[color:var(--accent)]" />
             {heroContent.badge}
           </div>
 
-          <p className="mb-5 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--muted)]">{heroContent.eyebrow}</p>
-          <h1 className="max-w-5xl text-5xl font-black leading-[0.96] tracking-tight text-[color:var(--foreground)] sm:text-6xl lg:text-7xl">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--muted)]">{heroContent.eyebrow}</p>
+          <h1 className="max-w-5xl text-5xl font-black leading-[0.94] tracking-tight text-[color:var(--foreground)] sm:text-6xl lg:text-8xl">
             {heroContent.name}
-            <span className="mt-5 block text-[color:var(--accent-strong)]">{heroContent.headline}</span>
           </h1>
+          <p className="mt-6 max-w-3xl text-2xl font-semibold leading-tight text-[color:var(--accent-strong)] sm:text-3xl">
+            {heroContent.headline}
+          </p>
 
-          <div className="mt-8 flex min-h-10 flex-wrap items-center gap-3 text-xl font-black text-[color:var(--foreground)]">
+          <div className="mt-7 flex min-h-10 flex-wrap items-center gap-3 text-lg font-black text-[color:var(--foreground)]">
             <span className="rounded-md bg-[color:var(--accent-soft)] px-3 py-1 text-[color:var(--accent-strong)]">{roles[currentRole]}</span>
             <span className="text-[color:var(--muted)]">/ {language === "es" ? "de idea a producción" : "from idea to production"}</span>
           </div>
 
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">{heroContent.description}</p>
-          <blockquote className="mt-7 border-l-4 border-[color:var(--accent)] pl-5 text-lg font-semibold text-[color:var(--foreground)]">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-[color:var(--muted)] sm:text-lg">{heroContent.description}</p>
+          <blockquote className="mt-6 border-l-4 border-[color:var(--accent)] pl-5 text-base font-semibold text-[color:var(--foreground)] sm:text-lg">
             “{heroContent.quote}”
           </blockquote>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button
               size="lg"
               onClick={() => scrollTo("proyectos")}
@@ -182,7 +186,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="mt-12 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="mt-10 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
             {heroContent.stats.map((stat) => (
               <div key={stat.value} className="border-l border-[color:var(--border)] pl-4">
                 <div className="text-3xl font-black text-[color:var(--foreground)]">{stat.value}</div>

@@ -83,6 +83,138 @@ body::after {
   color: var(--foreground);
 }
 
+.hero-backdrop {
+  isolation: isolate;
+}
+
+.hero-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 38%),
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--surface) 42%, transparent) 100%);
+  opacity: 0.68;
+  z-index: -2;
+}
+
+.hero-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 4rem -12rem -8rem -12rem;
+  pointer-events: none;
+  background:
+    linear-gradient(125deg, transparent 0 18%, color-mix(in srgb, var(--accent) 14%, transparent) 18% 19%, transparent 19% 42%, color-mix(in srgb, var(--border) 48%, transparent) 42% 43%, transparent 43% 100%),
+    radial-gradient(ellipse at 72% 28%, color-mix(in srgb, var(--accent-soft) 55%, transparent), transparent 42%),
+    conic-gradient(from 210deg at 76% 36%, transparent 0deg, color-mix(in srgb, var(--accent) 11%, transparent) 48deg, transparent 118deg);
+  mask-image: linear-gradient(90deg, transparent 0%, black 20%, black 78%, transparent 100%);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.stack-rail {
+  animation: stack-drift 18s linear infinite;
+}
+
+.stack-rail:nth-child(2) {
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+@keyframes stack-drift {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.shine-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -65%;
+  width: 34%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 24%, white 16%), transparent);
+  opacity: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  clip-path: inset(0 round 0.45rem);
+}
+
+.shine-button:hover::after,
+.shine-button:focus-visible::after {
+  animation: shine-sweep 850ms ease;
+}
+
+@keyframes shine-sweep {
+  0% {
+    left: -65%;
+    opacity: 0;
+  }
+  16% {
+    opacity: 0.8;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+.click-tooltip {
+  animation: tooltip-fade-in 180ms ease-out;
+}
+
+.click-tooltip-exit {
+  animation: tooltip-fade-out 160ms ease-in forwards;
+}
+
+.stack-tool-enter {
+  animation: stack-tool-enter 260ms ease-out both;
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tooltip-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+}
+
+@keyframes stack-tool-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .portfolio-section {
   padding: 7rem 1rem;
 }
